@@ -4,3 +4,15 @@
     margin: 0;
     padding: 0;
 }
+
+/* UTILITIES */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --twitter-blue: #1DA1F2;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
