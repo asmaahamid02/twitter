@@ -320,3 +320,27 @@ footer a:hover {
 .form-body h2 {
     margin: 15px 0;
 }
+
+.date-select {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+
+input:focus {
+    outline: none;
+}
+
+.month,
+.day,
+.year {
+    margin: 0 0%;
+    height: 50px;
+    width: 30%;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid rgb(180, 180, 180);
+}
