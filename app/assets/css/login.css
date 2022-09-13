@@ -233,3 +233,25 @@ footer a:hover {
 #form-page-4 {
     display: none;
 }
+
+.form-header {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+}
+
+.form-header h3 {
+    margin-left: 45px;
+    position: fixed;
+}
+
+.form-header img {
+    font-weight: bolder;
+    margin: 0 25px 0 15px;
+    position: fixed;
+    cursor: pointer;
+}
