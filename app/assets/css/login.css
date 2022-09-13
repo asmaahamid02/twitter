@@ -344,3 +344,23 @@ input:focus {
     border-radius: 5px;
     border: 1px solid rgb(180, 180, 180);
 }
+
+.next-btn {
+    border: none;
+    background: rgb(140, 140, 140);
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.submit_enabled {
+    background: black;
+}
+
+.next-btn:hover {
+    background: rgb(110, 110, 110);
+}
