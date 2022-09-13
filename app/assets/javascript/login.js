@@ -72,3 +72,46 @@ let name_length = document.getElementById('name-length');
 
     };
 });
+
+
+    // Email validation
+email_input.addEventListener('input',()=>{
+    let email_list = email_input.value.split('');
+
+    // spliting the email into two parts to check the length of each before and after the '@' sign
+    let email_parts = email_input.value.split('@', 2);
+    let is_email = false;
+
+    // checking for the '@' sign
+    email_list.forEach(element => {
+        if(element == '@'){
+            is_email = true;
+            form_inputs[1].style.border = '1px solid rgb(0, 0, 0, .3)';
+        }
+    });
+
+    if(!is_email){
+        valid_input = false;
+        form_inputs[1].style.border = '1px solid red';
+    }else{
+
+        
+        if(email_parts[0].length < 3){
+            valid_input = false;
+            form_inputs[1].style.border = '1px solid red';
+        }else{
+            valid_input = true;
+            form_inputs[1].style.border = '1px solid rgb(0, 0, 0, .3)';
+        };
+
+        if(email_parts[1].length <5){
+            valid_input = false;
+            form_inputs[1].style.border = '1px solid red';
+        }else{
+            valid_input = true;
+            form_inputs[1].style.border = '1px solid rgb(0, 0, 0, .3)';
+        };
+
+    }
+
+});
