@@ -255,3 +255,14 @@ footer a:hover {
     position: fixed;
     cursor: pointer;
 }
+
+.form-body {
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    height: 100%;
+    width: 80%;
+    margin-top: 30px;
+}
