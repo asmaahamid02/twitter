@@ -364,3 +364,23 @@ input:focus {
 .next-btn:hover {
     background: rgb(110, 110, 110);
 }
+
+.terms-and-checkbox {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.terms-and-checkbox p {
+    max-width: 85%;
+}
+
+@media only screen and (max-width: 600px) {
+    .login-form {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        position: fixed;
+    }
+}
