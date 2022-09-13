@@ -91,3 +91,26 @@ body {
 .add-tweet:hover {
     filter: brightness(.9);
 }
+/* Footer */
+
+.footer {
+    width: 80%;
+    height: 8%;
+    position: fixed;
+    bottom: 0;
+    left: 10%;
+    background: white;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 2px solid rgba(0, 0, 0, .6);
+}
+
+.footer img {
+    height: 60%;
+}
+
+.footer img:hover {
+    opacity: .8;
+}
