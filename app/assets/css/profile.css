@@ -1,0 +1,12 @@
+:root {
+    --twitter-blue: #1DA1F2;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    align-items: center;
+
+}
