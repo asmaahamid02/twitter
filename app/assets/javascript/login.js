@@ -27,3 +27,16 @@ submit_signup.addEventListener('click', ()=>{
     }
 
 });
+
+
+signin_btn.addEventListener('click', ()=>{
+    signin_form.style.display = 'flex';
+});
+
+signin_close_form.addEventListener('click', ()=>{
+    signin_form.style.display = 'none';
+});
+
+inner_signup_btn.addEventListener('click', ()=>{
+    signin_form.style.display = 'none';
+});
