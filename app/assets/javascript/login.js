@@ -137,3 +137,23 @@ signin_next_btn.addEventListener('click', (event)=>{
 
 });
 
+
+// EMAIL - PHONE SWITCHER
+let email_phone_switch_btn  = document.getElementById('email-phone-switch-btn');
+let phone_input = document.getElementById('phone-input');
+let switcher = true;
+
+email_phone_switch_btn.addEventListener('click', (event)=>{
+    if(switcher){
+        switcher = false;
+    event.preventDefault();
+    email_input.style.display = 'none';
+    phone_input.style.display = 'flex';
+    }else{
+        switcher = true;
+        event.preventDefault();
+        email_input.style.display = 'flex';
+        phone_input.style.display = 'none';
+    }
+    
+})
