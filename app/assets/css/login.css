@@ -1,0 +1,9 @@
+/* LOGIN PAGE */
+.login {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: flex-start;
+    align-items: center;
+    height: fit-content;
+}
+
