@@ -23,3 +23,19 @@ body {
     display: flex;
     flex-flow: wrap column;
 }
+
+.blue-btn {
+    background: var(--twitter-blue);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.blue-btn:hover {
+    filter: brightness(.94);
+}
