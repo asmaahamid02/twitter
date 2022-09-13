@@ -13,3 +13,17 @@
     display: flex;
 }
 
+.login-info-img {
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: flex-start;
+    width: 45%;
+    height: 100%;
+}
+
+.login-info img {
+    display: flex;
+    width: 10%;
+    height: 6%;
+    margin: 5%;
+}
