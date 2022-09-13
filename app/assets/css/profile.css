@@ -43,3 +43,21 @@ body {
 .profile-text {
     font-size: 12px;
 }
+
+.profile-btns {
+    display: flex;
+    flex-flow: wrap column;
+    height: 115px;
+    transform: scale(.6);
+    margin-top: -20px;
+}
+
+.profile-btns button {
+    margin-bottom: 5px;
+}
+
+.profile hr {
+    opacity: .6;
+    width: 90%;
+    margin: -20px 0 0 5%;
+}
