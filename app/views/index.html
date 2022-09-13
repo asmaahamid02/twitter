@@ -99,12 +99,12 @@
             <h1>Create your account</h1>
             <!-- NAME INPUT -->
             <div class="form-input">
-                <input type="text" name="name" placeholder="Name" id="name-input" class="input">
+                <input type="text" name="name" placeholder="Name" id="name-input" class="input" minlength="1" maxlength="40">
                 <p id="name-length">0/40</p>
             </div>
             <!-- EMAIL INPUT -->
             <div class="form-input">
-                <input type="text" name="phone-or-email" placeholder="Phone" id="email-phone" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="input">
+                <input type="text" name="phone-or-email" placeholder="Phone" id="email-input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="input">
             </div>
             <!-- EMAIL-PHONE SWITCHER -->
             <button class="email-phone-switch-btn">Use email instead</button>

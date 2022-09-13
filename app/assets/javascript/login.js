@@ -8,7 +8,7 @@ const signin_btn = document.getElementById('signin-btn');
 const signin_form = document.getElementById('signin-form');
 const signin_close_form = document.getElementById('signin-close-form');
 const inner_signup_btn = document.getElementById('inner-signup-btn');
-
+var valid_input = false;
 
 // ADDING FUNCTIONALITY TO THE FORM BUTTONS
 signup_btn.addEventListener('click', ()=>{
@@ -20,10 +20,13 @@ close_form.addEventListener('click', ()=>{
     form_page_1.remove();
 });
 
-submit_signup.addEventListener('click', ()=>{
+submit_signup.addEventListener('click', (event)=>{
     
-    if(valid){
-        // submit
+    if(valid_input){
+        console.log(valid_input);
+    }else{
+        console.log(valid_input);
+        event.preventDefault();
     }
 
 });
@@ -44,28 +47,28 @@ inner_signup_btn.addEventListener('click', ()=>{
 
 // Checking input validity
 let inputs = Object.values(document.getElementsByClassName('input'));
-var x = 0;
+let form_inputs = Object.values(document.getElementsByClassName('form-input'));
 let name_input = document.getElementById('name-input');
+let email_input = document.getElementById('email-input');
 let name_length = document.getElementById('name-length');
 
-inputs.forEach((e)=>{
+
     
-    e.addEventListener('input',()=>{
+    name_input.addEventListener('input',()=>{
 
-    if((e.value).length < 41){
-        name_length.innerHTML = `${(e.value).length}/50`;
-        name_length.style.color = 'black';
-        if(x !=inputs.length){
-            x += 1;
-        }
-        
-    }
-    if((e.value).length < 1){
+    if((name_input.value).length >= 40 || (name_input.value).length < 1){
+
         name_length.style.color = 'red';
+        form_inputs[0].style.border = '1px solid red';
         submit_signup.classList.remove('submit_enabled');
-        x -=1;
-    }
-});
+        valid_input = false;
 
-});
+    }else{
 
+        name_length.innerHTML = `${(name_input.value).length}/40`;
+        name_length.style.color = 'black';
+        form_inputs[0].style.border = '1px solid rgba(0, 0, 0, .3)';
+        valid_input = true;
+
+    };
+});
