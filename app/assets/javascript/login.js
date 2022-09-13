@@ -40,3 +40,32 @@ signin_close_form.addEventListener('click', ()=>{
 inner_signup_btn.addEventListener('click', ()=>{
     signin_form.style.display = 'none';
 });
+
+
+// Checking input validity
+let inputs = Object.values(document.getElementsByClassName('input'));
+var x = 0;
+let name_input = document.getElementById('name-input');
+let name_length = document.getElementById('name-length');
+
+inputs.forEach((e)=>{
+    
+    e.addEventListener('input',()=>{
+
+    if((e.value).length < 41){
+        name_length.innerHTML = `${(e.value).length}/50`;
+        name_length.style.color = 'black';
+        if(x !=inputs.length){
+            x += 1;
+        }
+        
+    }
+    if((e.value).length < 1){
+        name_length.style.color = 'red';
+        submit_signup.classList.remove('submit_enabled');
+        x -=1;
+    }
+});
+
+});
+
