@@ -16,3 +16,10 @@ html {
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
+
+body {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-flow: wrap column;
+}
