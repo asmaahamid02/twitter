@@ -27,3 +27,25 @@
     height: 6%;
     margin: 5%;
 }
+
+.login-info h1 {
+    display: flex;
+    font-weight: bolder;
+    font-size: 4em;
+    width: fit-content;
+    margin: 2% 5%;
+}
+
+.width-combiner {
+    width: 60%;
+    height: 50%;
+    margin: 10% 5%;
+}
+
+.login-info h2 {
+    display: flex;
+    font-weight: bolder;
+    font-size: 2em;
+    width: fit-content;
+    margin: 0 5%;
+}
