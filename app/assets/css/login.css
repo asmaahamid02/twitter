@@ -81,3 +81,58 @@
 .login-info h3 {
     margin: 15% 0 0 0;
 }
+
+@media only screen and (max-width: 1000px) {
+
+    .login {
+        flex-flow: wrap column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .hero-img {
+        height: 20%;
+        width: 100%;
+        display: flex;
+        order: 2;
+    }
+
+    .login-info {
+        order: 1;
+        width: 100%;
+        height: fit-content;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .login-info h1 {
+        display: flex;
+        font-weight: bolder;
+        font-size: 3em;
+        max-width: 100%;
+        order: 1;
+    }
+
+    .width-combiner {
+        width: 50%;
+        order: 1;
+        margin: 0% 5%;
+    }
+
+    .login-info h2 {
+        display: flex;
+        font-weight: bolder;
+        font-size: 1.5em;
+        width: fit-content;
+        order: 1;
+    }
+
+    .signup-btn {
+        order: 1;
+    }
+
+    .login-or {
+        order: 1;
+    }
+
+}
