@@ -114,3 +114,17 @@ body {
 .footer img:hover {
     opacity: .8;
 }
+
+
+/* EDIT PROFILE CSS */
+
+.edit-profile{
+    width:500px;
+    height: 600px;
+    position: absolute;
+    top:5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(220, 220, 220);
+    border-radius: 10px;
+}
