@@ -174,3 +174,28 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+/* FORM */
+
+.login-form {
+    width: 600px;
+}
+
+.signin-form {
+    width: 400px;
+}
+
+.login-form,
+.signin-form {
+    display: none;
+    flex-flow: wrap column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 550px;
+    background: rgb(231, 231, 231);
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
