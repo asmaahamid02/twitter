@@ -226,3 +226,10 @@ footer a:hover {
 .signin-form h5 a:hover {
     text-decoration: underline;
 }
+
+#form-page-1,
+#form-page-2,
+#form-page-3,
+#form-page-4 {
+    display: none;
+}
