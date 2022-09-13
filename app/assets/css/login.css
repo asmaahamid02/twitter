@@ -292,3 +292,17 @@ footer a:hover {
     height: 100%;
     width: 90%
 }
+
+.email-phone-switch-btn {
+    border: none;
+    color: var(--twitter-blue);
+    display: flex;
+    background: transparent;
+    justify-self: flex-end;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.email-phone-switch-btn:hover {
+    text-decoration: underline;
+}
