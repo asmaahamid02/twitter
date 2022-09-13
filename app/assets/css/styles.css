@@ -39,3 +39,19 @@ body {
 .blue-btn:hover {
     filter: brightness(.94);
 }
+
+.nofill-btn {
+    background: transparent;
+    color: rgb(99, 99, 99);
+    border: 1px solid rgb(211, 211, 211);
+    cursor: pointer;
+    border-radius: 30px;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.nofill-btn:hover {
+    background: rgb(224, 224, 224);
+}
