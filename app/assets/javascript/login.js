@@ -8,3 +8,22 @@ const signin_btn = document.getElementById('signin-btn');
 const signin_form = document.getElementById('signin-form');
 const signin_close_form = document.getElementById('signin-close-form');
 const inner_signup_btn = document.getElementById('inner-signup-btn');
+
+
+// ADDING FUNCTIONALITY TO THE FORM BUTTONS
+signup_btn.addEventListener('click', ()=>{
+    form_page_1.style.display = 'flex';
+    document.body.append(form_page_1);
+});
+
+close_form.addEventListener('click', ()=>{
+    form_page_1.remove();
+});
+
+submit_signup.addEventListener('click', ()=>{
+    
+    if(valid){
+        // submit
+    }
+
+});
