@@ -136,3 +136,20 @@
     }
 
 }
+
+@media only screen and (max-width: 560px) {
+    .login-info h1 {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .login-info h1 {
+        font-size: 1.5em;
+    }
+
+    .width-combiner {
+        width: 80%;
+        order: 1;
+    }
+}
