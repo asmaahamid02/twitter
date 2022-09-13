@@ -115,3 +115,25 @@ email_input.addEventListener('input',()=>{
     }
 
 });
+
+
+// SIGNIN INPUT VALIDATION
+let signin_next_btn = document.getElementById('signin-next-btn');
+let signin_input = document.getElementById('signin-input');
+let signin_pass = document.getElementById('signin-pass');
+let form_input = Object.values(document.getElementsByClassName('signin-input'));
+
+
+signin_next_btn.addEventListener('click', (event)=>{
+
+    form_input.forEach(element => {
+        if(element.value.length <=0 ){
+            event.preventDefault();
+            element.style.border = '1px solid red'
+        }else{
+            element.style.border = '1px solid rgba(0, 0, 0, .3)'
+        }
+    });
+
+});
+
