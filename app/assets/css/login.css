@@ -199,3 +199,30 @@ footer a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.signin-width-combiner {
+    width: 80%;
+    height: 50%;
+    margin: 10% 5%;
+}
+
+#signin-next-btn {
+    background: black;
+}
+
+#signin-next-btn:hover {
+    background: rgb(24, 24, 24);
+}
+
+.signin-form h5 {
+    margin: 20px 5px;
+}
+
+.signin-form h5 a {
+    text-decoration: none;
+    color: var(--twitter-blue);
+}
+
+.signin-form h5 a:hover {
+    text-decoration: underline;
+}
