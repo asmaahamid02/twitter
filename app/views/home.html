@@ -44,11 +44,11 @@
                     <span>Profile</span>
                 </a>
 
-                <button class="nav-tweet-button">Tweet</button>
+                <button class="btn nav-tweet-button">Tweet</button>
             </div>
             <div class="main-account">
                 <a href="">
-                    <img class="profile-tweet-img" src="/app/assets/images/apple-logo.png" alt="">
+                    <img class="profile-circle-img" src="/app/assets/images/apple-logo.png" alt="">
                     <div class="account-detailes">
                         <span class="account-full-name">Asmaa Hamid</span>
                         <span class="account-username">@asmaahamid014444444444</span>
@@ -59,19 +59,35 @@
         <!-- End Side Bar -->
         <!-- Start Main Content -->
         <main>
+            <!--Start Main Feed-->
             <div class="main-flex">
                 <div class="main-feed">
+                    <!--Start Home Bar-->
                     <div class="home-bar">
                         <span>Home</span>
                         <i class="material-icons-outlined">
                             auto_awesome
                         </i>
                     </div>
+                    <!--End Home Bar-->
+                    <!--Start Tweet New Section-->
+                    <div class="new-tweet">
+                        <a href=""><img src="/app/assets/images/apple-logo.png" class="profile-circle-img" alt=""></a>
+                        <form action="" class="create-tweet">
+                            <input class="tweet-text" type="text" placeholder="Whats's happening?">
+                            <div class="new-tweet-actions">
+                                <i class="material-icons-outlined">image</i>
+                                <button type="submit" class="btn new-tweet-btn">Tweet</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--End Tweet New Section-->
                 </div>
                 <div class="right-side-explore">
 
                 </div>
             </div>
+            <!--End Main Feed-->
         </main>
         <!-- End Main Content -->
     </div>
