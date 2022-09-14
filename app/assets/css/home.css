@@ -60,7 +60,8 @@ header {
   margin-right: 15px;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.main-account a:hover {
   background-color: rgb(15, 20, 25, 0.1);
   border-radius: 9999px;
 }
@@ -94,4 +95,51 @@ header {
 
 .nav-tweet-button:hover {
   background-color: rgba(28, 141, 216);
+}
+
+.main-account {
+  width: 100%;
+  height: 50%;
+  padding-top: 100px;
+}
+
+.main-account a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 8px 10px 15px;
+  margin-right: 10px;
+  width: 100%;
+}
+
+.profile-tweet-img {
+  background-color: #1d9bf0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.account-detailes {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-left: 10px;
+  font-size: 1.5rem;
+  line-height: 20px;
+}
+
+.account-full-name {
+  font-weight: 700;
+}
+
+.account-username {
+  color: #717f8a;
+}
+
+.account-detailes span {
+  display: block;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
 }
