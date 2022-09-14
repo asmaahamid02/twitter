@@ -38,3 +38,27 @@ default_profile_img_btn.addEventListener('change', function(){
     }
     
 })
+
+// ///////////
+let new_profile_bg = document.getElementById('new-profile-bg');
+let default_profile_bg_btn = document.getElementById('default-profile-bg-btn');
+
+new_profile_bg.addEventListener('click', ()=>{
+    default_profile_bg_btn.click();
+});
+
+default_profile_bg_btn.addEventListener('change', function(){
+
+    const file = this.files[0];
+
+    if(file){
+
+    const reader = new FileReader();
+    reader.onload = function(){
+        const result = reader.result;
+        new_profile_bg.src = result
+    }
+    reader.readAsDataURL(file);
+    }
+    
+})
