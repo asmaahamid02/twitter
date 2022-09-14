@@ -119,6 +119,7 @@ body {
 /* EDIT PROFILE CSS */
 
 .edit-profile{
+    display: none;
     width:fit-content;
     height: fit-content;
     position: absolute;
