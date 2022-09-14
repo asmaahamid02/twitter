@@ -1,1 +1,57 @@
 /* Main CSS */
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* UTILITIES */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --twitter-blue: #1DA1F2;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-flow: wrap column;
+}
+
+.blue-btn {
+    background: var(--twitter-blue);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.blue-btn:hover {
+    filter: brightness(.94);
+}
+
+.nofill-btn {
+    background: transparent;
+    color: rgb(99, 99, 99);
+    border: 1px solid rgb(211, 211, 211);
+    cursor: pointer;
+    border-radius: 30px;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.nofill-btn:hover {
+    background: rgb(224, 224, 224);
+}
