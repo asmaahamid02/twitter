@@ -168,7 +168,7 @@ header {
 
 /* Main Section*/
 main {
-  width: 100%;
+  width: 71%;
   height: 100%;
   margin-left: 29%;
 }
@@ -179,7 +179,7 @@ main {
 }
 
 .main-feed {
-  width: 50%;
+  width: 60%;
   border-left: 1px solid rgb(29, 155, 240, 0.1);
   border-right: 1px solid rgb(29, 155, 240, 0.1);
 }
@@ -358,4 +358,43 @@ main {
 .icon-item:hover i {
   color: rgb(249, 24, 128);
   background-color: rgb(249, 24, 128, 0.1);
+}
+
+/* Right Side*/
+.right-side-explore {
+  width: 40%;
+  padding: 0 2%;
+}
+
+.search {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 55px;
+  border-radius: 9999px;
+  background-color: #eff3f4;
+  width: 100%;
+  padding-left: 10px;
+  color: #8e9aa3;
+  font-size: 3rem;
+}
+
+.form-search {
+  display: flex;
+  align-items: center;
+}
+
+.search i,
+.form-search {
+  padding: 1rem;
+  background-color: none;
+}
+
+.form-search input {
+  border: none;
+  outline: none;
+  padding: 5px 2px;
+  width: 100%;
+  background-color: transparent;
 }
