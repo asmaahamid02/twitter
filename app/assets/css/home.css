@@ -104,6 +104,10 @@ header {
   margin-top: 15px;
 }
 
+.nav-tweet-button i {
+  display: none;
+}
+
 .btn:hover {
   background-color: rgba(28, 141, 216);
 }
@@ -440,7 +444,7 @@ main {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 
 .follow-details a {
@@ -484,4 +488,71 @@ main {
 .follow-profile:hover {
   background-color: rgb(0, 0, 0, 0.03);
   border-radius: 7px;
+}
+
+.follow-cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*Media query*/
+@media only screen and (max-width: 1260px) {
+  header {
+    width: 10%;
+    padding: 10px 0;
+  }
+
+  main {
+    margin-left: 10%;
+    width: 90%;
+  }
+
+  header span {
+    display: none;
+  }
+
+  .nav-tweet-button span {
+    display: none;
+  }
+
+  .nav-tweet-button i {
+    display: block;
+    color: #fff;
+    font-size: 1.4rem;
+  }
+
+  header .nav-tweet-button {
+    width: 55px;
+    border-radius: 50%;
+  }
+
+  header .main-account {
+    display: flex;
+    justify-content: center;
+  }
+
+  header .account-detailes {
+    display: none;
+  }
+
+  .nav-links,
+  .main-account {
+    align-items: center;
+  }
+
+  .main-account a {
+    align-items: center;
+    width: 55px;
+    border-radius: 50%;
+  }
+
+  .nav-links a i,
+  .main-account a {
+    margin-right: 0;
+  }
+
+  .nav-links a,
+  .main-account a {
+    padding: 10px;
+  }
 }
