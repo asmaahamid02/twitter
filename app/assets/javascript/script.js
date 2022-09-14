@@ -14,3 +14,27 @@ close_profile_edit.addEventListener('click', ()=>{
     edit_popup.style.display = 'none';
     
 });
+
+// ///////////
+let new_profile_img = document.getElementById('new-profile-img');
+let default_profile_img_btn = document.getElementById('default-profile-img-btn');
+
+new_profile_img.addEventListener('click', ()=>{
+    default_profile_img_btn.click();
+});
+
+default_profile_img_btn.addEventListener('change', function(){
+
+    const file = this.files[0];
+
+    if(file){
+
+    const reader = new FileReader();
+    reader.onload = function(){
+        const result = reader.result;
+        new_profile_img.src = result
+    }
+    reader.readAsDataURL(file);
+    }
+    
+})
