@@ -25,7 +25,8 @@
 
     <div class="homepage">
         <!-- Start Side Bar -->
-        <header>
+        <header class="fixed-header ">
+
             <div class="nav-links">
                 <a href="">
                     <!-- <img src="/app/assets/svg/twitter.svg" class="logo-icon" alt="twitter logo"> -->
@@ -35,7 +36,7 @@
                     <i class="material-icons-outlined">home</i>
                     <span>Home</span>
                 </a>
-                <a href="" class="nav-search">
+                <a href="" class="hidden-nav-item">
                     <i class="material-icons-outlined">search</i>
                     <span>Search</span>
                 </a>
@@ -43,7 +44,10 @@
                     <i class="material-icons-outlined">person</i>
                     <span>Profile</span>
                 </a>
-
+                <a href="" class="hidden-nav-item">
+                    <i class="material-icons-outlined">logout</i>
+                    <span>Logout</span>
+                </a>
                 <button class="btn nav-tweet-button"><i class="material-icons-outlined">
                         add
                     </i><span>Tweet</span></button>
@@ -57,6 +61,7 @@
                     </div>
                 </a>
             </div>
+
         </header>
         <!-- End Side Bar -->
         <!-- Start Main Content -->

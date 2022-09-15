@@ -15,6 +15,8 @@ html {
 
 body {
   background-color: #fff;
+  height: 100vh;
+  overflow: hidden;
 }
 
 a {
@@ -24,17 +26,22 @@ a {
   line-height: 24px;
 }
 
+.homepage {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
 /* Header (Sidebar) Section*/
-header {
+
+.fixed-header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px 0 10px 13%;
-  width: 29%;
+  /* position: fixed; */
   height: 100%;
-  position: fixed;
+  width: 29%;
+  padding: 10px 10px 10px 10%;
 }
-
 /* .logo-icon {
   height: 28px;
 } */
@@ -45,7 +52,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 70%;
+  /* height: 70%; */
 }
 
 .nav-links a {
@@ -54,6 +61,7 @@ header {
   font-size: 2rem;
   padding: 8px 25px 8px 8px;
   width: fit-content;
+  margin-bottom: 20px;
 }
 
 .nav-links a i {
@@ -85,7 +93,8 @@ header {
   font-weight: 700;
 }
 
-.nav-search {
+.nav-search,
+.hidden-nav-item {
   display: none !important;
 }
 
@@ -98,14 +107,15 @@ header {
   /* height: 55px; */
   border-radius: 9999px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .nav-tweet-button {
-  width: 90%;
+  /* width: 90%; */
   /* padding: 3vh 4vh; */
-  height: 50px;
+  /* height: 50px; */
   margin-top: 15px;
+  padding: 3vh 0;
 }
 
 .nav-tweet-button i {
@@ -129,8 +139,8 @@ header {
 /* Main account div*/
 .main-account {
   width: 100%;
-  height: 30%;
-  padding-top: 120px;
+  /* height: 30%; */
+  /* padding-top: 120px; */
 }
 
 .main-account a {
@@ -179,7 +189,8 @@ header {
 main {
   width: 71%;
   height: 100%;
-  margin-left: 29%;
+  /* margin-left: 29%; */
+  overflow-y: auto;
 }
 
 .main-flex {
@@ -514,17 +525,18 @@ main {
 
 /*Media query*/
 @media only screen and (max-width: 1260px) {
-  header {
-    width: 10%;
-    padding: 10px 0;
+  .fixed-header {
+    width: 20%;
+    padding: 10px 10px 10px 5%;
+    align-items: center;
   }
 
   main {
-    margin-left: 10%;
-    width: 90%;
+    /* margin-left: 10%; */
+    width: 80%;
   }
 
-  header span {
+  .fixed-header span {
     display: none;
   }
 
@@ -539,18 +551,21 @@ main {
     font-weight: 600;
   }
 
-  header .nav-tweet-button {
-    width: 55px;
+  .fixed-header .nav-tweet-button {
+    /* width: 55px; */
     border-radius: 50%;
+    /* height: auto; */
+    padding: 1.5rem;
   }
 
-  header .main-account {
+  .fixed-header .account-details {
+    display: none;
+  }
+
+  .fixed-header .main-account {
     display: flex;
     justify-content: center;
-  }
-
-  header .account-details {
-    display: none;
+    align-items: center;
   }
 
   .nav-links,
@@ -560,8 +575,8 @@ main {
 
   .main-account a {
     align-items: center;
-    width: 55px;
     border-radius: 50%;
+    padding: 6%;
   }
 
   .nav-links a i,
@@ -569,8 +584,7 @@ main {
     margin-right: 0;
   }
 
-  .nav-links a,
-  .main-account a {
+  .nav-links a {
     padding: 10px;
   }
 }
@@ -586,5 +600,68 @@ main {
 
   .nav-search {
     display: block;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .homepage {
+    flex-direction: column-reverse;
+    justify-content: center;
+    height: 100%;
+  }
+
+  main {
+    margin-left: 0;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  .main-flex {
+    justify-content: center;
+  }
+
+  .fixed-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    padding: 10px 30px 10px 15px;
+    /* position: static; */
+    /* overflow: hidden; */
+  }
+
+  .nav-links {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  .nav-links a {
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+  }
+
+  .nav-links a,
+  .nav-links a i {
+    margin: 0;
+  }
+
+  .nav-tweet-button {
+    margin: 0;
+    padding: 1rem !important;
+  }
+
+  .hidden-nav-item {
+    display: block !important;
+  }
+  .main-account,
+  .nav-links a:first-child {
+    display: none !important;
   }
 }
