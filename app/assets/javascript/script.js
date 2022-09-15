@@ -56,7 +56,7 @@ default_profile_bg_btn.addEventListener('change', function(){
     const reader = new FileReader();
     reader.onload = function(){
         const result = reader.result;
-        new_profile_bg.src = result
+        new_profile_bg.src = result;
     }
     reader.readAsDataURL(file);
     }
