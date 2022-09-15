@@ -21,7 +21,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 0.3em;
+  width: 1em;
 }
 
 ::-webkit-scrollbar-track {
@@ -53,8 +53,8 @@ a {
   justify-content: space-between;
   /* position: fixed; */
   height: 100%;
-  width: 29%;
-  padding: 10px 10px 10px 10%;
+  width: 20%;
+  padding: 10px ;
 }
 /* .logo-icon {
   height: 28px;
@@ -201,7 +201,7 @@ a {
 
 /* Main Section*/
 main {
-  width: 71%;
+  width: 80%;
   height: 100%;
   /* margin-left: 29%; */
   /* overflow-y: auto; */
@@ -214,7 +214,7 @@ main {
 }
 
 .main-feed {
-  width: 60%;
+  width: 70%;
   border-left: 1px solid rgb(29, 155, 240, 0.1);
   border-right: 1px solid rgb(29, 155, 240, 0.1);
   overflow-y: auto;
@@ -235,7 +235,9 @@ main {
   padding: 15px 15px;
   position: sticky;
   top: 0;
-  background-color: rgb(255, 255, 255, 0.9);
+  background-color: rgb(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
 .home-avatar a {
@@ -724,14 +726,14 @@ font-size: 1.5rem;
 /*Media query*/
 @media only screen and (max-width: 1260px) {
   .fixed-header {
-    width: 20%;
-    padding: 10px 10px 10px 5%;
+    width: 10%;
+    padding: 10px;
     align-items: center;
   }
 
   main {
     /* margin-left: 10%; */
-    width: 80%;
+    width: 90%;
   }
 
   .fixed-header span {
