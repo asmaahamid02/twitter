@@ -86,6 +86,27 @@
                     <div class="new-tweet">
                         <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
                         <form action="" class="create-tweet">
+                            <button type="button" class="publicity" id="publicity">Everyone <i
+                                    class="material-icons-outlined">expand_more</i></button>
+
+                            <div class="publicity-choices none" id="publicity-choices-js">
+                                <h2>Choose audience</h2>
+                                <div class="publicity-choices__item" id="public-choice">
+                                    <div class="publicity-choices__item-label">
+                                        <i class="material-icons-outlined">public</i>
+                                        <span>Everyone</span>
+                                    </div>
+                                    <i class="material-icons-outlined" id="public-check">check</i>
+                                </div>
+                                <div class="publicity-choices__item" id="private-choice">
+                                    <div class="publicity-choices__item-label">
+                                        <i class="material-icons-outlined">diversity_1</i>
+                                        <span>Followers</span>
+                                    </div>
+                                    <i class="material-icons-outlined none" id="private-check">check</i>
+                                </div>
+                                <input type="hidden" name="privacy" id="privacy" value="">
+                            </div>
                             <input class="tweet-text" type="text" placeholder="Whats's happening?">
                             <div class="new-tweet-actions">
                                 <i class="material-icons-outlined blue-icons-hovered">image</i>
@@ -387,6 +408,8 @@
         </main>
         <!-- End Main Content -->
     </div>
+
+    <script src="/app/assets/javascript/toggle.js"></script>
 </body>
 
 </html>
