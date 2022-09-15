@@ -214,6 +214,7 @@ main {
 }
 
 .main-feed {
+  display: none;
   width: 70%;
   border-left: 1px solid rgb(29, 155, 240, 0.1);
   border-right: 1px solid rgb(29, 155, 240, 0.1);
@@ -896,3 +897,4 @@ font-size: 1.5rem;
     font-size: 1.3rem;
   }
 }
+
