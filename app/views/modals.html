@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- home.css -->
+    <link rel="stylesheet" href="/app/assets/css/home.css">
+    <link rel="icon" type="image/x-icon" href="/app/assets/images/twitter-logo.png">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="modal" id="modal">
+        <button class="close-button" id="close-button"><i class="material-icons-outlined">close</i></button>
+        <div class="modal-body">
+            <form action="" class="create-tweet">
+                <button type="button" class="publicity" id="publicity-modal">Everyone <i
+                        class="material-icons-outlined">expand_more</i></button>
+
+                <div class="publicity-choices none" id="publicity-choices-js-modal">
+                    <h2>Choose audience</h2>
+                    <div class="publicity-choices__item" id="public-choice-modal">
+                        <div class="publicity-choices__item-label">
+                            <i class="material-icons-outlined">public</i>
+                            <span>Everyone</span>
+                        </div>
+                        <i class="material-icons-outlined" id="public-check-modal">check</i>
+                    </div>
+                    <div class="publicity-choices__item" id="private-choice-modal">
+                        <div class="publicity-choices__item-label">
+                            <i class="material-icons-outlined">diversity_1</i>
+                            <span>Followers</span>
+                        </div>
+                        <i class="material-icons-outlined none" id="private-check-modal">check</i>
+                    </div>
+                    <input type="hidden" name="privacy" id="privacy-modal" value="1">
+                </div>
+                <input class="tweet-text" type="text" placeholder="Whats's happening?">
+                <div class="new-tweet-actions">
+                    <i class="material-icons-outlined blue-icons-hovered">image</i>
+                    <button type="submit" class="btn new-tweet-btn">Tweet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <button id="open-button" class="open-button">Open Button</button>
+</body>
+
+</html>
