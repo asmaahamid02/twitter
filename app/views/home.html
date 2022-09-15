@@ -25,7 +25,8 @@
 
     <div class="homepage">
         <!-- Start Side Bar -->
-        <header>
+        <header class="fixed-header ">
+
             <div class="nav-links">
                 <a href="">
                     <!-- <img src="/app/assets/svg/twitter.svg" class="logo-icon" alt="twitter logo"> -->
@@ -35,15 +36,18 @@
                     <i class="material-icons-outlined">home</i>
                     <span>Home</span>
                 </a>
-                <a href="">
-                    <i class="material-icons-outlined">tag</i>
-                    <span>Explore</span>
+                <a href="" class="nav-search">
+                    <i class="material-icons-outlined">search</i>
+                    <span>Search</span>
                 </a>
                 <a href="">
                     <i class="material-icons-outlined">person</i>
                     <span>Profile</span>
                 </a>
-
+                <a href="" class="hidden-nav-item">
+                    <i class="material-icons-outlined">logout</i>
+                    <span>Logout</span>
+                </a>
                 <button class="btn nav-tweet-button"><i class="material-icons-outlined">
                         add
                     </i><span>Tweet</span></button>
@@ -51,12 +55,13 @@
             <div class="main-account">
                 <a href="">
                     <img class="profile-circle-img" src="/app/assets/svg/ui-user-profile.svg" alt="">
-                    <div class="account-detailes">
-                        <span class="account-full-name">Asmaa Hamid</span>
-                        <span class="account-username">@asmaahamid014444444444</span>
+                    <div class="account-details">
+                        <span class="account-full-name dotted-overflow">Asmaa Hamid</span>
+                        <span class="account-username dotted-overflow">@asmaahamid014444444444</span>
                     </div>
                 </a>
             </div>
+
         </header>
         <!-- End Side Bar -->
         <!-- Start Main Content -->
@@ -66,7 +71,12 @@
                 <div class="main-feed">
                     <!--Start Home Bar-->
                     <div class="home-bar" id="home-bar">
-                        <span>Home</span>
+                        <div class="home-avatar">
+                            <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img"
+                                    alt=""></a>
+                            <span>Home</span>
+                        </div>
+
                         <i class="material-icons-outlined">
                             auto_awesome
                         </i>
@@ -76,6 +86,27 @@
                     <div class="new-tweet">
                         <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
                         <form action="" class="create-tweet">
+                            <button type="button" class="publicity" id="publicity">Everyone <i
+                                    class="material-icons-outlined">expand_more</i></button>
+
+                            <div class="publicity-choices none" id="publicity-choices-js">
+                                <h2>Choose audience</h2>
+                                <div class="publicity-choices__item" id="public-choice">
+                                    <div class="publicity-choices__item-label">
+                                        <i class="material-icons-outlined">public</i>
+                                        <span>Everyone</span>
+                                    </div>
+                                    <i class="material-icons-outlined" id="public-check">check</i>
+                                </div>
+                                <div class="publicity-choices__item" id="private-choice">
+                                    <div class="publicity-choices__item-label">
+                                        <i class="material-icons-outlined">diversity_1</i>
+                                        <span>Followers</span>
+                                    </div>
+                                    <i class="material-icons-outlined none" id="private-check">check</i>
+                                </div>
+                                <input type="hidden" name="privacy" id="privacy" value="1">
+                            </div>
                             <input class="tweet-text" type="text" placeholder="Whats's happening?">
                             <div class="new-tweet-actions">
                                 <i class="material-icons-outlined blue-icons-hovered">image</i>
@@ -88,7 +119,39 @@
                     <div class="feed-tweet">
                         <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
                         <div class="tweet-details">
-                            <div class="account-details">
+                            <div class="tweet-account-details">
+                                <a href="" class="user-details">Asmaa Hamid
+                                    <span class="">@asmaahamddd</span>
+                                </a>
+                                <span class="tweet-date">. 12hr</span>
+                                <i class="material-icons-outlined blue-icons-hovered">more_horiz</i>
+                            </div>
+                            <div class="tweet-body">
+                                <p class="tweet-body-text">Lorem Ipsum is simply dummy text of the printing and
+                                    typesetting
+                                    industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </p>
+                                <div class="tweet-image">
+                                    <img src="/app/assets/images/google-logo.png" alt="">
+                                </div>
+
+                            </div>
+                            <div class="tweet-icons">
+                                <a class="icon-item">
+                                    <i class="material-icons-outlined pink-icons-hovered">
+                                        favorite_border
+                                    </i>
+                                    <span>12k</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-tweet">
+                        <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
+                        <div class="tweet-details">
+                            <div class="tweet-account-details">
                                 <a href="" class="user-details">Asmaa Hamid
                                     <span>@asmaahamddd</span>
                                     <span class="tweet-date">. 12hr</span>
@@ -120,39 +183,7 @@
                     <div class="feed-tweet">
                         <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
                         <div class="tweet-details">
-                            <div class="account-details">
-                                <a href="" class="user-details">Asmaa Hamid
-                                    <span>@asmaahamddd</span>
-                                    <span class="tweet-date">. 12hr</span>
-                                </a>
-                                <i class="material-icons-outlined blue-icons-hovered">more_horiz</i>
-                            </div>
-                            <div class="tweet-body">
-                                <p class="tweet-body-text">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting
-                                    industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
-                                <div class="tweet-image">
-                                    <img src="/app/assets/images/google-logo.png" alt="">
-                                </div>
-
-                            </div>
-                            <div class="tweet-icons">
-                                <a class="icon-item">
-                                    <i class="material-icons-outlined pink-icons-hovered">
-                                        favorite_border
-                                    </i>
-                                    <span>12k</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-tweet">
-                        <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
-                        <div class="tweet-details">
-                            <div class="account-details">
+                            <div class="tweet-account-details">
                                 <a href="" class="user-details">Asmaa Hamid
                                     <span>@asmaahamddd</span>
                                     <span class="tweet-date">. 12hr</span>
@@ -180,7 +211,7 @@
                     <div class="feed-tweet">
                         <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
                         <div class="tweet-details">
-                            <div class="account-details">
+                            <div class="tweet-account-details">
                                 <a href="" class="user-details">Asmaa Hamid
                                     <span>@asmaahamddd</span>
                                     <span class="tweet-date">. 12hr</span>
@@ -208,7 +239,7 @@
                     <div class="feed-tweet">
                         <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
                         <div class="tweet-details">
-                            <div class="account-details">
+                            <div class="tweet-account-details">
                                 <a href="" class="user-details">Asmaa Hamid
                                     <span>@asmaahamddd</span>
                                     <span class="tweet-date">. 12hr</span>
@@ -239,7 +270,7 @@
                     <div class="feed-tweet">
                         <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
                         <div class="tweet-details">
-                            <div class="account-details">
+                            <div class="tweet-account-details">
                                 <a href="" class="user-details">Asmaa Hamid
                                     <span>@asmaahamddd</span>
                                     <span class="tweet-date">. 12hr</span>
@@ -271,7 +302,7 @@
                     <div class="feed-tweet">
                         <a href=""><img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
                         <div class="tweet-details">
-                            <div class="account-details">
+                            <div class="tweet-account-details">
                                 <a href="" class="user-details">Asmaa Hamid
                                     <span>@asmaahamddd</span>
                                     <span class="tweet-date">. 12hr</span>
@@ -319,42 +350,54 @@
                         <h2 class="title">Who To Follow</h2>
                         <div class="follow-profile">
                             <div class="follow-cont">
-                                <img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt="">
+                                <div class="follow-cont-img">
+                                    <img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt="">
+                                </div>
                                 <div class="follow-details">
-                                    <a href="">
-                                        Asmaa Hamid
+                                    <a href="" class="dotted-overflow">
+                                        Asmaa Hamidd ddddddddddd sssssssssssssss
                                     </a>
-                                    <span>@asmaaa
-                                        <span class="status">Follows You</span></span>
+                                    <span class="dotted-overflow">@asmaaaccccccccccccccc</span>
+                                    <span class="status dotted-overflow">Follows You</span>
                                 </div>
                             </div>
-                            <button class="btn follow-btn">Follow</button>
+                            <div class="btn-cont">
+                                <button class="btn follow-btn">Follow</button>
+                            </div>
                         </div>
                         <div class="follow-profile">
                             <div class="follow-cont">
-                                <img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt="">
+                                <div class="follow-cont-img">
+                                    <img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt="">
+                                </div>
                                 <div class="follow-details">
-                                    <a href="">
-                                        Asmaa Hamid
+                                    <a href="" class="dotted-overflow">
+                                        Asmaa Hamidd ddddddddddd sssssssssssssss
                                     </a>
-                                    <span>@asmaaa
-                                    </span>
+                                    <span class="dotted-overflow">@asmaaaccccccccccccccc</span>
+                                    <span class="status dotted-overflow">Follows You</span>
                                 </div>
                             </div>
-                            <button class="btn follow-btn">Follow</button>
+                            <div class="btn-cont">
+                                <button class="btn follow-btn">Follow</button>
+                            </div>
                         </div>
                         <div class="follow-profile">
                             <div class="follow-cont">
-                                <img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt="">
+                                <div class="follow-cont-img">
+                                    <img src="/app/assets/svg/ui-user-profile.svg" class="profile-circle-img" alt="">
+                                </div>
                                 <div class="follow-details">
-                                    <a href="">
-                                        Asmaa Hamid
+                                    <a href="" class="dotted-overflow">
+                                        Asmaa Hamidd
                                     </a>
-                                    <span>@asmaaa
-                                        <span class="status">Follows You</span></span>
+                                    <span class="dotted-overflow">@asmaaa</span>
+                                    <span class="status dotted-overflow" style="display:none;"></span>
                                 </div>
                             </div>
-                            <button class="btn follow-btn">Follow</button>
+                            <div class="btn-cont">
+                                <button class="btn follow-btn">Follow</button>
+                            </div>
                         </div>
                     </div>
                     <!--End Who to Follow Section-->
@@ -365,6 +408,8 @@
         </main>
         <!-- End Main Content -->
     </div>
+
+    <script src="/app/assets/javascript/toggle.js"></script>
 </body>
 
 </html>
