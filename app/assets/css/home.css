@@ -303,7 +303,7 @@ main {
   position: absolute;
   top: 20%;
   left: 25%;
-  width: 45%;
+  width: 300px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 10px 0;
 }
