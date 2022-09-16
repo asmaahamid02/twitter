@@ -51,6 +51,8 @@ let form_inputs = Object.values(document.getElementsByClassName('form-input'));
 let name_input = document.getElementById('name-input');
 let email_input = document.getElementById('email-input');
 let name_length = document.getElementById('name-length');
+let password_input = document.getElementById('password-input');
+let password_input_confirmation= document.getElementById('password-input-confirmation');
 
 
     
@@ -116,6 +118,38 @@ email_input.addEventListener('input',()=>{
 
 });
 
+// PASSWORD STRENGTH
+password_input.addEventListener('input', ()=>{
+
+if(password_input.value.length >= 8){
+    console.log('long')
+}
+if(password_input.value.match(/[A-Z]/)){
+    console.log('Uppercase')
+}
+if(password_input.value.match(/[a-z]/)){
+    console.log('lowercase');
+}
+if(password_input.value.match(/[0-9]/)){
+    console.log('numbers');
+}
+if(password_input.value.match(/[\'^�$%&*()}{@#~?><>,|=_+�-]/)){
+    console.log('special');
+}
+
+if(password_input.value.length >= 8 &&
+    password_input.value.match(/[A-Z]/) &&
+    password_input.value.match(/[a-z]/) &&
+    password_input.value.match(/[0-9]/) &&
+    password_input.value.match(/[\'^�$%&*()}{@#~?><>,|=_+�-]/)){
+    console.log('STRONGGGGGG')
+}
+
+
+
+});
+
+
 
 // SIGNIN INPUT VALIDATION
 let signin_next_btn = document.getElementById('signin-next-btn');
@@ -139,21 +173,21 @@ signin_next_btn.addEventListener('click', (event)=>{
 
 
 // EMAIL - PHONE SWITCHER
-let email_phone_switch_btn  = document.getElementById('email-phone-switch-btn');
-let phone_input = document.getElementById('phone-input');
-let switcher = true;
+// let email_phone_switch_btn  = document.getElementById('email-phone-switch-btn');
+// let phone_input = document.getElementById('phone-input');
+// let switcher = true;
 
-email_phone_switch_btn.addEventListener('click', (event)=>{
-    if(switcher){
-        switcher = false;
-    event.preventDefault();
-    email_input.style.display = 'none';
-    phone_input.style.display = 'flex';
-    }else{
-        switcher = true;
-        event.preventDefault();
-        email_input.style.display = 'flex';
-        phone_input.style.display = 'none';
-    }
+// email_phone_switch_btn.addEventListener('click', (event)=>{
+//     if(switcher){
+//         switcher = false;
+//     event.preventDefault();
+//     email_input.style.display = 'none';
+//     phone_input.style.display = 'flex';
+//     }else{
+//         switcher = true;
+//         event.preventDefault();
+//         email_input.style.display = 'flex';
+//         phone_input.style.display = 'none';
+//     }
     
-})
+// })
