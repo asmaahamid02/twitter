@@ -363,7 +363,12 @@ input:focus {
     padding: 15px 0;
     border-radius: 25px;
     margin-top: 100%;
-margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.signin-form button{
+    margin-top: 50%;
+    width: 100%;
 }
 
 .submit_enabled {
