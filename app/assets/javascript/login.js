@@ -52,11 +52,13 @@ let name_input = document.getElementById('name-input');
 let email_input = document.getElementById('email-input');
 let name_length = document.getElementById('name-length');
 let password_input = document.getElementById('password-input');
+let password_error = document.getElementById('password-error');
+password_error.style.color = 'red';
 let password_input_confirmation= document.getElementById('password-input-confirmation');
 
 
-    
-    name_input.addEventListener('input',()=>{
+//NAME VALIDATION 
+name_input.addEventListener('input',()=>{
 
     if((name_input.value).length >= 40 || (name_input.value).length < 1){
 
@@ -119,22 +121,29 @@ email_input.addEventListener('input',()=>{
 });
 
 // PASSWORD STRENGTH
+    // form_inputs[0].style.border = '1px solid rgba(0, 0, 0, .3)';
+
 password_input.addEventListener('input', ()=>{
 
-if(password_input.value.length >= 8){
-    console.log('long')
+if(password_input.value.length <= 8){
+    form_inputs[2].style.border = '1px solid red';
+    password_error.innerHTML = 'Error: password is too short. (min 8 characters) <br><br>';
 }
-if(password_input.value.match(/[A-Z]/)){
-    console.log('Uppercase')
+if(!password_input.value.match(/[A-Z]/)){
+    form_inputs[2].style.border = '1px solid red';
+    password_error.innerHTML = 'Error: include Uppercase. (A-Z) <br><br>';
 }
-if(password_input.value.match(/[a-z]/)){
-    console.log('lowercase');
+if(!password_input.value.match(/[a-z]/)){
+    form_inputs[2].style.border = '1px solid red';
+    password_error.innerHTML = 'Error: include Lowerercase. (a-z) <br><br>';
 }
-if(password_input.value.match(/[0-9]/)){
-    console.log('numbers');
+if(!password_input.value.match(/[0-9]/)){
+    form_inputs[2].style.border = '1px solid red';
+    password_error.innerHTML = 'Error: include Numbers. (0-9) <br><br>';
 }
-if(password_input.value.match(/[\'^�$%&*()}{@#~?><>,|=_+�-]/)){
-    console.log('special');
+if(!password_input.value.match(/[\'^�$%&*()}{@#~?><>,|=_+�-]/)){
+    form_inputs[2].style.border = '1px solid red';
+    password_error.innerHTML = 'Error: include Special Characters. ([\'^�$%&*()}{@#~?><>,|=_+�-]) <br><br>';
 }
 
 if(password_input.value.length >= 8 &&
@@ -142,10 +151,10 @@ if(password_input.value.length >= 8 &&
     password_input.value.match(/[a-z]/) &&
     password_input.value.match(/[0-9]/) &&
     password_input.value.match(/[\'^�$%&*()}{@#~?><>,|=_+�-]/)){
-    console.log('STRONGGGGGG')
-}
-
-
+    form_inputs[2].style.border = '1px solid rgba(0, 0, 0, .3)';
+    password_error.innerHTML = 'Strong password.';
+    password_error.style.color = 'green';
+};
 
 });
 
