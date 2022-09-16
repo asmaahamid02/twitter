@@ -38,7 +38,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `twitterdb`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `profile_id` INT NOT NULL,
+  `profile_id` INT NULL,
   `name` VARCHAR(70) NOT NULL,
   `username` VARCHAR(30) NOT NULL,
   `email` VARCHAR(255) NULL,
