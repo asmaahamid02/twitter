@@ -52,9 +52,11 @@ let name_input = document.getElementById('name-input');
 let email_input = document.getElementById('email-input');
 let name_length = document.getElementById('name-length');
 let password_input = document.getElementById('password-input');
+let password_input_confirmation = document.getElementById('password-input-confirmation');
 let password_error = document.getElementById('password-error');
+let password_confirmation_error = document.getElementById('password-confirmation-error');
 password_error.style.color = 'red';
-let password_input_confirmation= document.getElementById('password-input-confirmation');
+password_confirmation_error.style.color = 'red';
 
 
 //NAME VALIDATION 
@@ -78,7 +80,7 @@ name_input.addEventListener('input',()=>{
 });
 
 
-    // Email validation
+// Email validation
 email_input.addEventListener('input',()=>{
     let email_list = email_input.value.split('');
 
@@ -121,7 +123,6 @@ email_input.addEventListener('input',()=>{
 });
 
 // PASSWORD STRENGTH
-    // form_inputs[0].style.border = '1px solid rgba(0, 0, 0, .3)';
 
 password_input.addEventListener('input', ()=>{
 
@@ -152,12 +153,26 @@ if(password_input.value.length >= 8 &&
     password_input.value.match(/[0-9]/) &&
     password_input.value.match(/[\'^�$%&*()}{@#~?><>,|=_+�-]/)){
     form_inputs[2].style.border = '1px solid rgba(0, 0, 0, .3)';
-    password_error.innerHTML = 'Strong password.';
+    password_error.innerHTML = 'Strong password. <br><br>';
     password_error.style.color = 'green';
-};
+}else{
+    password_error.style.color = 'red';
+}
 
 });
 
+password_input_confirmation.addEventListener('input', ()=>{
+    if(password_input_confirmation.value != password_input.value){
+        form_inputs[3].style.border = '1px solid red';
+        password_confirmation_error.innerHTML = "Error: passwords don't match! <br><br>";
+        password_confirmation_error.style.color = 'red';
+    }else{
+        form_inputs[3].style.border = '1px solid rgba(0, 0, 0, .3)';
+        password_confirmation_error.innerHTML = "Confirmed <br><br>";
+        password_confirmation_error.style.color = 'green';
+    }
+
+});
 
 
 // SIGNIN INPUT VALIDATION
