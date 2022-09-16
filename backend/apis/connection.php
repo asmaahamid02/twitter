@@ -2,10 +2,12 @@
 
 $host = "localhost";
 $db_user = "root";
-$db_pass = null;
+$db_pass = '1234';
 $db_name = "twitterdb";
 
-$mysqli = new mysqli($host, $db_user, $db_pass, $db_name);
+$connection = new mysqli($host, $db_user, $db_pass, $db_name);
 
-
+if($connection->connect_error){
+    die('Connection failed: ' + $connection->connect_error)
+}
 ?>
