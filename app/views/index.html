@@ -88,7 +88,7 @@
         <!-- FORM HEADER -->
         <div class="form-header">
             <!-- CLOSE BUTTON -->
-            <img id="close-form" src="/app/assets/images/x-lg.svg" alt="">
+            <img id="close-form" src="/app/assets/svg/x-lg.svg" alt="">
             <!-- PAGE COUNT -->
             <h3>Step <span id="current-form-page">1</span> out of 1</h3>
         </div>
@@ -109,8 +109,16 @@
                 <input type="text" name="phone" placeholder="Phone number" id="phone-input" class="input" style="display: none;">
             </div>
             <!-- EMAIL-PHONE SWITCHER -->
-            <button class="email-phone-switch-btn" id="email-phone-switch-btn">Use phone number instead</button>
+            <!-- <button class="email-phone-switch-btn" id="email-phone-switch-btn">Use phone number instead</button> -->
 
+            <div class="form-input">
+            <input type="password" name="password" placeholder="Password" id="password-input" >
+            </div>
+
+            <div class="form-input">
+            <input type="password" name="password-confirmation" placeholder="Confirm password" id="password-input-confirmation" class="form-input">
+            </div>
+            
             <!-- DOB SELECTOR TEXT -->
             <h4>Date of birth</h4>
             <p>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or
@@ -258,10 +266,10 @@
         </select>
         </div>
 
-        <!-- SIGNUP BUTTON -->
-            <button id="submit-signup" class="next-btn">Sign Up</button>
-
     </div>
+
+        <!-- SIGNUP BUTTON -->
+        <button id="submit-signup" class="next-btn">Sign Up</button>
 
 </form>
 

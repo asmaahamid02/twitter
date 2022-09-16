@@ -199,6 +199,8 @@ footer a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .signin-width-combiner {
@@ -357,10 +359,11 @@ input:focus {
     color: white;
     font-weight: bolder;
     font-size: 20px;
-    width: 100%;
+    width: 80%;
     padding: 15px 0;
     border-radius: 25px;
-    margin-top: 20px;
+    margin-top: 100%;
+margin-bottom: 10px;
 }
 
 .submit_enabled {
