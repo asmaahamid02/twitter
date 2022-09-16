@@ -41,7 +41,7 @@ signin_close_form.addEventListener('click', ()=>{
 });
 
 inner_signup_btn.addEventListener('click', ()=>{
-    signin_form.style.display = 'none';
+    signin_btn.click();
 });
 
 
