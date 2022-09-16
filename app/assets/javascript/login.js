@@ -8,7 +8,11 @@ const signin_btn = document.getElementById('signin-btn');
 const signin_form = document.getElementById('signin-form');
 const signin_close_form = document.getElementById('signin-close-form');
 const inner_signup_btn = document.getElementById('inner-signup-btn');
-var valid_input = false;
+var valid_name = false;
+var valid_email = false;
+var valid_password = false;
+var valid_confirmed_password = false;
+var valid_date = false;
 
 // ADDING FUNCTIONALITY TO THE FORM BUTTONS
 signup_btn.addEventListener('click', ()=>{
@@ -22,10 +26,11 @@ close_form.addEventListener('click', ()=>{
 
 submit_signup.addEventListener('click', (event)=>{
     
-    if(valid_input){
-        console.log(valid_input);
+    if(valid_name && valid_email && valid_password && valid_confirmed_password){
+        
+        // form submit
+
     }else{
-        console.log(valid_input);
         event.preventDefault();
     }
 
@@ -67,14 +72,14 @@ name_input.addEventListener('input',()=>{
         name_length.style.color = 'red';
         form_inputs[0].style.border = '1px solid red';
         submit_signup.classList.remove('submit_enabled');
-        valid_input = false;
+        valid_name = false
 
     }else{
 
         name_length.innerHTML = `${(name_input.value).length}/40`;
         name_length.style.color = 'black';
         form_inputs[0].style.border = '1px solid rgba(0, 0, 0, .3)';
-        valid_input = true;
+        valid_name = true;
 
     };
 });
@@ -97,24 +102,24 @@ email_input.addEventListener('input',()=>{
     });
 
     if(!is_email){
-        valid_input = false;
+        valid_email = false;
         form_inputs[1].style.border = '1px solid red';
     }else{
 
         
         if(email_parts[0].length < 3){
-            valid_input = false;
             form_inputs[1].style.border = '1px solid red';
+            valid_email = false;
         }else{
-            valid_input = true;
+            valid_email = true;
             form_inputs[1].style.border = '1px solid rgb(0, 0, 0, .3)';
         };
 
         if(email_parts[1].length <5){
-            valid_input = false;
+            valid_email = false;
             form_inputs[1].style.border = '1px solid red';
         }else{
-            valid_input = true;
+            valid_email = true;
             form_inputs[1].style.border = '1px solid rgb(0, 0, 0, .3)';
         };
 
@@ -123,7 +128,6 @@ email_input.addEventListener('input',()=>{
 });
 
 // PASSWORD STRENGTH
-
 password_input.addEventListener('input', ()=>{
 
 if(password_input.value.length <= 8){
@@ -145,6 +149,7 @@ if(!password_input.value.match(/[0-9]/)){
 if(!password_input.value.match(/[\'^�$%&*()}{@#~?><>,|=_+�-]/)){
     form_inputs[2].style.border = '1px solid red';
     password_error.innerHTML = 'Error: include Special Characters. ([\'^�$%&*()}{@#~?><>,|=_+�-]) <br><br>';
+
 }
 
 if(password_input.value.length >= 8 &&
@@ -155,8 +160,10 @@ if(password_input.value.length >= 8 &&
     form_inputs[2].style.border = '1px solid rgba(0, 0, 0, .3)';
     password_error.innerHTML = 'Strong password. <br><br>';
     password_error.style.color = 'green';
+    valid_password = true;
 }else{
     password_error.style.color = 'red';
+    valid_password = false;
 }
 
 });
@@ -166,10 +173,12 @@ password_input_confirmation.addEventListener('input', ()=>{
         form_inputs[3].style.border = '1px solid red';
         password_confirmation_error.innerHTML = "Error: passwords don't match! <br><br>";
         password_confirmation_error.style.color = 'red';
+        valid_confirmed_password = false;
     }else{
         form_inputs[3].style.border = '1px solid rgba(0, 0, 0, .3)';
         password_confirmation_error.innerHTML = "Confirmed <br><br>";
         password_confirmation_error.style.color = 'green';
+        valid_confirmed_password = true;
     }
 
 });
