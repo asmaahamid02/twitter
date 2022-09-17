@@ -32,7 +32,7 @@ if (isset($_GET['id'])) {
 
     if ($array->num_rows > 0) {
         while ($i = $array->fetch_assoc()) {
-            $response['tweet_info'][] = $i;
+            $response['tweets_info'][] = $i;
         }
     } else {
         $response['empty'] = "No Data Found";
