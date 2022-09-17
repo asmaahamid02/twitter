@@ -107,4 +107,16 @@ let feed_container = document.getElementById('feed-container');
   let likes_span = document.createElement('span');
 
 
+
+
+  
+  // APPENDING ELEMENTS INSIDE EACH OTHER 
+  feed_container.append(feed_tweet);
+  feed_tweet.append(profile_circle_img, tweet_details);
+  tweet_details.append(tweet_account_details, tweet_body, tweet_icons);
+  tweet_account_details.append(user_details, tweet_username, tweet_date, blue_icons_hovered);
+  tweet_body.append(tweet_body_text, tweet_image);
+  tweet_image.append(tweet_img);
+  tweet_icons.append(icon_item, pink_icons_hovered, likes_span);
+
 };
