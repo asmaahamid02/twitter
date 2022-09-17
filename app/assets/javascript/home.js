@@ -52,8 +52,6 @@ options.forEach((option) => {
 // CREATING NEW TWEET
 window.addEventListener('load', createTweet());
 
-// // feed container
-// let feed_container = document.getElementById('feed-container');
 
 function createTweet(){
 // feed container
@@ -81,6 +79,7 @@ let feed_container = document.getElementById('feed-container');
 
   let blue_icons_hovered = document.createElement('i');
   blue_icons_hovered.classList.add('blue_icons_hovered');
+  blue_icons_hovered.classList.add('material-icons-outlined');
 
   let tweet_body = document.createElement('div');
   tweet_body.classList.add('tweet-body');
@@ -102,21 +101,34 @@ let feed_container = document.getElementById('feed-container');
   icon_item.classList.add('icon-item');
 
   let pink_icons_hovered = document.createElement('i');
-  pink_icons_hovered.classList.add('pink-icons-hovered');
+  pink_icons_hovered.classList.add('material-icons-outlined','pink-icons-hovered');
 
   let likes_span = document.createElement('span');
 
 
+  // INSERT DATA
+  profile_circle_img.src = '/app/assets/svg/ui-user-profile.svg';
+  user_details.innerHTML = 'Firas';
+  tweet_username.innerHTML = '@phoenix89';
+  tweet_date.innerHTML = '2h';
+  blue_icons_hovered.innerHTML = '...';
+  tweet_body_text.innerHTML = 'Hello world, This is my first tweet.'
+  tweet_img.src = '/app/assets/images/google-logo.png';
+  likes_span.innerHTML = '420k';
 
 
-  
+
   // APPENDING ELEMENTS INSIDE EACH OTHER 
   feed_container.append(feed_tweet);
   feed_tweet.append(profile_circle_img, tweet_details);
   tweet_details.append(tweet_account_details, tweet_body, tweet_icons);
-  tweet_account_details.append(user_details, tweet_username, tweet_date, blue_icons_hovered);
+  tweet_account_details.append(user_details, tweet_date, blue_icons_hovered);
+  user_details.append(tweet_username)
   tweet_body.append(tweet_body_text, tweet_image);
   tweet_image.append(tweet_img);
-  tweet_icons.append(icon_item, pink_icons_hovered, likes_span);
+  tweet_icons.append(icon_item, pink_icons_hovered);
+  icon_item.append(likes_span)
 
 };
+
+
