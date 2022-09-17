@@ -14,7 +14,7 @@ if (isset($_POST['full_name']) && isset($_POST['email']) && isset($_POST['date_o
     $date_of_birth = date('Y-m-d', strtotime($_POST['date_of_birth']));
     $password = $_POST['password'];
 
-    //check the existence of the email
+    // check the existence of the email
     $sql_email = "SELECT email FROM users WHERE email = ?";
     $stmt_email = $connection->prepare($sql_email);
     $stmt_email->bind_param('s', $email);
