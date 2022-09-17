@@ -1,4 +1,6 @@
-const api = 'http://localhost/twitter/backend/apis/'
+const base_url =
+  window.location.protocol + '//' + window.location.host + '/twitter'
+const api = base_url + '/backend/apis/'
 
 const signup_fetch = async (data) => {
   const response = await fetch(api + 'register.php', {
@@ -7,6 +9,17 @@ const signup_fetch = async (data) => {
   })
   return response.json()
 }
+
+// const changeView = () => {
+//     const user = JSON.stringify(localStorage.getItem('user'))
+//     if(user){
+
+//     }
+//         signup_btn.addEventListener('click', ()=>{
+//         form_page_1.style.display = 'flex';
+//         document.body.append(form_page_1);
+//     });
+// }
 
 const signup = () => {
   const signup_form = document.querySelector('#form-page-1')
@@ -39,7 +52,9 @@ const signup = () => {
             email: data.user_data.email,
             password: data.user_data.password,
           }
-          window.localStorage.setItem('user', JSON.stringify(user))
+          localStorage.setItem('user', JSON.stringify(user))
+          console.log(data.success)
+          changePage('home.html')
           //   console.log('true', data)
         } else {
           console.log(data.error)
@@ -52,4 +67,20 @@ const signup = () => {
   })
 }
 
-signup()
+const changePage = (page_name) => {
+  setTimeout(() => {
+    return (window.location.href = base_url + '/app/views/' + page_name)
+  }, 1500)
+}
+
+//if not logged in user ==> return to index
+const authorizeUser = () => {
+  if (
+    !localStorage.getItem('user') &&
+    window.location.href != base_url + '/app/views/index.html'
+  ) {
+    changePage('index.html')
+  }
+}
+
+authorizeUser()
