@@ -1,15 +1,3 @@
-const base_url =
-  window.location.protocol + '//' + window.location.host + '/twitter'
-const api = base_url + '/backend/apis/'
-
-const fetch_api = async (url, data) => {
-  const response = await fetch(url, {
-    method: 'POST',
-    body: new URLSearchParams(data),
-  })
-  return response.json()
-}
-
 const login = () => {
   if (localStorage.getItem('user')) {
     return
@@ -50,6 +38,9 @@ const signup = () => {
 
   const date_of_birth = `${year.value}-${month.value}-${day.value}`
 
+  let user_id
+
+  console.log(user_id)
   const data_obj = {
     full_name: full_name.value,
     email: email.value,
@@ -92,5 +83,7 @@ const authorizeUser = () => {
     changePage('index.html')
   }
 }
+
+const get_user_ID = () => {}
 
 authorizeUser()
