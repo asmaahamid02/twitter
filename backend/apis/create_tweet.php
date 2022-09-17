@@ -22,13 +22,13 @@ if (isset($_POST['username']) && isset($_POST['publicity']) && (isset($_POST['tw
 
 
     $image = '';
-    if ($picture) {
+    if ($picture != '') {
         $path = '../../app/assets/images/tweets_imgs/'; //path to insert image in host folder
         $saved_path = 'assets/images/tweets_imgs/'; //path to be saved
         list($type, $picture) = explode(';', $picture); //split the type of image from its url
         list(, $extension)          = explode('/', $type); //get the extension of the file by splitting the type (data:image/jpeg)
         list(, $picture)       = explode(',', $picture); //remove (base64) prefix
-        $file_name                  = uniqid() . date('Y-m-d') . '.' . $extension; //define unique name for the image
+        $file_name                  = uniqid('te37am', true) . date('Y-m-d') . '.' . $extension; //define unique name for the image
         $base64string              = base64_decode($picture); //decode base64 string
         file_put_contents($path . $file_name, $base64string); //add image to the folder
 
