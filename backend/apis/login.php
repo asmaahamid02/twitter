@@ -26,6 +26,8 @@ if (isset($_POST['password']) && isset($_POST['email_username'])) {
             'email' => $row['email'],
             'password' => $row['password'],
         ];
+    } else {
+        $message['empty'] = 'No Data Found';
     }
     $stmt->close();
 } else {

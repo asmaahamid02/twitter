@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
         ORDER BY  main.created_at DESC, main.id DESC";
 
     $query = $connection->prepare($sql);
-    $query->bind_param('ii', $user_id, $user_id);
+    $query->bind_param('ss', $user_id, $user_id);
     $query->execute();
 
     $array = $query->get_result();
@@ -41,9 +41,6 @@ if (isset($_GET['id'])) {
     $query->close();
 }
 
-if (count($response) == 0) {
-    $response['empty'] = "No Data";
-}
 //returns a response with ["tweet_id","tweet_user_id","tweet","tweet_picture","is_public_tweet","tweet_created_at","tweet_updated_at","name","username","profile_image_path"]
 //all the fields same as the names in th db, "tweet" keyword for more declaration
 echo json_encode($response);
