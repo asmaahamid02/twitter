@@ -145,22 +145,22 @@ let id = 1
 
 function displayLoop(num) {
   for (let i = 0; i < num; i++) {
-    fetch(`http://localhost/twitter/backend/apis/get_all_tweets.php?id=${id}`)
+    fetch(`${api}get_all_tweets.php?id=${id}`)
       .then((res) => res.json())
       .then((data) =>
         createTweet(
-          data.tweet_info[i].tweet,
-          data.tweet_info[i].tweet_picture,
-          data.tweet_info[i].created_at,
-          data.tweet_info[i].name,
-          data.tweet_info[i].username,
-          data.tweet_info[i].profile_image_path
+          data.tweets_info[i].tweet,
+          data.tweets_info[i].tweet_picture,
+          data.tweets_info[i].created_at,
+          data.tweets_info[i].name,
+          data.tweets_info[i].username,
+          data.tweets_info[i].profile_image_path
         )
       )
   }
 }
 // fetching tweets count seperately
-fetch(`http://localhost/twitter/backend/apis/get_all_tweets.php?id=${id}`)
+fetch(`${api}get_all_tweets.php?id=${id}`)
   .then((res) => res.json())
   .then((data) => displayLoop(data.num))
 
