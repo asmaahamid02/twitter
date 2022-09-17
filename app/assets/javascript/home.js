@@ -110,13 +110,18 @@ let feed_container = document.getElementById('feed-container');
   profile_circle_img.src = profile_image_path;
   user_details.innerHTML = name;
   tweet_username.innerHTML = `@${username}`;
-  tweet_date.innerHTML = filterDate(tweet_created_at);
+  if(tweet_created_at){
+      tweet_date.innerHTML = filterDate(tweet_created_at);
+  }else{
+        tweet_date.innerHTML = tweet_created_at;
+  }
+
   blue_icons_hovered.innerHTML = '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>';
   tweet_body_text.innerHTML = tweet
+  // tweet_img.src = tweet_picture;
   tweet_img.src = tweet_picture;
   icon_item.innerHTML = '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>'
   likes_span.innerHTML = '420k';
-
 
 
   // APPENDING ELEMENTS INSIDE EACH OTHER 
@@ -131,7 +136,7 @@ let feed_container = document.getElementById('feed-container');
     tweet_image.append(tweet_img);
   }
   tweet_icons.append(icon_item);
-  icon_item.append( likes_span)
+  icon_item.append( likes_span);
 
 };
 
