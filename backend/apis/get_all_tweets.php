@@ -28,12 +28,16 @@ if (isset($_GET['id'])) {
 
     $array = $query->get_result();
 
-    $response = [];
+    $response['num'] = $array->num_rows;
 
-    while ($i = $array->fetch_assoc()) {
-        $response['tweet_info'] = $i;
+    if($array->num_rows >0){
+        while ($i = $array->fetch_assoc()) {
+            $response['tweet_info'][] = $i;
+        }
+    }else{
+        $response['empty'] = "No Data Found";
     }
-
+    
     $query->close();
 }
 

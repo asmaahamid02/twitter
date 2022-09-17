@@ -100,8 +100,8 @@ let feed_container = document.getElementById('feed-container');
   let icon_item = document.createElement('a');
   icon_item.classList.add('icon-item');
 
-  let pink_icons_hovered = document.createElement('i');
-  pink_icons_hovered.classList.add('material-icons-outlined','pink-icons-hovered');
+  // let pink_icons_hovered = document.createElement('i');
+  // pink_icons_hovered.classList.add('material-icons-outlined','pink-icons-hovered');
 
   let likes_span = document.createElement('span');
 
@@ -111,9 +111,10 @@ let feed_container = document.getElementById('feed-container');
   user_details.innerHTML = name;
   tweet_username.innerHTML = `@${username}`;
   tweet_date.innerHTML = filterDate(tweet_created_at);
-  blue_icons_hovered.innerHTML = '...';
+  blue_icons_hovered.innerHTML = '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>';
   tweet_body_text.innerHTML = tweet
   tweet_img.src = tweet_picture;
+  icon_item.innerHTML = '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>'
   likes_span.innerHTML = '420k';
 
 
@@ -129,25 +130,36 @@ let feed_container = document.getElementById('feed-container');
   if(tweet_picture){
     tweet_image.append(tweet_img);
   }
-  tweet_icons.append(icon_item, pink_icons_hovered);
-  icon_item.append(likes_span)
+  tweet_icons.append(icon_item);
+  icon_item.append( likes_span)
 
 };
 
 
 // FETCH TWEETS DATA
-// let id = 2;
-  fetch(`http://localhost/twitter/backend/apis/get_all_tweets.php?id=10`).then(res => res.json()).then(data => 
+let id = 1;
+var  tweets_number = 0;
+function displayLoop(num){
 
-  createTweet(data.tweet_info.tweet,
-            data.tweet_info.tweet_picture,
-            data.tweet_info.created_at,
-            data.tweet_info.name,
-            data.tweet_info.username,
-            data.tweet_info.profile_image_path)
-  // console.log(data.tweet_info.created_at)
+for (let i = 0; i < num; i++) {
 
+      fetch(`http://localhost/twitter/backend/apis/get_all_tweets.php?id=${id}`).then(res => res.json()).then(data => 
+      
+        createTweet(data.tweet_info[i].tweet,
+            data.tweet_info[i].tweet_picture,
+            data.tweet_info[i].created_at,
+            data.tweet_info[i].name,
+            data.tweet_info[i].username,
+            data.tweet_info[i].profile_image_path)
+      );
+};
+
+}
+  fetch(`http://localhost/twitter/backend/apis/get_all_tweets.php?id=${id}`).then(res => res.json()).then(data => 
+      displayLoop(data.num)
   );
+
+
 
 
 function filterDate(tweet_created_at){
@@ -159,28 +171,22 @@ function filterDate(tweet_created_at){
 
   let date = tweet_created_at.split(' ', 2)[0];
   let time = tweet_created_at.split(' ', 2)[1];
-
   if(yyyy == date.split('-', 3)[0]){
     date = date.slice(date.split('-', 3)[0].length+1);
-
         if(mm == date.split('-', 2)[0]){
           date = date.slice(date.split('-', 2)[0].length+1);
-
             if(dd == date){
               date = date.slice(date.length);
                 return `${date} ${time}`;
             }else{
                 return `${date} ${time}`;
             }
-
         }else{
           	return `${date} ${time}`;
         }
-      
   }else{
   	return `${date} ${time}`;
   }
-
 	return `${date} ${time}`;
 };
 
