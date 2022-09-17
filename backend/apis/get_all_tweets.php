@@ -30,14 +30,14 @@ if (isset($_GET['id'])) {
 
     $response['num'] = $array->num_rows;
 
-    if ($array->num_rows > 0) {
+    if($array->num_rows >0){
         while ($i = $array->fetch_assoc()) {
             $response['tweet_info'][] = $i;
         }
-    } else {
+    }else{
         $response['empty'] = "No Data Found";
     }
-
+    
     $query->close();
 }
 
