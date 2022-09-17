@@ -277,6 +277,11 @@ main {
   margin-left: 12px;
 }
 
+.tweet-img-input{
+  visibility: hidden;
+  position:absolute;
+}
+
 .none{
   display: none !important;
 }

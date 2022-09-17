@@ -142,9 +142,11 @@
                                 </div>
                                 <input type="hidden" name="privacy" id="privacy" value="1">
                             </div>
-                            <input class="tweet-text" type="text" placeholder="Whats's happening?">
+                            <textarea class="tweet-text" name="tweet-text" id="tweet-text" type="text"
+                                placeholder="Whats's happening?"></textarea>
                             <div class="new-tweet-actions">
-                                <i class="material-icons-outlined blue-icons-hovered">image</i>
+                                <input type="file" name="tweet-img" id="tweet-img-input" class="tweet-img-input">
+                                <i class="material-icons-outlined blue-icons-hovered" id="trigger-img">image</i>
                                 <button type="submit" class="btn new-tweet-btn">Tweet</button>
                             </div>
                         </form>
@@ -238,8 +240,15 @@
         </main>
         <!-- End Main Content -->
     </div>
+<<<<<<< HEAD
+
+    <script src="../assets/javascript/toggle.js"></script>
+    <script src="../assets/javascript/api_services/api.js"></script>
+=======
     <script src="/app/assets/javascript/home.js"></script>
+>>>>>>> origin/develop
     <script src="../assets/javascript/api_services/auth.js"></script>
+    <script src="../assets/javascript/api_services/tweets.js"></script>
 </body>
 
 </html>
