@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
         ORDER BY  main.created_at DESC, main.id DESC";
 
     $query = $connection->prepare($sql);
-    $query->bind_param('ii', $user_id, $user_id);
+    $query->bind_param('ss', $user_id, $user_id);
     $query->execute();
 
     $array = $query->get_result();
