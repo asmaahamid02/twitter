@@ -24,12 +24,15 @@ close_form.addEventListener('click', () => {
   form_page_1.remove()
 })
 
-submit_signup.addEventListener('click', (event) => {
+// submit_signup.addEventListener('click', (event) => {})
+
+form_page_1.addEventListener('submit', (e) => {
+  e.preventDefault()
   if (valid_name && valid_email && valid_password && valid_confirmed_password) {
     // form submit
     signup()
   } else {
-    event.preventDefault()
+    return
   }
 })
 
@@ -178,15 +181,34 @@ let signin_input = document.getElementById('signin-input')
 let signin_pass = document.getElementById('signin-pass')
 let form_input = Object.values(document.getElementsByClassName('signin-input'))
 
-signin_next_btn.addEventListener('click', (event) => {
+// signin_next_btn.addEventListener('click', (event) => {
+//   event.preventDefault()
+//   form_input.forEach((element) => {
+//     if (element.value.length <= 0) {
+//       event.preventDefault()
+//       element.style.border = '1px solid red'
+//       return
+//     } else {
+//       element.style.border = '1px solid rgba(0, 0, 0, .3)'
+//     }
+//   })
+// })
+
+signin_form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  let empty = false
   form_input.forEach((element) => {
     if (element.value.length <= 0) {
-      event.preventDefault()
       element.style.border = '1px solid red'
+      empty = true
     } else {
       element.style.border = '1px solid rgba(0, 0, 0, .3)'
     }
   })
+
+  if (!empty) {
+    login()
+  }
 })
 
 // EMAIL - PHONE SWITCHER
