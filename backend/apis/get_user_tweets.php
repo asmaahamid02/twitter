@@ -22,17 +22,17 @@ if (isset($_GET['id'])) {
 
     $response = [];
 
-    while ($i = $array->fetch_assoc()) {
-        $response[] = $i;
+    if ($array->num_rows > 0) {
+        while ($i = $array->fetch_assoc()) {
+            $response[] = $i;
+        }
+    } else {
+        $response['empty'] = "No Data Found";
     }
 
     $query->close();
 } else {
     $response['error'] = 'Missing user id!';
-}
-
-if (count($response) == 0) {
-    $response['empty'] = "No Data";
 }
 
 echo json_encode($response);

@@ -30,16 +30,17 @@ if (isset($_GET['id'])) {
 
     $response = [];
 
-    while ($i = $array->fetch_assoc()) {
-        $response['tweet_info'] = $i;
+    if ($array->num_rows > 0) {
+        while ($i = $array->fetch_assoc()) {
+            $response['tweet_info'] = $i;
+        }
+    } else {
+        $response['empty'] = "No Data Found";
     }
 
     $query->close();
 }
 
-if (count($response) == 0) {
-    $response['empty'] = "No Data";
-}
 //returns a response with ["tweet_id","tweet_user_id","tweet","tweet_picture","is_public_tweet","tweet_created_at","tweet_updated_at","name","username","profile_image_path"]
 //all the fields same as the names in th db, "tweet" keyword for more declaration
 echo json_encode($response);
