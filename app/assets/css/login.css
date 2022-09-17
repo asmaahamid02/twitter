@@ -199,6 +199,8 @@ footer a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .signin-width-combiner {
@@ -244,7 +246,6 @@ footer a:hover {
     align-items: center;
     height: 50px;
     width: 100%;
-    position: fixed;
 }
 
 .form-header h3 {
@@ -333,6 +334,8 @@ footer a:hover {
     align-items: center;
     width: 100%;
     height: fit-content;
+    position: absolute;
+    top: 95%;
 }
 
 input:focus {
@@ -357,10 +360,26 @@ input:focus {
     color: white;
     font-weight: bolder;
     font-size: 20px;
+    width: 80%;
+    padding: 15px 0;
+    border-radius: 25px;
+    position: absolute;
+    top: 115%;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+/* .signin-form button */
+#signin-next-btn{
+    border: none;
+    background: rgb(140, 140, 140);
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
     width: 100%;
     padding: 15px 0;
     border-radius: 25px;
-    margin-top: 20px;
+    cursor: pointer;
 }
 
 .submit_enabled {

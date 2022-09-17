@@ -13,43 +13,43 @@
 </head>
 
 <body>
+        <!-- MAIN SECTION/ BODY-->
+        <section class="login">
+        
+            <!-- HERO IMAGE -->
+            <img class="hero-img" src="/app/assets/images/login-img.jpg" alt="">
+        
+            <!-- LOGIN SIDE -->
+            <div class="login-info">
+        
+                <!-- LOGO -->
+                <img class="login-info-img" src="/app/assets/images/twitter-logo.png" alt="">
 
-    <!-- MAIN SECTION/ BODY-->
-    <section class="login">
+                <!-- TITLE -->
+                <h1>Happening now</h1>
+        
+                <!-- CONTAINER -->
+                <div class="width-combiner">
 
-        <!-- HERO IMAGE -->
-        <img class="hero-img" src="/app/assets/images/login-img.jpg" alt="">
-
-        <!-- LOGIN SIDE -->
-        <div class="login-info">
-
-            <!-- LOGO -->
-            <img class="login-info-img" src="/app/assets/images/twitter-logo.png" alt="">
-
-            <!-- TITLE -->
-            <h1>Happening now</h1>
-
-            <!-- CONTAINER -->
-            <div class="width-combiner">
-
-                <!-- TITLE-2 -->
-                <h2>Join Twitter today.</h2>
-
-                <!-- SIGNUO BUTTON -->
-                <button class="blue-btn signup-btn" id="signup-btn">Sign up with phone or email</button>
-
-                <!-- LOWER LINKS & INSTRUCTIONS -->
-                <p class="rules">By signing up, you agree to the <a href=""> Terms of Service</a> and <a href="">
-                        Privacy
-                        Policy</a>, including <a href=""> Cookie Use</a>.</p>
-
-                <!-- SIDE FOOTER -->
-                <!-- TITLE-3 -->
-                <h3>Already have an account?</h3>
-
-                <!-- SIGNIN BUTTON -->
-                <button class="nofill-btn signup-btn" id="signin-btn">Sign in</button>
-
+                    <!-- TITLE-2 -->
+                    <h2>Join Twitter today.</h2>
+        
+                    <!-- SIGNUO BUTTON -->
+                    <button class="blue-btn signup-btn" id="signup-btn">Sign up</button>
+        
+                    <!-- LOWER LINKS & INSTRUCTIONS -->
+                    <p class="rules">By signing up, you agree to the <a href=""> Terms of Service</a> and <a href=""> Privacy
+                            Policy</a>, including <a href=""> Cookie Use</a>.</p>
+        
+                    <!-- SIDE FOOTER -->
+                    <!-- TITLE-3 -->
+                    <h3>Already have an account?</h3>
+        
+                    <!-- SIGNIN BUTTON -->
+                    <button class="nofill-btn signup-btn" id="signin-btn">Sign in</button>
+        
+                </div>
+       
             </div>
 
         </div>
@@ -94,7 +94,7 @@
             <!-- CLOSE BUTTON -->
             <img id="close-form" src="/app/assets/svg/x-lg.svg" alt="">
             <!-- PAGE COUNT -->
-            <h3>Step <span id="current-form-page">1</span> out of 1</h3>
+            <!-- <h3>Step <span id="current-form-page">1</span> out of 1</h3> -->
         </div>
 
         <!-- FORM BODY -->
@@ -116,8 +116,20 @@
                     style="display: none;">
             </div>
             <!-- EMAIL-PHONE SWITCHER -->
-            <button class="email-phone-switch-btn" id="email-phone-switch-btn">Use phone number instead</button>
+            <!-- <button class="email-phone-switch-btn" id="email-phone-switch-btn">Use phone number instead</button> -->
 
+            <div class="form-input">
+            <input type="password" name="password" placeholder="Password" id="password-input" >
+            </div>
+
+            <h6 id="password-error"></h6>
+
+            <div class="form-input">
+            <input type="password" name="password-confirmation" placeholder="Confirm password" id="password-input-confirmation" class="form-input">
+            </div>
+
+            <h6 id="password-confirmation-error"></h6>
+            
             <!-- DOB SELECTOR TEXT -->
             <h4>Date of birth</h4>
             <p>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or
@@ -264,13 +276,13 @@
                     <option value="2022">2022</option> -->
                 </select>
             </div>
+    </div>
 
-            <!-- SIGNUP BUTTON -->
-            <button id="submit-signup" class="next-btn">Sign Up</button>
+        <!-- SIGNUP BUTTON -->
+        <button id="submit-signup" class="next-btn">Sign Up</button>
 
-        </div>
+</form>
 
-    </form>
 
     <!-- END OF SIGN UP FORM -->
 
@@ -288,7 +300,7 @@
         <div class="signin-width-combiner">
 
             <!-- TITLE -->
-            <h2>join twitter today.</h2>
+            <h1>join twitter today.</h1>
 
             <!-- EMAIL.. INPUT -->
             <input type="text" name="phone-or-email" placeholder="Phone, Email, Username"
@@ -298,7 +310,8 @@
             <input type="text" name="passord" placeholder="Password" class="form-input signin-input" id="signin-pass">
 
             <!-- SIGNIN BUTTON -->
-            <button id="signin-next-btn" class="next-btn">Sign In</button>
+            <button id="signin-next-btn" >Sign In</button>
+            
 
             <!-- SWITCH -->
             <h5>Don't have an account? <a href="" id="inner-signup-btn">Sign up</a>.</h5>
@@ -306,10 +319,6 @@
         </div>
 
     </form>
-
-
-
-
     <script src="/app/assets/javascript/login.js"></script>
 </body>
 

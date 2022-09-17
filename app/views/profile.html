@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="/app/assets/css/styles.css">
     <link rel="stylesheet" href="/app/assets/css/profile.css">
     <link rel="icon" type="image/x-icon" href="/app/assets/images/twitter-logo.png">
+        <!-- Icon Materials -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+            rel="stylesheet">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
 </head>
 
 <body>
@@ -16,18 +27,18 @@
 
         <div class="profile">
 
-            <img src="/app/assets/images/ui-user-profile.svg" alt="" class="profile-bg-img">
+            <img src="/app/assets/svg/ui-user-profile.svg" alt="" class="profile-bg-img">
 
-            <img src="/app/assets/images/ui-user-profile.svg" alt="" class="profile-img">
+            <img src="/app/assets/svg/ui-user-profile.svg" alt="" class="profile-img">
 
             <div class="profile-info">
 
                 <div class="profile-text">
-                    <p>Name</p>
+                    <h4>Name</h4>
                     <p>@username</p>
-                    <p>Born on xx xxxxxx xxxx</p>
-                    <p>Joined on xx xxxxxx xxxx</p>
-                    <p>0 Following | 0 Followers</p>
+                    <p>Born on <span> xx xxxxxx xxxx</span></p>
+                    <p>Joined on <span> xx xxxxxx xxxx</span></p>
+                    <p><span>0</span> Following | <span>0</span> Followers</p>
                 </div>
 
                 <div class="profile-btns">
@@ -38,43 +49,33 @@
 
             </div>
             <hr>
+            <h1> X No Tweets :(</h1>
+            
         </div>
 
 
-        <h1> X No Tweets :(</h1>
+        
 
 
-
-        <button class="add-tweet">+</button>
+        <!-- inner(profile) tweet button -->
+        <!-- <button class="add-tweet">+</button> -->
 
         <div class="footer">
 
+            <a href="home.html"><i class="material-icons-outlined">home</i></a> 
         
-            <a href="#"><img src="/app/assets/images/home-circle.svg" alt=""></a>
+            <a href="#"><i class="material-icons-outlined">search</i></a>
         
-            <a href="#"><img src="/app/assets/images/search.svg" alt=""></a>
+            <a href="#"><i class="material-icons-outlined">person</i></a>
         
-            <a href="#"><img src="/app/assets/images/ui-user-profile.svg" alt=""></a>
-        
-            <a href="index.html"><img src="/app/assets/images/log-out.svg" alt=""></a>
+            <a href="index.html"><i class="material-icons-outlined">logout</i></a>
         
         </div>
     
     </section>
-     
+    
     <!-- EDIT PROFILE -->
 
-    <form action="" class="edit-profile" id="edit-popup">
-
-        <div class="edit-profile-header">
-
-            <img src="/app/assets/images/x-lg.svg" alt="" id="close-profile-edit" >
-
-            <h4>Edit profile</h4>
-
-            <button class="profile-save-btn">Save</button>
-
-        </div>
     </section>
 
 
@@ -84,7 +85,7 @@
 
         <div class="edit-profile-header">
 
-            <img src="/app/assets/images/x-lg.svg" alt="" id="close-profile-edit" >
+            <img src="/app/assets/svg/x-lg.svg" alt="" id="close-profile-edit" >
 
             <h4>Edit profile</h4>
 
@@ -109,11 +110,6 @@
         <p>Biography:</p>
         <textarea name="bio" id="" cols="30" rows="5" placeholder="your bio.."></textarea>
 
-        <!-- <p>Profile photo:</p>
-        <input type="file" id="img" name="profile-img" accept="image/*">
-
-        <p>Profile background:</p>
-        <input type="file" id="img" name="profile-bg" accept="image/*"> -->
 
     </form>
 
