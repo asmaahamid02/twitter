@@ -22,11 +22,11 @@ showAudienceToggleButton.addEventListener('click', () => {
     box.classList.toggle('none');
 })
 
-const privacy = document.querySelector('#privacy')
+const privacy = document.querySelector('#privacy');
 
-const options = document.querySelectorAll('.publicity-choices__item')
+const options = document.querySelectorAll('.publicity-choices__item');
 
-let private_option = document.querySelector('#privacy')
+let private_option = document.querySelector('#privacy');
 
 //fill the hidden value with the choice and diplay check icon
 options.forEach((option) => {
@@ -44,19 +44,18 @@ options.forEach((option) => {
         document.querySelector('#public-check').style.display = 'none';
         box.classList.toggle('none');
         showAudienceToggleButton.innerHTML = 'Followers <i class="material-icons-outlined">expand_more</i>'
-      }
-    }
-  })
-})
+      };
+    };
+  });
+});
 
 // CREATING NEW TWEET
 // window.addEventListener('load', createTweet());
 
-
 function createTweet(tweet, tweet_picture, tweet_created_at, name, username, profile_image_path){
 // feed container
 let feed_container = document.getElementById('feed-container');
-  // tweet div
+
   let feed_tweet = document.createElement('div');
   feed_tweet.classList.add('feed-tweet');
 
@@ -100,9 +99,6 @@ let feed_container = document.getElementById('feed-container');
   let icon_item = document.createElement('a');
   icon_item.classList.add('icon-item');
 
-  // let pink_icons_hovered = document.createElement('i');
-  // pink_icons_hovered.classList.add('material-icons-outlined','pink-icons-hovered');
-
   let likes_span = document.createElement('span');
 
 
@@ -114,7 +110,7 @@ let feed_container = document.getElementById('feed-container');
       tweet_date.innerHTML = filterDate(tweet_created_at);
   }else{
         tweet_date.innerHTML = tweet_created_at;
-  }
+  };
 
   blue_icons_hovered.innerHTML = '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>';
   tweet_body_text.innerHTML = tweet
@@ -129,12 +125,12 @@ let feed_container = document.getElementById('feed-container');
   feed_tweet.append(profile_circle_img, tweet_details);
   tweet_details.append(tweet_account_details, tweet_body, tweet_icons);
   tweet_account_details.append(user_details, tweet_date, blue_icons_hovered);
-  user_details.append(tweet_username)
+  user_details.append(tweet_username);
   tweet_body.append(tweet_body_text, tweet_image);
   // checking wether there is a picture before appending it
   if(tweet_picture){
     tweet_image.append(tweet_img);
-  }
+  };
   tweet_icons.append(icon_item);
   icon_item.append( likes_span);
 
@@ -143,36 +139,35 @@ let feed_container = document.getElementById('feed-container');
 
 // FETCH TWEETS DATA
 let id = 1;
-var  tweets_number = 0;
+
 function displayLoop(num){
 
-for (let i = 0; i < num; i++) {
+  for (let i = 0; i < num; i++) {
 
-      fetch(`http://localhost/twitter/backend/apis/get_all_tweets.php?id=${id}`).then(res => res.json()).then(data => 
-      
-        createTweet(data.tweet_info[i].tweet,
-            data.tweet_info[i].tweet_picture,
-            data.tweet_info[i].created_at,
-            data.tweet_info[i].name,
-            data.tweet_info[i].username,
-            data.tweet_info[i].profile_image_path)
-      );
+        fetch(`http://localhost/twitter/backend/apis/get_all_tweets.php?id=${id}`).then(res => res.json()).then(data => 
+        
+          createTweet(data.tweet_info[i].tweet,
+              data.tweet_info[i].tweet_picture,
+              data.tweet_info[i].created_at,
+              data.tweet_info[i].name,
+              data.tweet_info[i].username,
+              data.tweet_info[i].profile_image_path)
+        );
+  };
+
 };
-
-}
+// fetching tweets count seperately 
   fetch(`http://localhost/twitter/backend/apis/get_all_tweets.php?id=${id}`).then(res => res.json()).then(data => 
       displayLoop(data.num)
   );
 
-
-
-
+// filtering whether to render year/month/day or not
 function filterDate(tweet_created_at){
 
-	let  today 		= new Date();
+	let  today 	= new Date();
 	let  dd 		= String(today.getDate()).padStart(2, '0');
 	let  mm 		= String(today.getMonth() + 1).padStart(2, '0'); 
-	let  yyyy 		= today.getFullYear();
+	let  yyyy 	= today.getFullYear();
 
   let date = tweet_created_at.split(' ', 2)[0];
   let time = tweet_created_at.split(' ', 2)[1];
@@ -185,15 +180,12 @@ function filterDate(tweet_created_at){
                 return `${date} ${time}`;
             }else{
                 return `${date} ${time}`;
-            }
+            };
         }else{
           	return `${date} ${time}`;
-        }
+        };
   }else{
   	return `${date} ${time}`;
-  }
+  };
 	return `${date} ${time}`;
 };
-
-
-
