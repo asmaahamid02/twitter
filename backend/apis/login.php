@@ -12,7 +12,7 @@ if (isset($_POST['password']) && isset($_POST['email_username'])) {
     $password = hash('sha256', $_POST['password']) . 'te27am';
 
     //check the existence of the data
-    $sql = "SELECT email,username,password FROM users WHERE (email = ? OR username = ?) AND password = ?";
+    $sql = "SELECT id,email,username,password FROM users WHERE (email = ? OR username = ?) AND password = ?";
     $stmt = $connection->prepare($sql);
     $stmt->bind_param('sss', $email_username, $email_username, $password);
     $stmt->execute();
