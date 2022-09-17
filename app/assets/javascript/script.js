@@ -145,7 +145,7 @@ let feed_container = document.getElementById('feed-container');
 
 // FETCH TWEETS DATA
 let id = 1;
-var  tweets_number = 0;
+
 function displayLoop(num){
     for (let i = 0; i < num; i++) {
         fetch(`http://localhost/twitter/backend/apis/get_user_tweets.php?id=${id}`).then(res => res.json()).then(data => 
@@ -158,11 +158,12 @@ function displayLoop(num){
         );
     };
 };
-    fetch(`http://localhost/twitter/backend/apis/get_user_tweets.php?id=${id}`).then(res => res.json()).then(data => 
-        displayLoop(data.length)
-    );
+// fetching tweets count seperately 
+fetch(`http://localhost/twitter/backend/apis/get_user_tweets.php?id=${id}`).then(res => res.json()).then(data => 
+    displayLoop(data.length)
+);
 
-
+// filtering whether to render year/month/day or not
 function filterDate(tweet_created_at){
 
 	let  today 	= new Date();
