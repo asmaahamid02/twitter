@@ -50,10 +50,10 @@ options.forEach((option) => {
 })
 
 // CREATING NEW TWEET
-window.addEventListener('load', createTweet());
+// window.addEventListener('load', createTweet());
 
 
-function createTweet(){
+function createTweet(tweet, tweet_picture, tweet_created_at, name, username, profile_image_path){
 // feed container
 let feed_container = document.getElementById('feed-container');
   // tweet div
@@ -107,13 +107,13 @@ let feed_container = document.getElementById('feed-container');
 
 
   // INSERT DATA
-  profile_circle_img.src = '/app/assets/svg/ui-user-profile.svg';
-  user_details.innerHTML = 'Firas';
-  tweet_username.innerHTML = '@phoenix89';
-  tweet_date.innerHTML = '2h';
+  profile_circle_img.src = profile_image_path;
+  user_details.innerHTML = name;
+  tweet_username.innerHTML = `@${username}`;
+  tweet_date.innerHTML = filterDate(tweet_created_at);
   blue_icons_hovered.innerHTML = '...';
-  tweet_body_text.innerHTML = 'Hello world, This is my first tweet.'
-  tweet_img.src = '/app/assets/images/google-logo.png';
+  tweet_body_text.innerHTML = tweet
+  tweet_img.src = tweet_picture;
   likes_span.innerHTML = '420k';
 
 
@@ -125,10 +125,64 @@ let feed_container = document.getElementById('feed-container');
   tweet_account_details.append(user_details, tweet_date, blue_icons_hovered);
   user_details.append(tweet_username)
   tweet_body.append(tweet_body_text, tweet_image);
-  tweet_image.append(tweet_img);
+  // checking wether there is a picture before appending it
+  if(tweet_picture){
+    tweet_image.append(tweet_img);
+  }
   tweet_icons.append(icon_item, pink_icons_hovered);
   icon_item.append(likes_span)
 
 };
+
+
+// FETCH TWEETS DATA
+// let id = 2;
+  fetch(`http://localhost/twitter/backend/apis/get_all_tweets.php?id=10`).then(res => res.json()).then(data => 
+
+  createTweet(data.tweet_info.tweet,
+            data.tweet_info.tweet_picture,
+            data.tweet_info.created_at,
+            data.tweet_info.name,
+            data.tweet_info.username,
+            data.tweet_info.profile_image_path)
+  // console.log(data.tweet_info.created_at)
+
+  );
+
+
+function filterDate(tweet_created_at){
+
+	let  today 		= new Date();
+	let  dd 		= String(today.getDate()).padStart(2, '0');
+	let  mm 		= String(today.getMonth() + 1).padStart(2, '0'); 
+	let  yyyy 		= today.getFullYear();
+
+  let date = tweet_created_at.split(' ', 2)[0];
+  let time = tweet_created_at.split(' ', 2)[1];
+
+  if(yyyy == date.split('-', 3)[0]){
+    date = date.slice(date.split('-', 3)[0].length+1);
+
+        if(mm == date.split('-', 2)[0]){
+          date = date.slice(date.split('-', 2)[0].length+1);
+
+            if(dd == date){
+              date = date.slice(date.length);
+                return `${date} ${time}`;
+            }else{
+                return `${date} ${time}`;
+            }
+
+        }else{
+          	return `${date} ${time}`;
+        }
+      
+  }else{
+  	return `${date} ${time}`;
+  }
+
+	return `${date} ${time}`;
+};
+
 
 
