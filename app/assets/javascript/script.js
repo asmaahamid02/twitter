@@ -1,46 +1,40 @@
-
 /* Main JS */
+const edit_profile_btn = document.getElementById('edit-profile');
+const edit_popup = document.getElementById('edit-popup');
+const close_profile_edit = document.getElementById('close-profile-edit');
 
-let edit_profile_btn = document.getElementById('edit-profile');
-let edit_popup = document.getElementById('edit-popup');
-let close_profile_edit = document.getElementById('close-profile-edit');
-
-
+// Displaying edit form
 edit_profile_btn.addEventListener('click', ()=>{
     edit_popup.style.display = 'block';
-
 });
 
+// Closing edit form
 close_profile_edit.addEventListener('click', ()=>{
     edit_popup.style.display = 'none';
-    
 });
 
-// ///////////
-let new_profile_img = document.getElementById('new-profile-img');
-let default_profile_img_btn = document.getElementById('default-profile-img-btn');
+// Giving the custome button the functionality of the default button 
+const new_profile_img = document.getElementById('new-profile-img');
+const default_profile_img_btn = document.getElementById('default-profile-img-btn');
 
 new_profile_img.addEventListener('click', ()=>{
     default_profile_img_btn.click();
 });
 
 default_profile_img_btn.addEventListener('change', function(){
-
     const file = this.files[0];
-
     if(file){
-
     const reader = new FileReader();
     reader.onload = function(){
         const result = reader.result;
         new_profile_img.src = result
-    }
+    };
     reader.readAsDataURL(file);
-    }
+    };
     
-})
+});
 
-// ///////////
+// Giving the custome button the functionality of the default button 
 let new_profile_bg = document.getElementById('new-profile-bg');
 let default_profile_bg_btn = document.getElementById('default-profile-bg-btn');
 
@@ -64,17 +58,12 @@ default_profile_bg_btn.addEventListener('change', function(){
     
 });
 
-/////////////////////////////////////////
-
-
 // CREATING NEW TWEET
-// window.addEventListener('load', createTweet());
-
 
 function createTweet(tweet, tweet_picture, tweet_created_at, name, username, profile_image_path){
 // feed container
 let feed_container = document.getElementById('feed-container');
-  // tweet div
+
     let feed_tweet = document.createElement('div');
     feed_tweet.classList.add('feed-tweet');
 
@@ -118,9 +107,6 @@ let feed_container = document.getElementById('feed-container');
     let icon_item = document.createElement('a');
     icon_item.classList.add('icon-item');
 
-    // let pink_icons_hovered = document.createElement('i');
-    // pink_icons_hovered.classList.add('material-icons-outlined','pink-icons-hovered');
-
     let likes_span = document.createElement('span');
 
 
@@ -132,13 +118,12 @@ let feed_container = document.getElementById('feed-container');
         tweet_date.innerHTML = filterDate(tweet_created_at);
     }else{
             tweet_date.innerHTML = tweet_created_at;
-    }
-
+    };
     blue_icons_hovered.innerHTML = '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>';
     tweet_body_text.innerHTML = tweet
     // tweet_img.src = tweet_picture;
     tweet_img.src = tweet_picture;
-    icon_item.innerHTML = '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>'
+    icon_item.innerHTML = '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>';
     likes_span.innerHTML = '420k';
 
 
@@ -158,40 +143,32 @@ let feed_container = document.getElementById('feed-container');
 
 };
 
-
 // FETCH TWEETS DATA
 let id = 1;
 var  tweets_number = 0;
 function displayLoop(num){
-
-for (let i = 0; i < num; i++) {
-
+    for (let i = 0; i < num; i++) {
         fetch(`http://localhost/twitter/backend/apis/get_user_tweets.php?id=${id}`).then(res => res.json()).then(data => 
-        
-        createTweet(data[i].tweet,
-            data[i].tweet_picture,
-            data[i].created_at,
-            data[i].name,
-            data[i].username,
-            data[i].profile_image_path)
-    );
-    
+            createTweet(data[i].tweet,
+                data[i].tweet_picture,
+                data[i].created_at,
+                data[i].name,
+                data[i].username,
+                data[i].profile_image_path)
+        );
+    };
 };
-
-}
     fetch(`http://localhost/twitter/backend/apis/get_user_tweets.php?id=${id}`).then(res => res.json()).then(data => 
         displayLoop(data.length)
     );
 
 
-
-
 function filterDate(tweet_created_at){
 
-	let  today 		= new Date();
-	let  dd 		= String(today.getDate()).padStart(2, '0');
-	let  mm 		= String(today.getMonth() + 1).padStart(2, '0'); 
-	let  yyyy 		= today.getFullYear();
+	let  today 	= new Date();
+	let  dd 	= String(today.getDate()).padStart(2, '0');
+	let  mm 	= String(today.getMonth() + 1).padStart(2, '0'); 
+	let  yyyy 	= today.getFullYear();
 
     let date = tweet_created_at.split(' ', 2)[0];
     let time = tweet_created_at.split(' ', 2)[1];
@@ -213,7 +190,3 @@ function filterDate(tweet_created_at){
     }
         return `${date} ${time}`;
     };
-
-
-
-
