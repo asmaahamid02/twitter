@@ -71,6 +71,7 @@ const signup = () => {
 }
 
 const logout = () => {
+  console.log('yee')
   localStorage.removeItem('user')
   changePage('index.html')
 }
@@ -89,6 +90,11 @@ const authorizeUser = () => {
     window.location.href != base_url + '/app/views/index.html'
   ) {
     changePage('index.html')
+  } else if (
+    localStorage.getItem('user') &&
+    window.location.href == base_url + '/app/views/index.html'
+  ) {
+    changePage('home.html')
   }
 }
 
@@ -104,3 +110,18 @@ const get_user_ID = (username) => {
 }
 
 authorizeUser()
+
+document.getElementById('hidden-logout').addEventListener('click', (e) => {
+  e.preventDefault()
+  logout()
+})
+
+document.getElementById('logout').addEventListener('click', () => {
+  e.preventDefault()
+  logout()
+})
+
+document.getElementById('profile-logout').addEventListener('click', () => {
+  e.preventDefault()
+  logout()
+})

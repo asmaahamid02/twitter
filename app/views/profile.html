@@ -39,13 +39,7 @@
                 <div class="profile-text">
 
                     <h4 id="name">Name</h4>
-                    <p id="username">@username</p>
-                    <p>
-                        <span id="follwing">0</span>
-                        Following |
-                        <span id="follwers">0</span>
-                        Followers
-                    </p>
+                    <p id="username">@username</p>        
                     <p>
 
                         <span id="location"></span>
@@ -54,6 +48,8 @@
                         Joined
                         <span id="joined-date"></span>
                     </p>
+
+                    <p id="foll" style="display:none">
 
                     <p id="biography">Hello world! I'm on Twitter!!
                     <p>
@@ -66,8 +62,8 @@
                 </div>
 
                 <div class="profile-btns">
-                    <Button class="blue-btn">Follow</Button>
-                    <Button class="blue-btn" id="block-btn">Block</Button>
+                    <Button class="blue-btn" id="fol-btn">Follow</Button>
+                    <Button class="blue-btn" id="blk-btn">Block</Button>
                     <Button class="blue-btn" id="edit-profile">Edit Profile</Button>
                 </div>
 
@@ -95,7 +91,7 @@
 
                 <a href="#"><i class="material-icons-outlined">person</i></a>
 
-                <a href="index.html"><i class="material-icons-outlined">logout</i></a>
+                <a href="" id="profile-logout"><i class="material-icons-outlined">logout</i></a>
 
             </div>
 
@@ -103,50 +99,50 @@
 
     <!-- EDIT PROFILE -->
 
+    <section>
+
+
+        <!-- EDIT PROFILE -->
+        <form action="" class="edit-profile" id="edit-popup">
+
+            <!-- form header -->
+            <div class="edit-profile-header">
+                <img src="../assets/svg/x-lg.svg" alt="" id="close-profile-edit">
+                <h4>Edit profile</h4>
+                <button class="profile-save-btn">Save</button>
+            </div>
+
+            <!-- form body -->
+            <!-- profile background | show only -->
+            <img src="../assets/images/image-add.svg" alt="" class="profile-bg-img" id="new-profile-bg">
+            <!-- profile background | input -->
+            <input type="file" name="profile-img" accept="image/*" id="default-profile-bg-btn" hidden>
+
+            <!-- profile image | show only -->
+            <img src="../assets/images/image-add.svg" alt="" class="profile-img" id="new-profile-img">
+            <!-- profile image | input -->
+            <input type="file" name="profile-img" accept="image/*" id="default-profile-img-btn" hidden>
+
+            <p>Name:</p>
+            <input type="text" name="new_name" id="new-name" placeholder="Name" class="new-name">
+
+            <p>Biography:</p>
+            <textarea name="bio" id="new-bio" cols="30" rows="5" placeholder="your bio.."></textarea>
+
+            <p>Location:</p>
+            <input type="text" id="new-location" name="new_location" placeholder="Location" class="new-name">
+
+            <p>Website:</p>
+            <input type="url" id="new-url" name="new_url" placeholder="Website" class="new-name">
+            <!-- End of profile edit form -->
+        </form>
     </section>
-
-
-    <!-- EDIT PROFILE -->
-    <form action="" class="edit-profile" id="edit-popup">
-
-        <!-- form header -->
-        <div class="edit-profile-header">
-            <img src="../assets/svg/x-lg.svg" alt="" id="close-profile-edit">
-            <h4>Edit profile</h4>
-            <button class="profile-save-btn">Save</button>
-        </div>
-
-        <!-- form body -->
-        <!-- profile background | show only -->
-        <img src="../assets/images/image-add.svg" alt="" class="profile-bg-img" id="new-profile-bg">
-        <!-- profile background | input -->
-        <input type="file" name="profile-img" accept="image/*" id="default-profile-bg-btn" hidden>
-
-        <!-- profile image | show only -->
-        <img src="../assets/images/image-add.svg" alt="" class="profile-img" id="new-profile-img">
-        <!-- profile image | input -->
-        <input type="file" name="profile-img" accept="image/*" id="default-profile-img-btn" hidden>
-
-        <p>Name:</p>
-        <input type="text" name="new_name" id="new-name" placeholder="Name" class="new-name">
-
-        <p>Biography:</p>
-        <textarea name="bio" id="new-bio" cols="30" rows="5" placeholder="your bio.."></textarea>
-
-        <p>Location:</p>
-        <input type="text" id="new-location" name="new_location" placeholder="Location" class="new-name">
-
-        <p>Website:</p>
-        <input type="url" id="new-url" name="new_url" placeholder="Website" class="new-name">
-
-        <!-- End of profile edit form -->
-    </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script src="../assets/javascript/api_services/api.js"></script>
+    <script src="../assets/javascript/api_services/auth.js"></script>
     <script src="../assets/javascript/api_services/profile.js"></script>
     <script src="../assets/javascript/script.js"></script>
-
-    </section>
 
 </body>

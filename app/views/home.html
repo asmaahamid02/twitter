@@ -45,7 +45,7 @@
                     <i class="material-icons-outlined">person</i>
                     <span>Profile</span>
                 </a>
-                <a href="" class="hidden-nav-item">
+                <a href="" class="hidden-nav-item" id="logout-hidden">
                     <i class="material-icons-outlined">logout</i>
                     <span>Logout</span>
                 </a>
@@ -54,7 +54,7 @@
                     </i><span>Tweet</span></button>
             </div>
             <div class="main-account">
-                <a href="profile.html">
+                <a href="" id="logout">
                     <img class="profile-circle-img" src="../assets/svg/ui-user-profile.svg" alt="" id="sub-profile-img">
                     <div class="account-details">
                         <span class="account-full-name dotted-overflow" id="sub-profile-name"></span>
@@ -146,7 +146,7 @@
                     </div>
                     <!--End Search Bar-->
                     <!--Start Who to Follow Section-->
-                    <div class="people-follow">
+                    <div class="people-follow none">
                         <h2 class="title">Who To Follow</h2>
 
                         <!-- PRFILES TO FOLLOW WILL BE RENDERED HERE -->
@@ -161,7 +161,7 @@
         <!-- End Main Content -->
     </div>
     <script src="../assets/javascript/api_services/api.js"></script>
-    <!-- <script src="../assets/javascript/api_services/auth.js"></script> -->
+    <script src="../assets/javascript/api_services/auth.js"></script>
     <script src="../assets/javascript/home.js"></script>
     <script src="../assets/javascript/api_services/tweets.js"></script>
 </body>

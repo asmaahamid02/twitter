@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
             LEFT JOIN profiles p ON p.id = u.profile_id
             WHERE f.user_id = ? -- and is_public = 1
         ) as main 
-        LEFT JOIN (SELECT tweet_id, count(id) likes FROM likes GROUP BY tweet_id)  l ON main.id = l.tweet_id
+        LEFT JOIN (SELECT tweet_id, count(id) likes FROM likes where is_deleted=0 GROUP BY tweet_id)  l ON main.id = l.tweet_id
         ORDER BY  main.created_at DESC, main.id DESC";
 
     $query = $connection->prepare($sql);

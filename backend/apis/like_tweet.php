@@ -43,12 +43,18 @@ if (isset($_POST['tweet_id']) && isset($_POST['user_id'])) {
             $insert_sql = "INSERT INTO `likes` (`tweet_id`, `user_id`, `created_at`, `updated_at`) VALUES (?,?,?,?)";
             $insert_query = $connection->prepare($insert_sql);
             $insert_query->bind_param("iiss", $id, $user_id, $created_at, $updated_at);
-            $insert_query->execute();
-            $result = $insert_query->get_result();
+            $result = $insert_query->execute();
             $insert_query->close();
         }
         if ($result) {
-            $response['success'] = true;
+            $all_likes_sql = "SELECT COUNT(*) as count FROM `likes` where tweet_id = ? and is_deleted = 0";
+            $stmt = $connection->prepare($all_likes_sql);
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $res = $stmt->get_result();
+            $row = $res->fetch_assoc();
+            $stmt->close();
+            $response['success'] = $row['count'];
         } else {
             $response['error'] = 'Something wenrt wrong, Try again!';
         }
