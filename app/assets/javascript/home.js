@@ -143,7 +143,7 @@ function createTweet(
 }
 
 // FETCH TWEETS DATA
-let id = 2
+let id = 1;
 
 function displayLoop(num) {
   for (let i = 0; i < num; i++) {
@@ -258,6 +258,15 @@ function createProfileToFollow(name, username, profile_img){
 
 // fetching users count seperately
 
-fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id}`)
+  fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id+1}`)
   .then((res) => res.json())
-  .then((data) => createProfileToFollow(data.name, data.username, data.profile_image_path));
+  .then((data) => 
+    createProfileToFollow(data.name, data.username, data.profile_image_path)
+  );
+
+    fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id+2}`)
+  .then((res) => res.json())
+  .then((data) => 
+    createProfileToFollow(data.name, data.username, data.profile_image_path)
+  );
+
