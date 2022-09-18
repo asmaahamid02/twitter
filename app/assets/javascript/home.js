@@ -48,7 +48,6 @@ options.forEach((option) => {
 })
 
 // CREATING NEW TWEET
-// window.addEventListener('load', createTweet());
 
 function createTweet(
   tweet,
@@ -141,7 +140,7 @@ function createTweet(
 }
 
 // FETCH TWEETS DATA
-let id = 1
+let id = 2
 
 function displayLoop(num) {
   for (let i = 0; i < num; i++) {
@@ -164,7 +163,7 @@ function displayLoop(num) {
 // fetching tweets count seperately
 fetch(`${api}get_all_tweets.php?id=${id}`)
   .then((res) => res.json())
-  .then((data) => displayLoop(data.num))
+  .then((data) => displayLoop(data.num));
 
 // filtering whether to render year/month/day or not
 function filterDate(tweet_created_at) {
@@ -192,3 +191,57 @@ function filterDate(tweet_created_at) {
     return `${date} ${time}`
   }
 }
+// 
+
+
+function createProfileToFollow(){
+  let people_follow = document.querySelector('.people-follow');
+
+  let follow_profile = document.createElement('div');
+  follow_profile.classList.add('follow-profile');
+
+  let follow_cont = document.createElement('div');
+  follow_cont.classList.add('follow-cont');
+
+  let follow_cont_img = document.createElement('div');
+  follow_cont_img.classList.add('follow-cont-img');
+
+  let profile_circle_img = document.createElement('img');
+  profile_circle_img.classList.add('profile-circle-img');
+
+  let follow_details = document.createElement('div');
+  follow_details.classList.add('follow-details');
+
+  let name_link = document.createElement('a');
+  name_link.classList.add('dotted-overflow');
+
+  let username_span = document.createElement('span');
+  username_span.classList.add('dotted-overflow');
+
+  let btn_cont = document.createElement('div');
+  btn_cont.classList.add('btn-cont');
+
+  let follow_btn = document.createElement('button');
+  follow_btn.classList.add('follow-btn');
+  follow_btn.classList.add('btn');
+
+  // INSERTING VALUES
+  name_link.innerHTML = 'FIRAS';
+  username_span.innerHTML = '@firasss';
+  follow_btn.innerHTML = 'Follow';
+
+
+  // APPENDING ELEMENTS 
+  console.log(people_follow)
+  people_follow.append(follow_profile);
+  follow_profile.append(follow_cont, btn_cont);
+  follow_cont.append(follow_cont_img,follow_details);
+  follow_cont_img.append(profile_circle_img);
+  follow_details.append(name_link, username_span);
+  btn_cont.append(follow_btn);
+
+}
+
+window.addEventListener('load', createProfileToFollow());
+
+
