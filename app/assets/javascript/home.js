@@ -277,7 +277,6 @@ function createProfileToFollow(name, username, profile_img){
   follow_cont_img.append(profile_circle_img);
   follow_details.append(name_link, username_span);
   btn_cont.append(follow_btn);
-
 }
 
 // FETCHING DATA
@@ -291,16 +290,38 @@ function createProfileToFollow(name, username, profile_img){
                             data[i].username,
                             data[i].profile_image_path)
       );
-    }
-  }
+    };
+  };
 
-// fetching users 
-
-
+// fetching users count
 
     fetch(`${api}get_random_users.php?id=${id}`)
   .then((res) => res.json())
   .then((data) => 
     profilesToFollowLoop(data.length)
-    // console.log(data)
   );
+
+// implementing sub profile
+// Fetching user's profile data
+window.addEventListener('load', ()=>{
+
+  fetch(`${api}get_user_data.php?id=${id}`)
+  .then((res) => res.json())
+  .then((data) => 
+  renderUserData(data.profile_image_path, data.name, data.username)
+  )
+});
+
+
+function renderUserData(profile_image_path, fetched_name, fetched_username){
+
+  const profile_img = document.getElementById('sub-profile-img');
+  const name = document.getElementById('sub-profile-name');
+  const username = document.getElementById('sub-profile-username');
+
+  if(profile_image_path){
+    profile_img.src = profile_image_path;
+  }
+  name.innerText = fetched_name;
+  username.innerText = `@${fetched_username}`;
+}
