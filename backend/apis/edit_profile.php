@@ -33,7 +33,7 @@ if (isset($_POST['id'])) {
 
     $response = [];
 
-    $sql = "SELECT u.`id`, p.`id` pid FROM `users` u JOIN `users_profiles` p ON u.`profile_id`= p.`id` WHERE u.`id` = ?";
+    $sql = "SELECT u.`id`, p.`id` pid FROM `users` u JOIN `profiles` p ON u.`profile_id`= p.`id` WHERE u.`id` = ?";
     $query = $connection->prepare($sql);
     $query->bind_param("i", $id);
     $query->execute();
@@ -44,7 +44,7 @@ if (isset($_POST['id'])) {
 
     $query->close();
     if ($array->num_rows == 1) {
-        //edit data for users and users_profiles tables
+        //edit data for users and profiles tables
         $array_fetch = $array->fetch_assoc();
         $profile_id = $array_fetch['pid'];
 
@@ -54,7 +54,7 @@ if (isset($_POST['id'])) {
         $edit_user_result = $edit_user_stmt->execute();
         $edit_user_stmt->close();
 
-        $profile_sql = "UPDATE users_profiles SET `Biography` = ?, `location` = ?, `url` = ?, `profile_image_path` = ?, `cover_image_path` = ?, `updated_at` = ? WHERE `id` = ?";
+        $profile_sql = "UPDATE profiles SET `Biography` = ?, `location` = ?, `url` = ?, `profile_image_path` = ?, `cover_image_path` = ?, `updated_at` = ? WHERE `id` = ?";
         $profile_stmt = $connection->prepare($profile_sql);
         $profile_stmt->bind_param('ssssssi', $bio, $location, $website, $profile_path, $cover_path, $updated_at, $profile_id);
         $profile_result = $profile_stmt->execute();
@@ -62,7 +62,7 @@ if (isset($_POST['id'])) {
     } else {
         // insert data , update users table
         // $profile_id = ?        
-        $profile_sql = "INSERT INTO users_profiles (`Biography`,`location`,`url`,`profile_image_path`,`cover_image_path`,`created_at`,`updated_at`) VALUES (?,?,?,?,?,?,?)";
+        $profile_sql = "INSERT INTO profiles (`Biography`,`location`,`url`,`profile_image_path`,`cover_image_path`,`created_at`,`updated_at`) VALUES (?,?,?,?,?,?,?)";
         $profile_stmt = $connection->prepare($profile_sql);
         $profile_stmt->bind_param('sssssss', $bio, $location, $website, $profile_path, $cover_path, $created_at, $updated_at);
         $profile_result = $profile_stmt->execute();

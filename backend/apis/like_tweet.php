@@ -22,7 +22,7 @@ if (isset($_POST['tweet_id']) && isset($_POST['user_id'])) {
     $check_existence_query->close();
 
     if ($array->num_rows == 1) {
-        $check_liked = "SELECT l.`id`, l.`is_deleted` FROM `tweets_likes` l  WHERE l.`tweet_id` = ? AND l.`user_id` = ?";
+        $check_liked = "SELECT l.`id`, l.`is_deleted` FROM `likes` l  WHERE l.`tweet_id` = ? AND l.`user_id` = ?";
         $check_liked_query = $connection->prepare($check_liked);
         $check_liked_query->bind_param("ii", $id, $user_id);
         $check_liked_query->execute();
@@ -33,14 +33,14 @@ if (isset($_POST['tweet_id']) && isset($_POST['user_id'])) {
             //update existing like
             $row = $likes_result->fetch_assoc();
             if ($row['is_deleted'] == 1) {
-                $update_liked = "UPDATE `tweets_likes`  SET `is_deleted` = 0, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
+                $update_liked = "UPDATE `likes`  SET `is_deleted` = 0, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
             } else {
-                $update_liked = "UPDATE `tweets_likes`  SET `is_deleted` = 1, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
+                $update_liked = "UPDATE `likes`  SET `is_deleted` = 1, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
             }
             $result = $connection->query($update_liked);
         } else {
             //insert new like
-            $insert_sql = "INSERT INTO `tweets_likes` (`tweet_id`, `user_id`, `created_at`, `updated_at`) VALUES (?,?,?,?)";
+            $insert_sql = "INSERT INTO `likes` (`tweet_id`, `user_id`, `created_at`, `updated_at`) VALUES (?,?,?,?)";
             $insert_query = $connection->prepare($insert_sql);
             $insert_query->bind_param("iiss", $id, $user_id, $created_at, $updated_at);
             $insert_query->execute();

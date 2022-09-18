@@ -1,24 +1,20 @@
 -- -----------------------------------------------------
 -- Schema twitterdb
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema twitterdb
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `twitterdb` DEFAULT CHARACTER SET utf8 ;
 USE `twitterdb` ;
 
 -- -----------------------------------------------------
--- Table `twitterdb`.`users_profiles`
+-- Table `twitterdb`.`profiles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `twitterdb`.`users_profiles` (
+CREATE TABLE IF NOT EXISTS `twitterdb`.`profiles` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Biography` VARCHAR(160) NULL,
   `location` VARCHAR(30) NULL,
   `url` VARCHAR(100) NULL,
   `profile_image_path` VARCHAR(255) NULL,
   `cover_image_path` VARCHAR(255) NULL,
-  `created_at` DATETIME NULL DEFAULT TIMESTAMP,
+  `created_at` DATETIME NULL DEFAULT TIMESTAMP ,
   `updated_at` DATETIME NULL DEFAULT TIMESTAMP,
   PRIMARY KEY (`id`))
 
@@ -40,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `twitterdb`.`users` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_users_users_profiles1`
     FOREIGN KEY (`profile_id`)
-    REFERENCES `twitterdb`.`users_profiles` (`id`)
+    REFERENCES `twitterdb`.`profiles` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 
@@ -53,9 +49,10 @@ CREATE TABLE IF NOT EXISTS `twitterdb`.`friends` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `friend_id` INT NOT NULL,
+  `is_deleted` TINYINT NULL DEFAULT 0,
   `created_at` DATETIME NULL DEFAULT TIMESTAMP,
   `updated_at` DATETIME NULL DEFAULT TIMESTAMP,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`, `friend_id`),
   CONSTRAINT `fk_users_follows_users1`
     FOREIGN KEY (`user_id`)
     REFERENCES `twitterdb`.`users` (`id`)
@@ -70,12 +67,13 @@ CREATE TABLE IF NOT EXISTS `twitterdb`.`friends` (
 
 
 -- -----------------------------------------------------
--- Table `twitterdb`.`blocked_users`
+-- Table `twitterdb`.`blocks`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `twitterdb`.`blocked_users` (
+CREATE TABLE IF NOT EXISTS `twitterdb`.`blocks` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `blocked_user_id` INT NOT NULL,
+  `is_deleted` TINYINT NULL DEFAULT 0,
   `created_at` DATETIME NULL DEFAULT TIMESTAMP,
   `updated_at` DATETIME NULL DEFAULT TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -113,12 +111,13 @@ CREATE TABLE IF NOT EXISTS `twitterdb`.`tweets` (
 
 
 -- -----------------------------------------------------
--- Table `twitterdb`.`tweets_likes`
+-- Table `twitterdb`.`likes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `twitterdb`.`tweets_likes` (
+CREATE TABLE IF NOT EXISTS `twitterdb`.`likes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `tweet_id` INT NOT NULL,
   `user_id` INT NOT NULL,
+  `is_deleted` TINYINT NULL DEFAULT 0,
   `created_at` DATETIME NULL DEFAULT TIMESTAMP,
   `updated_at` DATETIME NULL DEFAULT TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -132,5 +131,3 @@ CREATE TABLE IF NOT EXISTS `twitterdb`.`tweets_likes` (
     REFERENCES `twitterdb`.`users` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-
-
