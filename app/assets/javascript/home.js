@@ -104,8 +104,8 @@ function createTweet(
   tweet_date.classList.add('tweet-date')
 
   let blue_icons_hovered = document.createElement('i')
-  blue_icons_hovered.classList.add('blue_icons_hovered')
   blue_icons_hovered.classList.add('material-icons-outlined')
+  blue_icons_hovered.classList.add('blue_icons_hovered')
 
   let tweet_body = document.createElement('div')
   tweet_body.classList.add('tweet-body')

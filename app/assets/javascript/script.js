@@ -69,7 +69,8 @@ function createTweet(
   name,
   username,
   profile_image_path,
-  likes
+  likes,
+  tweeter_id
 ) {
   // feed container
   let feed_container = document.getElementById('feed-container')
@@ -95,8 +96,8 @@ function createTweet(
   tweet_date.classList.add('tweet-date')
 
   let blue_icons_hovered = document.createElement('i')
-  blue_icons_hovered.classList.add('blue_icons_hovered')
   blue_icons_hovered.classList.add('material-icons-outlined')
+  blue_icons_hovered.classList.add('blue_icons_hovered')
 
   let tweet_body = document.createElement('div')
   tweet_body.classList.add('tweet-body')
@@ -126,6 +127,7 @@ function createTweet(
     profile_circle_img.src = '../assets/svg/ui-user-profile.svg'
   }
   user_details.innerHTML = name
+  user_details.href = `${base_url}/app/views/profile.html?id=${tweeter_id}`
   tweet_username.innerHTML = `@${username}`
   if (tweet_created_at) {
     tweet_date.innerHTML = filterDate(tweet_created_at)
@@ -181,7 +183,7 @@ function displayLoop(num) {
   for (let i = 0; i < num; i++) {
     fetch(`${api}get_user_tweets.php?id=${id_param}`)
       .then((res) => res.json())
-      .then((data) =>
+      .then((data) => {
         createTweet(
           data[i].id,
           data[i].tweet,
@@ -190,9 +192,10 @@ function displayLoop(num) {
           data[i].name,
           data[i].username,
           data[i].profile_image_path,
-          data[i].likes
+          data[i].likes,
+          data[i].user_id
         )
-      )
+      })
   }
 }
 // fetching tweets count seperately
