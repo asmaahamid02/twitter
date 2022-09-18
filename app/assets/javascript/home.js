@@ -159,6 +159,8 @@ function displayLoop(num) {
       )
   }
 }
+
+
 // fetching tweets count seperately
 fetch(`${api}get_all_tweets.php?id=${id}`)
   .then((res) => res.json())
