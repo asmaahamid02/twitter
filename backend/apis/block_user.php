@@ -14,7 +14,7 @@ if (isset($_POST['user_id']) && isset($_POST['other_id'])) {
 
     $response = [];
 
-    $check_block = "SELECT b.`id`, b.`is_deleted` FROM `blocked_users` b WHERE b.`user_id` = ? AND b.`blocked_user_id` = ?";
+    $check_block = "SELECT b.`id`, b.`is_deleted` FROM `blocks` b WHERE b.`user_id` = ? AND b.`blocked_user_id` = ?";
     $check_block_query = $connection->prepare($check_block);
     $check_block_query->bind_param("ii", $user_id, $other_id);
     $check_block_query->execute();
@@ -25,14 +25,14 @@ if (isset($_POST['user_id']) && isset($_POST['other_id'])) {
         //update existing like
         $row = $block_result->fetch_assoc();
         if ($row['is_deleted'] == 1) {
-            $update_block = "UPDATE `blocked_users`  SET `is_deleted` = 0, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
+            $update_block = "UPDATE `blocks`  SET `is_deleted` = 0, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
         } else {
-            $update_block = "UPDATE `blocked_users`  SET `is_deleted` = 1, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
+            $update_block = "UPDATE `blocks`  SET `is_deleted` = 1, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
         }
         $result = $connection->query($update_block);
     } else {
         //insert new friendship
-        $insert_sql = "INSERT INTO `blocked_users` (`user_id`, `blocked_user_id`, `created_at`, `updated_at`) VALUES (?,?,?,?)";
+        $insert_sql = "INSERT INTO `blocks` (`user_id`, `blocked_user_id`, `created_at`, `updated_at`) VALUES (?,?,?,?)";
         $insert_query = $connection->prepare($insert_sql);
         $insert_query->bind_param("iiss", $user_id, $other_id, $created_at, $updated_at);
         $insert_query->execute();

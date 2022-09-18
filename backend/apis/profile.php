@@ -5,7 +5,7 @@ header('Access-Control-Allow-Origin: *'); header('Access-Control-Allow-Methods: 
 
 $id = $_GET['id'];
 
-$query = $mysqli->prepare("SELECT * FROM `users_profiles` WHERE `id` = (?)");
+$query = $mysqli->prepare("SELECT * FROM `profiles` WHERE `id` = (?)");
 $query->bind_param("s", $id);
 $query->execute();
 
@@ -18,5 +18,3 @@ while($i = $array -> fetch_assoc()){
 }
 
 echo json_encode($response);
-
-?>

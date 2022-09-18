@@ -11,16 +11,16 @@ if (isset($_GET['id'])) {
         "SELECT main.*, l.likes FROM(
             SELECT t.*, u.name, u.username, p.profile_image_path FROM tweets AS t
             INNER JOIN users u ON u.id = t.user_id
-            LEFT JOIN users_profiles p ON p.id = u.profile_id
+            LEFT JOIN profiles p ON p.id = u.profile_id
             WHERE u.id != ? AND is_public = 1
             union 
             SELECT t.*, u.name, u.username, p.profile_image_path FROM tweets t
             INNER JOIN users u ON u.id = t.user_id
             INNER JOIN friends f ON f.friend_id = t.user_id
-            LEFT JOIN users_profiles p ON p.id = u.profile_id
+            LEFT JOIN profiles p ON p.id = u.profile_id
             WHERE f.user_id = ? -- and is_public = 1
         ) as main 
-        LEFT JOIN (SELECT tweet_id, count(id) likes FROM tweets_likes GROUP BY tweet_id)  l ON main.id = l.tweet_id
+        LEFT JOIN (SELECT tweet_id, count(id) likes FROM likes GROUP BY tweet_id)  l ON main.id = l.tweet_id
         ORDER BY  main.created_at DESC, main.id DESC";
 
     $query = $connection->prepare($sql);

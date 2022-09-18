@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
     $sql =
         "SELECT t.*, u.name, u.username, p.profile_image_path FROM tweets AS t
         INNER JOIN users u ON u.id = t.user_id
-        LEFT JOIN users_profiles p ON p.id = u.profile_id
+        LEFT JOIN profiles p ON p.id = u.profile_id
         WHERE u.id = ? ORDER BY t.created_at desc";
 
     $query = $connection->prepare($sql);
