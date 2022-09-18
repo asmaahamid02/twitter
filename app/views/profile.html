@@ -40,11 +40,11 @@
 
                     <h4 id="name">Name</h4>
                     <p id="username">@username</p>
-                    
+
                     <p>
-                        
+
                         <span id="location"></span>
-                        
+
                         <i class="material-icons-outlined calendar-icon">calendar_month</i>
                         Joined
                         <span id="joined-date"></span>
@@ -52,7 +52,7 @@
 
                     <p>
                         <span id="follwing">0</span>
-                        Following | 
+                        Following |
                         <span id="follwers">0</span>
                         Followers
                     </p>
@@ -124,23 +124,24 @@
         <input type="file" name="profile-img" accept="image/*" id="default-profile-img-btn" hidden>
 
         <p>Name:</p>
-        <input type="text" name="new_name" placeholder="Name" class="new-name">
+        <input type="text" name="new_name" id="new-name" placeholder="Name" class="new-name">
 
         <p>Biography:</p>
-        <textarea name="bio" id="" cols="30" rows="5" placeholder="your bio.."></textarea>
+        <textarea name="bio" id="new-bio" cols="30" rows="5" placeholder="your bio.."></textarea>
 
         <p>Location:</p>
-        <input type="text" name="new_location" placeholder="Location" class="new-name">
+        <input type="text" id="new-location" name="new_location" placeholder="Location" class="new-name">
 
         <p>Website:</p>
-        <input type="url" name="new_url" placeholder="Website" class="new-name">
+        <input type="url" id="new-url" name="new_url" placeholder="Website" class="new-name">
 
         <!-- End of profile edit form -->
     </form>
 
     <script src="../assets/javascript/api_services/api.js"></script>
+    <script src="../assets/javascript/api_services/profile.js"></script>
     <script src="../assets/javascript/script.js"></script>
-    
+
     </section>
 
 </body>
