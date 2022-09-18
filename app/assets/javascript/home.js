@@ -322,3 +322,11 @@ function renderUserData(profile_image_path, fetched_name, fetched_username){
   name.innerText = fetched_name;
   username.innerText = `@${fetched_username}`;
 }
+
+// NEW TWEET FUNCTIONALITY
+const nav_tweet_button = document.querySelector('.nav-tweet-button');
+const new_tweet = document.querySelector('.new-tweet');
+
+nav_tweet_button.addEventListener('click', ()=>{
+  new_tweet.style.display = 'flex';
+})
