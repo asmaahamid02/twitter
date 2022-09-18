@@ -8,11 +8,11 @@ const signin_btn = document.getElementById('signin-btn')
 const signin_form = document.getElementById('signin-form')
 const signin_close_form = document.getElementById('signin-close-form')
 const inner_signup_btn = document.getElementById('inner-signup-btn')
-var valid_name = false
-var valid_email = false
-var valid_password = false
-var valid_confirmed_password = false
-var valid_date = false
+let valid_name = false
+let valid_email = false
+let valid_password = false
+let valid_confirmed_password = false
+let valid_date = false
 
 // ADDING FUNCTIONALITY TO THE FORM BUTTONS
 signup_btn.addEventListener('click', () => {
@@ -176,10 +176,10 @@ password_input_confirmation.addEventListener('input', () => {
 })
 
 // SIGNIN INPUT VALIDATION
-let signin_next_btn = document.getElementById('signin-next-btn')
-let signin_input = document.getElementById('signin-input')
-let signin_pass = document.getElementById('signin-pass')
-let form_input = Object.values(document.getElementsByClassName('signin-input'))
+const signin_next_btn = document.getElementById('signin-next-btn')
+const signin_input = document.getElementById('signin-input')
+const signin_pass = document.getElementById('signin-pass')
+const form_input = Object.values(document.getElementsByClassName('signin-input'))
 
 // signin_next_btn.addEventListener('click', (event) => {
 //   event.preventDefault()
