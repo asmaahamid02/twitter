@@ -35,16 +35,16 @@ body {
 .profile-bg-img {
     width: 100%;
     height: 20vh;
-    background: rgb(240, 240, 240);
+    background: var(--twitter-blue);
 }
 
 .profile-img {
     width: 14vh;
     height: 14vh;
-    background: rgb(240, 240, 240);
+    background: var(--twitter-blue);
     border-radius: 50%;
     margin: -10vh 0 0 5%;
-    border: 2px solid white;
+    border: 3px solid white;
 }
 
 .profile-info {
@@ -58,6 +58,13 @@ body {
 .profile-text {
     font-size: 14px;
     opacity: .8;
+}
+
+.calendar-icon,
+.location-icon{
+    transform: scale(.7);
+    position: relative;
+    top: 6px;
 }
 
 .profile-text span{
@@ -81,6 +88,10 @@ body {
             height: 115px;
         transform: scale(.6);
         margin-top: -22px;
+    }
+    .calendar-icon,
+    .location-icon{
+        transform: scale(.6);
     }
 }
 
@@ -337,6 +348,23 @@ body {
     }
     .tweet-date{
         font-size: .8rem;
+    }
+
+                .feed-tweet i {
+                    font-size: 1.2rem;
+                }
+        
+                .tweet-icons {
+                    transform: scale(.8);
+                }
+}
+@media only screen and (max-width: 400px) {
+    .feed-tweet i {
+        font-size: 1rem;
+    }
+
+    .tweet-icons {
+        transform: scale(.6);
     }
 }
 

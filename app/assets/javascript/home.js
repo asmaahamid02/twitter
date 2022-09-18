@@ -62,9 +62,9 @@ window.addEventListener('load', () => {
       link.href = `${base_url}/app/views/profile.html?id=${user_id}`
     } else if (page_name === 'search') {
       link.href = `${base_url}/app/views/search.html`
-    }
-  })
-
+    };
+  });
+});
 
   // CREATING NEW TWEET
   // window.addEventListener('load', createTweet());
@@ -280,13 +280,9 @@ function createProfileToFollow(name, username, profile_img){
 
 }
 
-// window.addEventListener('load', createProfileToFollow());
-
-
 // FETCHING DATA
 
-
-// fetching users count seperately
+// fetching users 
 
   fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id+1}`)
   .then((res) => res.json())

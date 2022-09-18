@@ -115,7 +115,11 @@ function createTweet(
   let likes_span = document.createElement('span')
 
   // INSERT DATA
-  profile_circle_img.src = profile_image_path
+  if(profile_image_path){
+    profile_circle_img.src = profile_image_path;
+  }else{
+    profile_circle_img.src = '../assets/svg/ui-user-profile.svg'
+  }
   user_details.innerHTML = name
   tweet_username.innerHTML = `@${username}`
   if (tweet_created_at) {
@@ -197,4 +201,55 @@ function filterDate(tweet_created_at) {
     return `${date} ${time}`
   }
   return `${date} ${time}`
+}
+
+// Fetching user's profile data
+window.addEventListener('load', ()=>{
+
+  fetch(`${api}get_user_data.php?id=${id}`)
+  .then((res) => res.json())
+  .then((data) => 
+  // console.log(data)
+  renderUserData(data.cover_image_path, data.profile_image_path, data.name, data.username,data.location, data.registered_at, data.follwing, data.follwers, data.Biography)
+  )
+
+});
+
+function renderUserData(cover_image_path, profile_image_path, fetched_name, fetched_username,fetched_location, fetched_registered_at, fetched_follwing, fetched_follwers, fetched_biography){
+  const bg_img = document.getElementById('bg-img');
+  const profile_img = document.getElementById('profile-img');
+  const name = document.getElementById('name');
+  const username = document.getElementById('username');
+  const location = document.getElementById('location');
+  const joined_date = document.getElementById('joined-date');
+  const follwing = document.getElementById('follwing');
+  const follwers = document.getElementById('follwers');
+  const biography = document.getElementById('biography');
+
+  // removing time(hour & minute) from date
+  fetched_registered_at = fetched_registered_at.slice(' ', 10);
+  // Inserting data
+  if(cover_image_path){
+    bg_img.src = cover_image_path;
+  }
+    if(profile_image_path){
+      profile_img.src = profile_image_path;
+  }
+
+  name.innerHTML = `${fetched_name}`;
+  username.innerText = `@${fetched_username}`;
+  joined_date.innerText = fetched_registered_at;
+  if(fetched_location){
+      location.innerHTML = `<i class="material-icons-outlined  location-icon">location_on</i>${fetched_location}`;
+  }
+
+  if(fetched_follwing){
+      follwing.innerText = fetched_follwing;
+
+  }
+    if(fetched_follwers){
+      follwers.innerText = fetched_follwers;
+  }
+  biography.innerText = fetched_biography;
+
 }
