@@ -3,6 +3,7 @@ Twitter-Similar website with less features
 
 <h2>Live Preview</h2>
 
+
 <a href="https://asmaahamid02.github.io/twitter/app/views/index.html"/>Click here</a>
 
 <h3>How To Run</h4>
@@ -11,3 +12,5 @@ Twitter-Similar website with less features
 <li>Go to localhost/app/views/index.html</li>
 <li>Sign up or Login</li>
 </ol>
+
+<p>By: <small>Team27</small>, <span>Asmaa Hamid</span> and <span>Firas El Mousa</span></p> 
