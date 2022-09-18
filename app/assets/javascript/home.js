@@ -106,7 +106,11 @@ function createTweet(
   let likes_span = document.createElement('span')
 
   // INSERT DATA
-  profile_circle_img.src = profile_image_path
+  if(profile_image_path){
+    profile_circle_img.src = profile_image_path;
+  }else{
+    profile_circle_img.src = '../assets/svg/ui-user-profile.svg';
+  }
   user_details.innerHTML = name
   tweet_username.innerHTML = `@${username}`
   if (tweet_created_at) {
@@ -114,7 +118,6 @@ function createTweet(
   } else {
     tweet_date.innerHTML = tweet_created_at
   }
-
   blue_icons_hovered.innerHTML =
     '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>'
   tweet_body_text.innerHTML = tweet
@@ -194,7 +197,7 @@ function filterDate(tweet_created_at) {
 // 
 
 
-function createProfileToFollow(){
+function createProfileToFollow(name, username, profile_img){
   let people_follow = document.querySelector('.people-follow');
 
   let follow_profile = document.createElement('div');
@@ -226,13 +229,18 @@ function createProfileToFollow(){
   follow_btn.classList.add('btn');
 
   // INSERTING VALUES
-  name_link.innerHTML = 'FIRAS';
-  username_span.innerHTML = '@firasss';
+  name_link.innerHTML = name;
+  username_span.innerHTML = username;
+  if(profile_img){
+    profile_circle_img.src= profile_img;
+  }else{
+    profile_circle_img.src= '../assets/svg/ui-user-profile.svg';
+  }
+  
   follow_btn.innerHTML = 'Follow';
 
 
   // APPENDING ELEMENTS 
-  console.log(people_follow)
   people_follow.append(follow_profile);
   follow_profile.append(follow_cont, btn_cont);
   follow_cont.append(follow_cont_img,follow_details);
@@ -242,6 +250,14 @@ function createProfileToFollow(){
 
 }
 
-window.addEventListener('load', createProfileToFollow());
+// window.addEventListener('load', createProfileToFollow());
 
 
+// FETCHING DATA
+
+
+// fetching users count seperately
+
+fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id}`)
+  .then((res) => res.json())
+  .then((data) => createProfileToFollow(data.name, data.username, data.profile_image_path));
