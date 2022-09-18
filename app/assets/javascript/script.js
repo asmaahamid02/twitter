@@ -252,3 +252,22 @@ function renderUserData(cover_image_path, profile_image_path, fetched_name, fetc
   biography.innerText = fetched_biography;
 
 }
+
+
+// BLOCK FUNCTIONALITY
+const block_btn = document.getElementById('block-btn');
+
+block_btn.addEventListener('click', ()=>{
+
+  block_btn.innerText = 'Unblock';
+
+  $.ajax({
+        url: `${api}block_user.php`,
+        type: 'POST',
+        data: ({ 
+              user_id : id,
+              other_id : other_id
+        })
+    });
+
+})

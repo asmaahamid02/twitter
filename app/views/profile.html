@@ -40,7 +40,12 @@
 
                     <h4 id="name">Name</h4>
                     <p id="username">@username</p>
-
+                    <p>
+                        <span id="follwing">0</span>
+                        Following |
+                        <span id="follwers">0</span>
+                        Followers
+                    </p>
                     <p>
 
                         <span id="location"></span>
@@ -50,22 +55,21 @@
                         <span id="joined-date"></span>
                     </p>
 
+                    <p id="biography">Hello world! I'm on Twitter!!
                     <p>
                         <span id="follwing">0</span>
                         Following |
                         <span id="follwers">0</span>
                         Followers
                     </p>
+
                 </div>
 
                 <div class="profile-btns">
                     <Button class="blue-btn">Follow</Button>
-                    <Button class="blue-btn">Block</Button>
+                    <Button class="blue-btn" id="block-btn">Block</Button>
                     <Button class="blue-btn" id="edit-profile">Edit Profile</Button>
                 </div>
-
-                <p id="biography">Hello world! I'm on Twitter!!
-                </p>
 
             </div>
             <hr>
@@ -138,6 +142,7 @@
         <!-- End of profile edit form -->
     </form>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../assets/javascript/api_services/api.js"></script>
     <script src="../assets/javascript/api_services/profile.js"></script>
     <script src="../assets/javascript/script.js"></script>

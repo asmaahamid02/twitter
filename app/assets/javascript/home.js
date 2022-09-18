@@ -42,10 +42,10 @@ options.forEach((option) => {
         box.classList.toggle('none')
         showAudienceToggleButton.innerHTML =
           'Followers <i class="material-icons-outlined">expand_more</i>'
-      }
-    }
-  })
-})
+      };
+    };
+  });
+});
 
 window.addEventListener('load', () => {
   //Fill a tags links
@@ -80,52 +80,52 @@ window.addEventListener('load', () => {
     likes
   ) {
     // feed container
-    let feed_container = document.getElementById('feed-container')
+    let feed_container = document.getElementById('feed-container');
 
-    let feed_tweet = document.createElement('div')
-    feed_tweet.classList.add('feed-tweet')
+    let feed_tweet = document.createElement('div');
+    feed_tweet.classList.add('feed-tweet');
 
-    let profile_circle_img = document.createElement('img')
-    profile_circle_img.classList.add('profile-circle-img')
+    let profile_circle_img = document.createElement('img');
+    profile_circle_img.classList.add('profile-circle-img');
 
-    let tweet_details = document.createElement('div')
-    tweet_details.classList.add('tweet-details')
+    let tweet_details = document.createElement('div');
+    tweet_details.classList.add('tweet-details');
 
-    let tweet_account_details = document.createElement('div')
-    tweet_account_details.classList.add('tweet-account-details')
+    let tweet_account_details = document.createElement('div');
+    tweet_account_details.classList.add('tweet-account-details');
 
-    let user_details = document.createElement('a')
-    user_details.classList.add('user-details')
+    let user_details = document.createElement('a');
+    user_details.classList.add('user-details');
 
-    let tweet_username = document.createElement('span')
+    let tweet_username = document.createElement('span');
 
-    let tweet_date = document.createElement('span')
-    tweet_date.classList.add('tweet-date')
+    let tweet_date = document.createElement('span');
+    tweet_date.classList.add('tweet-date');
 
-    let blue_icons_hovered = document.createElement('i')
-    blue_icons_hovered.classList.add('blue_icons_hovered')
-    blue_icons_hovered.classList.add('material-icons-outlined')
+    let blue_icons_hovered = document.createElement('i');
+    blue_icons_hovered.classList.add('blue_icons_hovered');
+    blue_icons_hovered.classList.add('material-icons-outlined');
 
-    let tweet_body = document.createElement('div')
-    tweet_body.classList.add('tweet-body')
+    let tweet_body = document.createElement('div');
+    tweet_body.classList.add('tweet-body');
 
-    let tweet_body_text = document.createElement('p')
-    tweet_body_text.classList.add('tweet-body-text')
+    let tweet_body_text = document.createElement('p');
+    tweet_body_text.classList.add('tweet-body-text');
 
     // image-div
-    let tweet_image = document.createElement('div')
-    tweet_image.classList.add('tweet-image')
+    let tweet_image = document.createElement('div');
+    tweet_image.classList.add('tweet-image');
 
     // actual image
-    let tweet_img = document.createElement('img')
+    let tweet_img = document.createElement('img');
 
-    let tweet_icons = document.createElement('div')
-    tweet_icons.classList.add('tweet-icons')
+    let tweet_icons = document.createElement('div');
+    tweet_icons.classList.add('tweet-icons');
 
-    let icon_item = document.createElement('a')
-    icon_item.classList.add('icon-item')
+    let icon_item = document.createElement('a');
+    icon_item.classList.add('icon-item');
 
-    let likes_span = document.createElement('span')
+    let likes_span = document.createElement('span');
 
   // INSERT DATA
   if(profile_image_path){
@@ -134,43 +134,38 @@ window.addEventListener('load', () => {
     profile_circle_img.src = '../assets/svg/ui-user-profile.svg';
   }
   user_details.innerHTML = name
-    user_details.href = `${base_url}/app/views/profile.html?id=${user_id}`
-    tweet_username.innerHTML = `@${username}`
+    user_details.href = `${base_url}/app/views/profile.html?id=${user_id}`;
+    tweet_username.innerHTML = `@${username}`;
     if (tweet_created_at) {
-      tweet_date.innerHTML = filterDate(tweet_created_at)
+      tweet_date.innerHTML = filterDate(tweet_created_at);
     } else {
-      tweet_date.innerHTML = tweet_created_at
+      tweet_date.innerHTML = tweet_created_at;
     }
+    likes_span.innerHTML = likes ? likes : 0;
+    blue_icons_hovered.innerHTML ='<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>';
+    tweet_body_text.innerHTML = tweet;
 
-    blue_icons_hovered.innerHTML =
-      '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>'
-    tweet_body_text.innerHTML = tweet
-    // tweet_img.src = tweet_picture;
-    //if (tweet_picture) {
-    //  tweet_img.src = `../../${tweet_picture}`
-    //}
-      tweet_img.src = tweet_picture
-    icon_item.innerHTML =
-      '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>'
-    likes_span.innerHTML = likes ? likes : 0
+    tweet_img.src = tweet_picture;
+    icon_item.innerHTML = '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>';
 
     // APPENDING ELEMENTS INSIDE EACH OTHER
-    feed_container.append(feed_tweet)
-    feed_tweet.append(profile_circle_img, tweet_details)
-    tweet_details.append(tweet_account_details, tweet_body, tweet_icons)
-    tweet_account_details.append(user_details, tweet_date, blue_icons_hovered)
-    user_details.append(tweet_username)
-    tweet_body.append(tweet_body_text, tweet_image)
+    feed_container.append(feed_tweet);
+    feed_tweet.append(profile_circle_img, tweet_details);
+    tweet_details.append(tweet_account_details, tweet_body, tweet_icons);
+    tweet_account_details.append(user_details, tweet_date, blue_icons_hovered);
+    user_details.append(tweet_username);
+    tweet_body.append(tweet_body_text, tweet_image);
     // checking wether there is a picture before appending it
     if (tweet_picture) {
-      tweet_image.append(tweet_img)
-      tweet_icons.append(icon_item)
-    icon_item.append(likes_span)
+      tweet_image.append(tweet_img);
     }
+
+    tweet_icons.append(icon_item, likes_span);
+
   }
 
   // FETCH TWEETS DATA
-  let id = 1
+  let id = 1;
 
   function displayLoop(num) {
     for (let i = 0; i < num; i++) {
@@ -189,8 +184,8 @@ window.addEventListener('load', () => {
           )
 
         )
-    }
-  }
+    };
+  };
 
 // fetching tweets count seperately
 fetch(`${api}get_all_tweets.php?id=${id}`)
@@ -222,11 +217,10 @@ function filterDate(tweet_created_at) {
     }
   } else {
     return `${date} ${time}`
-  }
-}
-// 
+  };
+};
 
-
+// CREATING PROFILES & RENDERING THEM IN THE SIDE SECTION
 function createProfileToFollow(name, username, profile_img){
   let people_follow = document.querySelector('.people-follow');
 
@@ -268,7 +262,6 @@ function createProfileToFollow(name, username, profile_img){
   }
   
   follow_btn.innerHTML = 'Follow';
-
 
   // APPENDING ELEMENTS 
   people_follow.append(follow_profile);
@@ -325,3 +318,17 @@ function renderUserData(profile_image_path, fetched_name, fetched_username){
   name.innerText = fetched_name;
   username.innerText = `@${fetched_username}`;
 }
+
+// NEW TWEET FUNCTIONALITY
+const nav_tweet_button = document.querySelector('.nav-tweet-button');
+const new_tweet = document.querySelector('.new-tweet');
+
+nav_tweet_button.addEventListener('click', ()=>{
+  new_tweet.style.display = 'flex';
+})
+
+
+// LIKING FUNCTIONALITY
+    // function enableLiking(icon_item, likes_span){
+    //   icon_item.add
+    // }
