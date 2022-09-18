@@ -60,6 +60,11 @@ body {
     opacity: .8;
 }
 
+.calendar-icon,
+.location-icon{
+    transform: scale(.7);
+}
+
 .profile-text span{
     font-weight: bolder;
     opacity: 1;
@@ -82,6 +87,10 @@ body {
         transform: scale(.6);
         margin-top: -22px;
     }
+    .calendar-icon,
+.location-icon{
+    transform: scale(.6);
+}
 }
 
 .profile-btns button {

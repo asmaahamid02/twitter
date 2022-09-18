@@ -210,17 +210,17 @@ window.addEventListener('load', ()=>{
   .then((res) => res.json())
   .then((data) => 
   // console.log(data)
-  renderUserData(data.cover_image_path, data.profile_image_path, data.name, data.username, data.birth_date, data.registered_at, data.follwing, data.follwers, data.Biography)
+  renderUserData(data.cover_image_path, data.profile_image_path, data.name, data.username,data.location, data.registered_at, data.follwing, data.follwers, data.Biography)
   )
 
 });
 
-function renderUserData(cover_image_path, profile_image_path, fetched_name, fetched_username, fetched_birth_date, fetched_registered_at, fetched_follwing, fetched_follwers, fetched_biography){
+function renderUserData(cover_image_path, profile_image_path, fetched_name, fetched_username,fetched_location, fetched_registered_at, fetched_follwing, fetched_follwers, fetched_biography){
   const bg_img = document.getElementById('bg-img');
   const profile_img = document.getElementById('profile-img');
   const name = document.getElementById('name');
   const username = document.getElementById('username');
-  const birth_date = document.getElementById('birth-date');
+  const location = document.getElementById('location');
   const joined_date = document.getElementById('joined-date');
   const follwing = document.getElementById('follwing');
   const follwers = document.getElementById('follwers');
@@ -236,12 +236,17 @@ function renderUserData(cover_image_path, profile_image_path, fetched_name, fetc
       profile_img.src = profile_image_path;
   }
 
-  name.innerText = fetched_name;
+  name.innerHTML = `${fetched_name}`;
   username.innerText = `@${fetched_username}`;
-  birth_date.innerText = fetched_birth_date;
   joined_date.innerText = fetched_registered_at;
-  follwing.innerText = fetched_follwing;
-  follwers.innerText = fetched_follwers;
+  location.innerText = fetched_location;
+  if(fetched_follwing){
+      follwing.innerText = fetched_follwing;
+
+  }
+    if(fetched_follwers){
+      follwers.innerText = fetched_follwers;
+  }
   biography.innerText = fetched_biography;
 
 }
