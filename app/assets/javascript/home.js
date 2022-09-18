@@ -142,17 +142,12 @@ window.addEventListener('load', () => {
       tweet_date.innerHTML = tweet_created_at
     }
 
-    blue_icons_hovered.innerHTML =
-      '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>'
+    blue_icons_hovered.innerHTML ='<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>'
     tweet_body_text.innerHTML = tweet
-    // tweet_img.src = tweet_picture;
-    //if (tweet_picture) {
-    //  tweet_img.src = `../../${tweet_picture}`
-    //}
-      tweet_img.src = tweet_picture
-    icon_item.innerHTML =
-      '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>'
-    likes_span.innerHTML = likes ? likes : 0
+
+    tweet_img.src = tweet_picture;
+        likes_span.innerHTML = likes ? likes : 0
+    icon_item.innerHTML = '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>';
 
     // APPENDING ELEMENTS INSIDE EACH OTHER
     feed_container.append(feed_tweet)
@@ -164,9 +159,11 @@ window.addEventListener('load', () => {
     // checking wether there is a picture before appending it
     if (tweet_picture) {
       tweet_image.append(tweet_img)
-      tweet_icons.append(icon_item)
-    icon_item.append(likes_span)
     }
+
+    tweet_icons.append(icon_item, likes_span)
+
+
   }
 
   // FETCH TWEETS DATA
