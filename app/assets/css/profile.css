@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --twitter-blue: #1DA1F2;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile-container {
+    width: 80%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-flow: wrap row;
+    overflow-y: scroll;
+}
+
+.profile{
+    width: 100%;
+}
+
+@media only screen and (max-width: 400px) {
+.profile-container {
+        width: 100%;
+    }
+}
+
+.profile-bg-img {
+    width: 100%;
+    height: 35%;
+    
+}
+
+.profile-bg-img:nth-child(1),
+.profile-img:nth-child(2){
+background: var(--twitter-blue);
+}
+
+.profile-bg-img:nth-child(2),
+.profile-img {
+    background: rgb(250, 250, 250);
+}
+
+.profile-img {
+    width: 15%;
+    border-radius: 50%;
+    margin: -10% 0 0 5%;
+    border: 3px solid white;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .profile-img {
+        width: 20%;
+        margin-top: -15%;
+    }
+}
+.profile-info {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    margin: 2vh 0 0 5vw;
+    width: 90%;
+}
+
+.profile-text {
+    font-size: 14px;
+    opacity: .8;
+    font-size: 12px;
+}
+
+.calendar-icon,
+.location-icon{
+    transform: scale(.7);
+    position: relative;
+    top: 8px;
+    left:-2px
+    
+}
+
+.profile-text span{
+    font-weight: bolder;
+    opacity: 1;
+}
+
+#biography{
+    font-size: 14px;
+}
+
+.profile-btns {
+    display: flex;
+    flex-flow: wrap column;
+    height: 115px;
+    transform: scale(.8);
+    margin-top: -10px;
+}
+
+@media only screen and (max-width: 510px) {
+
+    .profile-img {
+            width: 20%;
+        }
+    .profile-btns {
+        margin-top: 20px;
+            flex-flow: wrap row;
+            height: fit-content;
+        }
+}
+
+@media only screen and (max-width: 310px) {
+    .profile-text {
+            font-size: 10px;
+        }
+    .profile-btns{
+            height: 115px;
+        transform: scale(.6);
+        margin-top: -22px;
+    }
+    .calendar-icon,
+    .location-icon{
+        transform: scale(.6);
+    }
+}
+
+.profile-btns button {
+    margin-bottom: 5px;
+}
+
+.profile hr {
+    opacity: .6;
+    width: 90%;
+    margin-left: 5%;
+}
+
+/* Profile's body */
+
+.profile-container h1 {
+    font-size: 40px;
+    font-weight: 900;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: 10%;
+    opacity: .3;
+}
+
+.add-tweet {
+    position: fixed;
+    top: 80%;
+    left: 85%;
+    font-size: 30px;
+    color: white;
+    padding: 5px 13px;
+    background: var(--twitter-blue);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.add-tweet:hover {
+    filter: brightness(.9);
+}
+
+/* Footer */
+
+.footer {
+    width: 80%;
+    height: 8%;
+    position: fixed;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 2px solid rgba(0, 0, 0, .2);
+}
+
+@media only screen and (max-width: 400px) {
+    .footer {
+        width: 100%;
+    }
+}
+
+.footer i {
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.footer i:hover {
+    animation: btn-effect .2s ease-out forwards;
+}
+
+@keyframes btn-effect {
+    to{
+        background: rgb(220, 220, 255);
+    }
+}
+
+/* EDIT PROFILE CSS */
+
+.edit-profile{
+    display: none;
+    width:500px;
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top:5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(240, 240, 240);
+    border-radius: 10px;
+    padding: 2%;
+    padding-top: 3%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 500px){
+    .edit-profile {
+        width: 100vw;
+    }
+}
+.edit-profile-header{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin: -3% 0 2% 0;
+}
+.edit-profile-header h4{
+    margin-left: 7px;
+}
+
+.profile-save-btn {
+    position: absolute;
+    right: 2vw;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.profile-save-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.edit-profile p{
+    margin:30px 0 5px 0;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+#close-profile-edit{
+    cursor: pointer;
+}
+
+
+.new-name,
+.edit-profile textarea{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.edit-profile textarea,
+.edit-profile input{
+    width:100%;
+    border-radius: 5px;
+    color:rgba(0, 0, 0, 0.8);
+}
+
+/* ADD IMGBUTTON */
+
+#new-profile-bg,
+#new-profile-img{
+    cursor: pointer;
+    border: 1px dashed var(--twitter-blue);
+}
+
+/* Tweet Section*/
+
+.feed-tweet {
+    display: flex;
+    width: 80%;
+    height: fit-content;
+    padding: 12px 16px 0 16px;
+    border-top: 1px solid rgb(15, 20, 25, 0.1);
+    cursor: pointer;
+    margin-left: 10%;
+}
+
+.profile-circle-img {
+    background-color: #1d9bf0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.tweet-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    padding-right: 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+.feed-tweet i {
+    color: #536471;
+    font-size: 2rem;
+    max-width: 100%;
+}
+
+.tweet-details {
+    max-width: 100%;
+}
+
+.tweet-account-details {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}
+
+.user-details {
+    color: #1f2429;
+    font-weight: 700;
+}
+
+.user-details span {
+    color: #536471;
+    font-weight: 400;
+    margin-left: 3px;
+    font-size: 1rem;
+}
+
+.tweet-date{
+    font-size: .9rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 3px;
+}
+
+.tweet-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tweet-body-text {
+    font-size: .9rem;
+    line-height: 20px;
+    color: #000;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 500px) {
+    .profile-circle-img {
+        width: 40px;
+        height: 40px;
+    }
+.user-details span {
+    font-size: .8rem;
+}
+.user-details  {
+    font-size: .9rem;
+}
+    .tweet-body-text {
+        font-size: .8rem;
+        line-height: 20px;
+    }
+    .tweet-date{
+        font-size: .8rem;
+    }
+
+                .feed-tweet i {
+                    font-size: 1.2rem;
+                }
+        
+                .tweet-icons {
+                    transform: scale(.8);
+                }
+}
+@media only screen and (max-width: 400px) {
+    .feed-tweet i {
+        font-size: 1rem;
+    }
+
+    .tweet-icons {
+        transform: scale(.6);
+    }
+}
+
+.tweet-image {
+    max-width: 100%;
+    height: fit-content;
+    margin-top: 10px;
+    padding: 10px 10px 10px 0;
+}
+
+.tweet-image img {
+    object-fit: fill;
+    max-width: 100%;
+    aspect-ratio: 2/1;
+    background-color: #000;
+    border-radius: 16px;
+}
+
+.tweet-icons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.tweet-icons span {
+    color: #5e6e7b;
+    font-size: 15px;
+}
+
+.icon-item {
+    color: #5e6e7b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+}
+
+.pink-icons-hovered {
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+.icon-item .pink-icons-hovered {
+    margin-right: 0.75rem;
+    font-size: 1.5rem;
+}
+
+.icon-item:hover {
+    color: rgb(249, 24, 128);
+}
+
+.icon-item:hover i {
+    color: rgb(249, 24, 128);
+    background-color: rgb(249, 24, 128, 0.1);
+}

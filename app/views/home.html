@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Icon Materials -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- home.css -->
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/twitter-logo.png">
+
+    <title>Home | Twitter</title>
+</head>
+
+<body>
+
+    <div class="homepage">
+        <!-- Start Side Bar -->
+        <header class="fixed-header ">
+
+            <div class="nav-links">
+                <a href="">
+                    <!-- <img src="../assets/svg/twitter.svg" class="logo-icon" alt="twitter logo"> -->
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="link--active">
+                    <i class="material-icons-outlined">home</i>
+                    <span>Home</span>
+                </a>
+                <a href="" class="nav-search">
+                    <i class="material-icons-outlined">search</i>
+                    <span>Search</span>
+                </a>
+                <a href="profile.html" id="profile-btn">
+                    <i class="material-icons-outlined">person</i>
+                    <span>Profile</span>
+                </a>
+                <a href="" class="hidden-nav-item" id="logout-hidden">
+                    <i class="material-icons-outlined">logout</i>
+                    <span>Logout</span>
+                </a>
+                <button class="btn nav-tweet-button"><i class="material-icons-outlined">
+                        add
+                    </i><span>Tweet</span></button>
+            </div>
+            <div class="main-account">
+                <a href="" id="logout">
+                    <img class="profile-circle-img" src="../assets/svg/ui-user-profile.svg" alt="" id="sub-profile-img">
+                    <div class="account-details">
+                        <span class="account-full-name dotted-overflow" id="sub-profile-name"></span>
+                        <span class="account-username dotted-overflow" id="sub-profile-username"></span>
+                    </div>
+                </a>
+            </div>
+
+        </header>
+        <!-- End Side Bar -->
+        <!-- Start Main Content -->
+        <main>
+            <!--Start Main Feed-->
+            <div class="main-flex">
+                <!-- BELOW IS HOME FEED  -->
+                <div class="main-feed">
+                    <!--Start Home Bar-->
+                    <div class="home-bar" id="home-bar">
+                        <div class="home-avatar">
+                            <a href=""><img src="../assets/svg/ui-user-profile.svg" class="profile-circle-img"
+                                    alt=""></a>
+                            <span>Home</span>
+                        </div>
+
+                        <i class="material-icons-outlined">
+                            auto_awesome
+                        </i>
+                    </div>
+                    <!--End Home Bar-->
+                    <!--Start Tweet New Section-->
+                    <div class="new-tweet">
+                        <a href=""><img src="../assets/svg/ui-user-profile.svg" class="profile-circle-img" alt=""></a>
+                        <form action="" class="create-tweet">
+                            <button type="button" class="publicity" id="publicity">Everyone <i
+                                    class="material-icons-outlined">expand_more</i></button>
+
+                            <div class="publicity-choices none" id="publicity-choices-js">
+                                <h2>Choose audience</h2>
+                                <div class="publicity-choices__item" id="public-choice">
+                                    <div class="publicity-choices__item-label">
+                                        <i class="material-icons-outlined">public</i>
+                                        <span>Everyone</span>
+                                    </div>
+                                    <i class="material-icons-outlined" id="public-check">check</i>
+                                </div>
+                                <div class="publicity-choices__item" id="private-choice">
+                                    <div class="publicity-choices__item-label">
+                                        <i class="material-icons-outlined">diversity_1</i>
+                                        <span>Followers</span>
+                                    </div>
+                                    <i class="material-icons-outlined none" id="private-check">check</i>
+                                </div>
+                                <input type="hidden" name="privacy" id="privacy" value="1">
+                            </div>
+                            <textarea class="tweet-text" name="tweet-text" id="tweet-text" type="text"
+                                placeholder="Whats's happening?"></textarea>
+                            <div class="new-tweet-actions">
+                                <input type="file" name="tweet-img" id="tweet-img-input" class="tweet-img-input">
+                                <i class="material-icons-outlined blue-icons-hovered" id="trigger-img">image</i>
+                                <button type="submit" class="btn new-tweet-btn">Tweet</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--End Tweet New Section-->
+                    <!--Start Feed Tweet-->
+
+                    <div id="feed-container">
+
+                        <!-- TWEET  -->
+                        
+
+
+                        <!-- END OF TWEETS FEED -->
+
+                    </div>
+
+                    <!--End Feed Tweet-->
+                </div>
+                <!--Start Right Side Bar-->
+                <div class="right-side-explore">
+                    <!--Start Search Bar-->
+                    <div class="search-bar">
+                        <div class="search">
+                            <i class="material-icons-outlined">search</i>
+                            <form action="" class="form-search">
+                                <input type="text" name="search" placeholder="Search Twitter">
+                            </form>
+                        </div>
+                    </div>
+                    <!--End Search Bar-->
+                    <!--Start Who to Follow Section-->
+                    <div class="people-follow none">
+                        <h2 class="title">Who To Follow</h2>
+
+                        <!-- PRFILES TO FOLLOW WILL BE RENDERED HERE -->
+
+                    </div>
+                    <!--End Who to Follow Section-->
+                </div>
+                <!--End Right Side Bar-->
+            </div>
+            <!--End Main Feed-->
+        </main>
+        <!-- End Main Content -->
+    </div>
+    <script src="../assets/javascript/api_services/api.js"></script>
+    <script src="../assets/javascript/api_services/auth.js"></script>
+    <script src="../assets/javascript/home.js"></script>
+    <script src="../assets/javascript/api_services/tweets.js"></script>
+</body>
+
+</html>
