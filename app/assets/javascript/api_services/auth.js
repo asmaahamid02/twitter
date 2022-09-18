@@ -89,6 +89,11 @@ const authorizeUser = () => {
     window.location.href != base_url + '/app/views/index.html'
   ) {
     changePage('index.html')
+  } else if (
+    localStorage.getItem('user') &&
+    window.location.href == base_url + '/app/views/index.html'
+  ) {
+    changePage('home.html')
   }
 }
 

@@ -35,8 +35,7 @@ if (isset($_POST['user_id']) && isset($_POST['other_id'])) {
         $insert_sql = "INSERT INTO `blocks` (`user_id`, `blocked_user_id`, `created_at`, `updated_at`) VALUES (?,?,?,?)";
         $insert_query = $connection->prepare($insert_sql);
         $insert_query->bind_param("iiss", $user_id, $other_id, $created_at, $updated_at);
-        $insert_query->execute();
-        $result = $insert_query->get_result();
+        $result = $insert_query->execute();
         $insert_query->close();
     }
     if ($result) {

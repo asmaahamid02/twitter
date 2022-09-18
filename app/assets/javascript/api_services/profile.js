@@ -66,6 +66,9 @@ const edit_profile = (data_obj) => {
         console.log(data)
         if (data.success) {
           console.log(data.success)
+          setTimeout(() => {
+            lwindow.location.href = window.location.href
+          }, 700)
         } else {
           console.log(data.error ? data.error : data.empty)
         }
