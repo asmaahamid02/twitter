@@ -56,6 +56,9 @@ default_profile_bg_btn.addEventListener('change', function () {
   }
 })
 
+let url = window.location.href
+let params = new URL(url).searchParams
+let id_param = params.get('id')
 // CREATING NEW TWEET
 
 function createTweet(
@@ -157,12 +160,12 @@ function createTweet(
       user_id: user_id,
       tweet_id: tweet_id,
     }
+    console.log(data_obj)
     fetch_api(api + 'like_tweet.php', data_obj)
       .then((data) => {
         if (data.success) {
-          likes_span.textContent = data.success
-
           console.log(data.success)
+          likes_span.innerHTML = data.success
         } else {
           console.log(data.error ? data.error : data.empty)
         }
@@ -176,7 +179,7 @@ let user_id = JSON.parse(localStorage.getItem('user')).id
 
 function displayLoop(num) {
   for (let i = 0; i < num; i++) {
-    fetch(`${api}get_user_tweets.php?id=${user_id}`)
+    fetch(`${api}get_user_tweets.php?id=${id_param}`)
       .then((res) => res.json())
       .then((data) =>
         createTweet(
@@ -226,13 +229,16 @@ function filterDate(tweet_created_at) {
 
 // Fetching user's profile data
 window.addEventListener('load', () => {
-  console.log('ssss')
-  fetch(`${api}get_user_data.php?id=${user_id}`)
+  fetch(`${api}get_user_data.php?id=${id_param}`)
     .then((res) => res.json())
     .then((data) => {
-      if (user_id == data.uid) {
+      console.log(data.uid)
+      if (user_id == id_param) {
         document.querySelector('#fol-btn').style.display = 'none'
         document.querySelector('#blk-btn').style.display = 'none'
+      } else {
+        document.querySelector('#fol-btn').style.display = 'block'
+        document.querySelector('#blk-btn').style.display = 'block'
       }
       renderUserData(
         data.cover_image_path,
@@ -307,3 +313,22 @@ function renderUserData(
     biography.style.display = 'none'
   }
 }
+const fol_btn = document.getElementById('fol-btn')
+
+fol_btn.addEventListener('click', () => {
+  let data_obj = {
+    user_id: user_id,
+    other_id: user_id,
+  }
+  fetch_api(api + 'follow_user.php', data_obj)
+    .then((data) => {
+      if (data.success) {
+        fol_btn.textContent = data.success
+
+        console.log(data.success)
+      } else {
+        console.log(data.error ? data.error : data.empty)
+      }
+    })
+    .catch((error) => console.log(error))
+})
