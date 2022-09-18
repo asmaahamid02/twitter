@@ -66,6 +66,7 @@ if (isset($_POST['full_name']) && isset($_POST['email']) && isset($_POST['date_o
         if ($result_insert) {
             $message['success'] = 'Registered Successfully!';
             $message['user_data'] = [
+                'id' => $connection->insert_id,
                 'username' => $username,
                 'email' => $email,
                 'password' => $hashed_pass,
