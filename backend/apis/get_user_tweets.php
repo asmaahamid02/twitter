@@ -9,10 +9,12 @@ if (isset($_GET['id'])) {
     $user_id = $_GET['id'];
 
     $sql =
-        "SELECT t.*, u.name, u.username, p.profile_image_path FROM tweets AS t
+        "SELECT main.*, l.likes FROM(SELECT t.*, u.name, u.username, p.profile_image_path FROM tweets AS t
         INNER JOIN users u ON u.id = t.user_id
         LEFT JOIN profiles p ON p.id = u.profile_id
-        WHERE u.id = ? ORDER BY t.created_at desc";
+        WHERE u.id = ?) as main 
+        LEFT JOIN (SELECT tweet_id, count(id) likes FROM likes GROUP BY tweet_id)  l ON main.id = l.tweet_id
+        ORDER BY main.created_at desc";
 
     $query = $connection->prepare($sql);
     $query->bind_param("i", $user_id);

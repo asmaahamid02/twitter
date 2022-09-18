@@ -59,6 +59,7 @@ default_profile_bg_btn.addEventListener('change', function () {
 // CREATING NEW TWEET
 
 function createTweet(
+  tweet_id,
   tweet,
   tweet_picture,
   tweet_created_at,
@@ -117,7 +118,7 @@ function createTweet(
 
   // INSERT DATA
   if (profile_image_path) {
-    profile_circle_img.src = `../../${profile_image_path}`
+    profile_circle_img.src = `../${profile_image_path}`
   } else {
     profile_circle_img.src = '../assets/svg/ui-user-profile.svg'
   }
@@ -132,7 +133,7 @@ function createTweet(
     '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>'
   tweet_body_text.innerHTML = tweet
   // tweet_img.src = tweet_picture;
-  tweet_img.src = `../../${tweet_picture}`
+  tweet_img.src = `../${tweet_picture}`
   icon_item.innerHTML =
     '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>'
   likes_span.innerHTML = likes ? likes : 0
@@ -150,17 +151,36 @@ function createTweet(
   }
   tweet_icons.append(icon_item)
   icon_item.append(likes_span)
+
+  icon_item.addEventListener('click', () => {
+    let data_obj = {
+      user_id: user_id,
+      tweet_id: tweet_id,
+    }
+    fetch_api(api + 'like_tweet.php', data_obj)
+      .then((data) => {
+        if (data.success) {
+          likes_span.textContent = data.success
+
+          console.log(data.success)
+        } else {
+          console.log(data.error ? data.error : data.empty)
+        }
+      })
+      .catch((error) => console.log(error))
+  })
 }
 
 // FETCH TWEETS DATA
-let id = 1
+let user_id = JSON.parse(localStorage.getItem('user')).id
 
 function displayLoop(num) {
   for (let i = 0; i < num; i++) {
-    fetch(`${api}get_user_tweets.php?id=${id}`)
+    fetch(`${api}get_user_tweets.php?id=${user_id}`)
       .then((res) => res.json())
       .then((data) =>
         createTweet(
+          data[i].id,
           data[i].tweet,
           data[i].tweet_picture,
           data[i].created_at,
@@ -173,7 +193,7 @@ function displayLoop(num) {
   }
 }
 // fetching tweets count seperately
-fetch(`${api}get_user_tweets.php?id=${id}`)
+fetch(`${api}get_user_tweets.php?id=${user_id}`)
   .then((res) => res.json())
   .then((data) => displayLoop(data.length))
 
@@ -202,15 +222,18 @@ function filterDate(tweet_created_at) {
   } else {
     return `${date} ${time}`
   }
-  return `${date} ${time}`
 }
 
 // Fetching user's profile data
 window.addEventListener('load', () => {
-  fetch(`${api}get_user_data.php?id=${id}`)
+  console.log('ssss')
+  fetch(`${api}get_user_data.php?id=${user_id}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      if (user_id == data.uid) {
+        document.querySelector('#fol-btn').style.display = 'none'
+        document.querySelector('#blk-btn').style.display = 'none'
+      }
       renderUserData(
         data.cover_image_path,
         data.profile_image_path,
@@ -218,8 +241,8 @@ window.addEventListener('load', () => {
         data.username,
         data.location,
         data.registered_at,
-        data.follwing,
-        data.follwers,
+        // data.follwing,
+        // data.follwers,
         data.Biography
       )
     })
@@ -232,8 +255,8 @@ function renderUserData(
   fetched_username,
   fetched_location,
   fetched_registered_at,
-  fetched_follwing,
-  fetched_follwers,
+  // fetched_follwing,
+  // fetched_follwers,
   fetched_biography
 ) {
   const bg_img = document.getElementById('bg-img')
@@ -247,7 +270,7 @@ function renderUserData(
   const biography = document.getElementById('biography')
 
   // removing time(hour & minute) from date
-  // fetched_registered_at = fetched_registered_at.split(' ', 10)
+  fetched_registered_at = fetched_registered_at.slice(' ', 10)
   // Inserting data
   if (cover_image_path) {
     bg_img.src = `../${cover_image_path}`
@@ -258,16 +281,29 @@ function renderUserData(
 
   name.innerText = fetched_name
   username.innerText = `@${fetched_username}`
-  joined_date.innerText = fetched_registered_at
-  if (fetched_location) {
-    location.innerHTML = `<i class="material-icons-outlined  location-icon">location_on</i>${fetched_location}`
+
+  if (fetched_registered_at) {
+    joined_date.innerText = fetched_registered_at
+  } else {
+    document.querySelector('.calendar-icon').style.display = 'none'
+    joined_date.style.display = 'none'
   }
 
-  if (fetched_follwing) {
-    follwing.innerText = fetched_follwing
+  if (fetched_location) {
+    location.innerHTML = `<i class="material-icons-outlined  location-icon">location_on</i>${fetched_location}`
+  } else {
+    location.style.display = 'none'
   }
-  if (fetched_follwers) {
-    follwers.innerText = fetched_follwers
+
+  // if (fetched_follwing) {
+  //   follwing.innerText = fetched_follwing
+  // }
+  // if (fetched_follwers) {
+  //   follwers.innerText = fetched_follwers
+  //}
+  if (biography) {
+    biography.innerText = fetched_biography
+  } else {
+    biography.style.display = 'none'
   }
-  biography.innerText = fetched_biography
 }

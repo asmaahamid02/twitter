@@ -348,18 +348,14 @@ window.addEventListener('load', () => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data)
-      renderUserDataM(data.profile_image_path, data.name, data.username)
+      const profile_img = document.getElementById('sub-profile-img')
+      const name = document.getElementById('sub-profile-name')
+      const username = document.getElementById('sub-profile-username')
+
+      if (data.profile_image_path) {
+        profile_img.src = `../${data.profile_image_path}`
+      }
+      name.innerText = data.name
+      username.innerText = `@${data.username}`
     })
 })
-
-function renderUserDataM(profile_image_path, fetched_name, fetched_username) {
-  const profile_img = document.getElementById('sub-profile-img')
-  const name = document.getElementById('sub-profile-name')
-  const username = document.getElementById('sub-profile-username')
-
-  if (profile_image_path) {
-    profile_img.src = `../${profile_image_path}`
-  }
-  name.innerText = fetched_name
-  username.innerText = `@${fetched_username}`
-}
