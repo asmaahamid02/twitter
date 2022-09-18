@@ -63,6 +63,8 @@ body {
 .calendar-icon,
 .location-icon{
     transform: scale(.7);
+    position: relative;
+    top: 6px;
 }
 
 .profile-text span{
@@ -88,9 +90,9 @@ body {
         margin-top: -22px;
     }
     .calendar-icon,
-.location-icon{
-    transform: scale(.6);
-}
+    .location-icon{
+        transform: scale(.6);
+    }
 }
 
 .profile-btns button {
