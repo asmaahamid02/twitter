@@ -11,12 +11,6 @@ trigger_img.addEventListener('click', () => {
   tweet_img.click()
 })
 
-const convert_image_to_base64 = (file) => {
-  const reader = new FileReader()
-  reader.readAsDataURL(file)
-  return reader
-}
-
 const create_tweet = (data_obj) => {
   let base64URL = ''
 
