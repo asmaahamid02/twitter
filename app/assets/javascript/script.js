@@ -239,7 +239,10 @@ function renderUserData(cover_image_path, profile_image_path, fetched_name, fetc
   name.innerHTML = `${fetched_name}`;
   username.innerText = `@${fetched_username}`;
   joined_date.innerText = fetched_registered_at;
-  location.innerText = fetched_location;
+  if(fetched_location){
+      location.innerHTML = `<i class="material-icons-outlined  location-icon">location_on</i>${fetched_location}`;
+  }
+
   if(fetched_follwing){
       follwing.innerText = fetched_follwing;
 
