@@ -212,7 +212,6 @@ window.addEventListener('load', ()=>{
   // console.log(data)
   renderUserData(data.cover_image_path, data.profile_image_path, data.name, data.username,data.location, data.registered_at, data.follwing, data.follwers, data.Biography)
   )
-
 });
 
 function renderUserData(cover_image_path, profile_image_path, fetched_name, fetched_username,fetched_location, fetched_registered_at, fetched_follwing, fetched_follwers, fetched_biography){
@@ -236,7 +235,7 @@ function renderUserData(cover_image_path, profile_image_path, fetched_name, fetc
       profile_img.src = profile_image_path;
   }
 
-  name.innerHTML = `${fetched_name}`;
+  name.innerText = fetched_name;
   username.innerText = `@${fetched_username}`;
   joined_date.innerText = fetched_registered_at;
   if(fetched_location){

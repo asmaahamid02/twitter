@@ -35,13 +35,22 @@ body {
 .profile-bg-img {
     width: 100%;
     height: 20vh;
-    background: var(--twitter-blue);
+    
+}
+
+.profile-bg-img:nth-child(1),
+.profile-img:nth-child(2){
+background: var(--twitter-blue);
+}
+
+.profile-bg-img:nth-child(2),
+.profile-img {
+    background: rgb(250, 250, 250);
 }
 
 .profile-img {
     width: 14vh;
     height: 14vh;
-    background: var(--twitter-blue);
     border-radius: 50%;
     margin: -10vh 0 0 5%;
     border: 3px solid white;
@@ -64,7 +73,7 @@ body {
 .location-icon{
     transform: scale(.7);
     position: relative;
-    top: 6px;
+    top: 5px;
 }
 
 .profile-text span{

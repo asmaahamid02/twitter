@@ -277,22 +277,51 @@ function createProfileToFollow(name, username, profile_img){
   follow_cont_img.append(profile_circle_img);
   follow_details.append(name_link, username_span);
   btn_cont.append(follow_btn);
-
 }
 
 // FETCHING DATA
 
-// fetching users 
-
-  fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id+1}`)
+  function profilesToFollowLoop(num){
+    for (let i = 0; i < num; i++) {
+  fetch(`${api}get_random_users.php?id=${id}`)
   .then((res) => res.json())
   .then((data) => 
-    createProfileToFollow(data.name, data.username, data.profile_image_path)
-  );
+      createProfileToFollow(data[i].name,
+                            data[i].username,
+                            data[i].profile_image_path)
+      );
+    };
+  };
 
-    fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id+2}`)
+// fetching users count
+
+    fetch(`${api}get_random_users.php?id=${id}`)
   .then((res) => res.json())
   .then((data) => 
-    createProfileToFollow(data.name, data.username, data.profile_image_path)
+    profilesToFollowLoop(data.length)
   );
 
+// implementing sub profile
+// Fetching user's profile data
+window.addEventListener('load', ()=>{
+
+  fetch(`${api}get_user_data.php?id=${id}`)
+  .then((res) => res.json())
+  .then((data) => 
+  renderUserData(data.profile_image_path, data.name, data.username)
+  )
+});
+
+
+function renderUserData(profile_image_path, fetched_name, fetched_username){
+
+  const profile_img = document.getElementById('sub-profile-img');
+  const name = document.getElementById('sub-profile-name');
+  const username = document.getElementById('sub-profile-username');
+
+  if(profile_image_path){
+    profile_img.src = profile_image_path;
+  }
+  name.innerText = fetched_name;
+  username.innerText = `@${fetched_username}`;
+}
