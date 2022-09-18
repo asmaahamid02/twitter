@@ -165,7 +165,7 @@ function createTweet(
   user_details.append(tweet_username)
   tweet_body.append(tweet_body_text, tweet_image)
   // checking wether there is a picture before appending it
-  if (tweet_picture) {
+  if (tweet_picture != null) {
     tweet_image.append(tweet_img)
 
   }
