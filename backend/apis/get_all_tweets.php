@@ -8,7 +8,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 if (isset($_GET['id'])) {
     $user_id = $_GET['id'];
     $sql =
-        "SELECT * FROM(
+        "SELECT main.*, l.likes FROM(
             SELECT t.*, u.name, u.username, p.profile_image_path FROM tweets AS t
             INNER JOIN users u ON u.id = t.user_id
             LEFT JOIN users_profiles p ON p.id = u.profile_id
@@ -20,6 +20,7 @@ if (isset($_GET['id'])) {
             LEFT JOIN users_profiles p ON p.id = u.profile_id
             WHERE f.user_id = ? -- and is_public = 1
         ) as main 
+        LEFT JOIN (SELECT tweet_id, count(id) likes FROM tweets_likes GROUP BY tweet_id)  l ON main.id = l.tweet_id
         ORDER BY  main.created_at DESC, main.id DESC";
 
     $query = $connection->prepare($sql);
@@ -30,14 +31,14 @@ if (isset($_GET['id'])) {
 
     $response['num'] = $array->num_rows;
 
-    if($array->num_rows >0){
+    if ($array->num_rows > 0) {
         while ($i = $array->fetch_assoc()) {
             $response['tweets_info'][] = $i;
         }
-    }else{
+    } else {
         $response['empty'] = "No Data Found";
     }
-    
+
     $query->close();
 }
 
