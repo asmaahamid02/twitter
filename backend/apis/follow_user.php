@@ -26,8 +26,10 @@ if (isset($_POST['user_id']) && isset($_POST['other_id'])) {
         $row = $follow_result->fetch_assoc();
         if ($row['is_deleted'] == 1) {
             $update_follow = "UPDATE `friends`  SET `is_deleted` = 0, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
+            $is_follow = 'Follow';
         } else {
             $update_follow = "UPDATE `friends`  SET `is_deleted` = 1, `updated_at` = '" . $updated_at . "'  WHERE id = " . $row['id'];
+            $is_follow = 'Unfollow';
         }
         $result = $connection->query($update_follow);
     } else {
@@ -35,12 +37,12 @@ if (isset($_POST['user_id']) && isset($_POST['other_id'])) {
         $insert_sql = "INSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (?,?,?,?)";
         $insert_query = $connection->prepare($insert_sql);
         $insert_query->bind_param("iiss", $user_id, $other_id, $created_at, $updated_at);
-        $insert_query->execute();
-        $result = $insert_query->get_result();
+        $result = $insert_query->execute();
         $insert_query->close();
+        $is_follow = 'Unfollow';
     }
     if ($result) {
-        $response['success'] = true;
+        $response['success'] = $is_follow;
     } else {
         $response['error'] = 'Something wenrt wrong, Try again!';
     }

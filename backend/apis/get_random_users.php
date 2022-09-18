@@ -11,9 +11,9 @@ if (isset($_GET['id'])) {
     $sql =
         "SELECT u.id, u.name, u.username, p.profile_image_path FROM users u
         LEFT JOIN profiles p ON p.id = u.profile_id
-        LEFT JOIN friends f ON (f.user_id = u.id OR f.friend_id = u.id) AND f.is_deleted = 0
-        LEFT JOIN blocks b ON (b.user_id = u.id OR b.blocked_user_id = u.id) AND b.is_deleted = 0 
-        WHERE u.id != ? AND (f.user_id != ? OR f.user_id IS NULL) AND ((b.user_id != ? AND b.blocked_user_id!=?) OR b.user_id IS NULL) 
+        LEFT JOIN friends f ON (f.user_id = u.id OR f.friend_id = u.id)
+        LEFT JOIN blocks b ON (b.user_id = u.id OR b.blocked_user_id = u.id) 
+        WHERE u.id != ? AND (f.user_id != ? or f.user_id is null)  and (b.user_id != ? or b.user_id is null) and (b.blocked_user_id != ?  or b.blocked_user_id is null) 
         ORDER BY rand()
         LIMIT 6
         ";

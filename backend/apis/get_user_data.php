@@ -8,7 +8,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $sql = "SELECT u.`id`, u.`name`, u.`username`, u.`email`, u.`created_at` registered_at, p.* FROM `users` u LEFT JOIN `profiles` p ON u.`profile_id`= p.`id` WHERE u.`id` = ?";
+    $sql = "SELECT u.`id` as uid, u.`name`, u.`username`, u.`email`, u.`created_at` registered_at, p.* FROM `users` u LEFT JOIN `profiles` p ON u.`profile_id`= p.`id` WHERE u.`id` = ?";
     $query = $connection->prepare($sql);
     $query->bind_param("i", $id);
     $query->execute();
@@ -25,7 +25,6 @@ if (isset($_GET['id'])) {
 
     $query->close();
 }
-
 
 echo json_encode($response);
 

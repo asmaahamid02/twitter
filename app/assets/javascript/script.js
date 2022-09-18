@@ -56,15 +56,21 @@ default_profile_bg_btn.addEventListener('change', function () {
   }
 })
 
+let url = window.location.href
+let params = new URL(url).searchParams
+let id_param = params.get('id')
 // CREATING NEW TWEET
 
 function createTweet(
+  tweet_id,
   tweet,
   tweet_picture,
   tweet_created_at,
   name,
   username,
-  profile_image_path
+  profile_image_path,
+  likes,
+  tweeter_id
 ) {
   // feed container
   let feed_container = document.getElementById('feed-container')
@@ -90,8 +96,8 @@ function createTweet(
   tweet_date.classList.add('tweet-date')
 
   let blue_icons_hovered = document.createElement('i')
-  blue_icons_hovered.classList.add('blue_icons_hovered')
   blue_icons_hovered.classList.add('material-icons-outlined')
+  blue_icons_hovered.classList.add('blue_icons_hovered')
 
   let tweet_body = document.createElement('div')
   tweet_body.classList.add('tweet-body')
@@ -115,12 +121,13 @@ function createTweet(
   let likes_span = document.createElement('span')
 
   // INSERT DATA
-  if(profile_image_path){
-    profile_circle_img.src = profile_image_path;
-  }else{
+  if (profile_image_path) {
+    profile_circle_img.src = `../${profile_image_path}`
+  } else {
     profile_circle_img.src = '../assets/svg/ui-user-profile.svg'
   }
   user_details.innerHTML = name
+  user_details.href = `${base_url}/app/views/profile.html?id=${tweeter_id}`
   tweet_username.innerHTML = `@${username}`
   if (tweet_created_at) {
     tweet_date.innerHTML = filterDate(tweet_created_at)
@@ -131,10 +138,10 @@ function createTweet(
     '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>'
   tweet_body_text.innerHTML = tweet
   // tweet_img.src = tweet_picture;
-  tweet_img.src = tweet_picture
+  tweet_img.src = `../${tweet_picture}`
   icon_item.innerHTML =
     '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>'
-  likes_span.innerHTML = '420k'
+  likes_span.innerHTML = likes ? likes : 0
 
   // APPENDING ELEMENTS INSIDE EACH OTHER
   feed_container.append(feed_tweet)
@@ -149,29 +156,50 @@ function createTweet(
   }
   tweet_icons.append(icon_item)
   icon_item.append(likes_span)
+
+  icon_item.addEventListener('click', () => {
+    let data_obj = {
+      user_id: user_id,
+      tweet_id: tweet_id,
+    }
+    console.log(data_obj)
+    fetch_api(api + 'like_tweet.php', data_obj)
+      .then((data) => {
+        if (data.success) {
+          console.log(data.success)
+          likes_span.innerHTML = data.success
+        } else {
+          console.log(data.error ? data.error : data.empty)
+        }
+      })
+      .catch((error) => console.log(error))
+  })
 }
 
 // FETCH TWEETS DATA
-let id = 1
+let user_id = JSON.parse(localStorage.getItem('user')).id
 
 function displayLoop(num) {
   for (let i = 0; i < num; i++) {
-    fetch(`${api}get_user_tweets.php?id=${id}`)
+    fetch(`${api}get_user_tweets.php?id=${id_param}`)
       .then((res) => res.json())
-      .then((data) =>
+      .then((data) => {
         createTweet(
+          data[i].id,
           data[i].tweet,
           data[i].tweet_picture,
           data[i].created_at,
           data[i].name,
           data[i].username,
-          data[i].profile_image_path
+          data[i].profile_image_path,
+          data[i].likes,
+          data[i].user_id
         )
-      )
+      })
   }
 }
 // fetching tweets count seperately
-fetch(`${api}get_user_tweets.php?id=${id}`)
+fetch(`${api}get_user_tweets.php?id=${user_id}`)
   .then((res) => res.json())
   .then((data) => displayLoop(data.length))
 
@@ -200,57 +228,112 @@ function filterDate(tweet_created_at) {
   } else {
     return `${date} ${time}`
   }
-  return `${date} ${time}`
 }
 
 // Fetching user's profile data
-window.addEventListener('load', ()=>{
+window.addEventListener('load', () => {
+  fetch(`${api}get_user_data.php?id=${id_param}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data.uid)
+      if (user_id == id_param) {
+        document.querySelector('#fol-btn').style.display = 'none'
+        document.querySelector('#blk-btn').style.display = 'none'
+      } else {
+        document.querySelector('#fol-btn').style.display = 'block'
+        document.querySelector('#blk-btn').style.display = 'block'
+      }
+      renderUserData(
+        data.cover_image_path,
+        data.profile_image_path,
+        data.name,
+        data.username,
+        data.location,
+        data.registered_at,
+        // data.follwing,
+        // data.follwers,
+        data.Biography
+      )
+    })
+})
 
-  fetch(`${api}get_user_data.php?id=${id}`)
-  .then((res) => res.json())
-  .then((data) => 
-  // console.log(data)
-  renderUserData(data.cover_image_path, data.profile_image_path, data.name, data.username,data.location, data.registered_at, data.follwing, data.follwers, data.Biography)
-  )
-});
-
-function renderUserData(cover_image_path, profile_image_path, fetched_name, fetched_username,fetched_location, fetched_registered_at, fetched_follwing, fetched_follwers, fetched_biography){
-  const bg_img = document.getElementById('bg-img');
-  const profile_img = document.getElementById('profile-img');
-  const name = document.getElementById('name');
-  const username = document.getElementById('username');
-  const location = document.getElementById('location');
-  const joined_date = document.getElementById('joined-date');
-  const follwing = document.getElementById('follwing');
-  const follwers = document.getElementById('follwers');
-  const biography = document.getElementById('biography');
+function renderUserData(
+  cover_image_path,
+  profile_image_path,
+  fetched_name,
+  fetched_username,
+  fetched_location,
+  fetched_registered_at,
+  // fetched_follwing,
+  // fetched_follwers,
+  fetched_biography
+) {
+  const bg_img = document.getElementById('bg-img')
+  const profile_img = document.getElementById('profile-img')
+  const name = document.getElementById('name')
+  const username = document.getElementById('username')
+  const location = document.getElementById('location')
+  const joined_date = document.getElementById('joined-date')
+  const follwing = document.getElementById('follwing')
+  const follwers = document.getElementById('follwers')
+  const biography = document.getElementById('biography')
 
   // removing time(hour & minute) from date
-  fetched_registered_at = fetched_registered_at.slice(' ', 10);
+  fetched_registered_at = fetched_registered_at.slice(' ', 10)
   // Inserting data
-  if(cover_image_path){
-    bg_img.src = cover_image_path;
+  if (cover_image_path) {
+    bg_img.src = `../${cover_image_path}`
   }
-    if(profile_image_path){
-      profile_img.src = profile_image_path;
-  }
-
-  name.innerText = fetched_name;
-  username.innerText = `@${fetched_username}`;
-  joined_date.innerText = fetched_registered_at;
-  if(fetched_location){
-      location.innerHTML = `<i class="material-icons-outlined  location-icon">location_on</i>${fetched_location}`;
+  if (profile_image_path) {
+    profile_img.src = `../${profile_image_path}`
   }
 
-  if(fetched_follwing){
-      follwing.innerText = fetched_follwing;
+  name.innerText = fetched_name
+  username.innerText = `@${fetched_username}`
 
+  if (fetched_registered_at) {
+    joined_date.innerText = fetched_registered_at
+  } else {
+    document.querySelector('.calendar-icon').style.display = 'none'
+    joined_date.style.display = 'none'
   }
-    if(fetched_follwers){
-      follwers.innerText = fetched_follwers;
-  }
-  biography.innerText = fetched_biography;
 
+  if (fetched_location) {
+    location.innerHTML = `<i class="material-icons-outlined  location-icon">location_on</i>${fetched_location}`
+  } else {
+    location.style.display = 'none'
+  }
+
+  // if (fetched_follwing) {
+  //   follwing.innerText = fetched_follwing
+  // }
+  // if (fetched_follwers) {
+  //   follwers.innerText = fetched_follwers
+  //}
+  if (biography) {
+    biography.innerText = fetched_biography
+  } else {
+    biography.style.display = 'none'
+  }
+}
+const fol_btn = document.getElementById('fol-btn')
+
+fol_btn.addEventListener('click', () => {
+  let data_obj = {
+    user_id: user_id,
+    other_id: user_id,
+  }
+  fetch_api(api + 'follow_user.php', data_obj)
+    .then((data) => {
+      if (data.success) {
+        fol_btn.textContent = data.success
+        console.log(data.success)
+      } else {
+        console.log(data.error ? data.error : data.empty)
+      }
+    })
+    .catch((error) => console.log(error))
+})
 }
 
 
