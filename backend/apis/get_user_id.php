@@ -19,7 +19,7 @@ if (isset($_POST['username'])) {
 
     if ($array->num_rows > 0) {
         $row = $array->fetch_assoc();
-        $response['id'] = $row['id'];
+        $response['success'] = $row['id'];
     } else {
         $response['empty'] = "No Data Found";
     }

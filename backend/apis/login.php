@@ -22,6 +22,7 @@ if (isset($_POST['password']) && isset($_POST['email_username'])) {
         $row = $result->fetch_assoc();
         $message['success'] = 'LogedIn Successfully!';
         $message['user_data'] = [
+            'id' => $row['id'],
             'username' => $row['username'],
             'email' => $row['email'],
             'password' => $row['password'],

@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile | Twitter</title>
-    <link rel="stylesheet" href="/app/assets/css/styles.css">
-    <link rel="stylesheet" href="/app/assets/css/profile.css">
-    <link rel="icon" type="image/x-icon" href="/app/assets/images/twitter-logo.png">
-        <!-- Icon Materials -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-            rel="stylesheet">
-        
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/twitter-logo.png">
+    <!-- Icon Materials -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -29,9 +29,9 @@
         <!-- PROFILE -->
         <div class="profile">
 
-            <img src="/app/assets/svg/ui-user-profile.svg" alt="" class="profile-bg-img">
+            <img src="../assets/svg/ui-user-profile.svg" alt="" class="profile-bg-img">
 
-            <img src="/app/assets/svg/ui-user-profile.svg" alt="" class="profile-img">
+            <img src="../assets/svg/ui-user-profile.svg" alt="" class="profile-img">
 
             <div class="profile-info">
 
@@ -51,34 +51,34 @@
 
             </div>
             <hr>
-            
+
             <!-- <h1> X No Tweets :(</h1> -->
-        
+
             <!--Start Feed Tweet-->
             <div id="feed-container">
-            
+
                 <!-- TWEETS WILL BE RENDERED HERE  -->
-                
-            <!--End Feed Tweet-->
+
+                <!--End Feed Tweet-->
             </div>
 
-        <!-- inner(profile) tweet button -->
-        <!-- <button class="add-tweet">+</button> -->
+            <!-- inner(profile) tweet button -->
+            <!-- <button class="add-tweet">+</button> -->
 
-        <div class="footer">
+            <div class="footer">
 
-            <a href="home.html"><i class="material-icons-outlined">home</i></a> 
-        
-            <a href="#"><i class="material-icons-outlined">search</i></a>
-        
-            <a href="#"><i class="material-icons-outlined">person</i></a>
-        
-            <a href="index.html"><i class="material-icons-outlined">logout</i></a>
-        
-        </div>
-    
+                <a href="home.html"><i class="material-icons-outlined">home</i></a>
+
+                <a href="#"><i class="material-icons-outlined">search</i></a>
+
+                <a href="#"><i class="material-icons-outlined">person</i></a>
+
+                <a href="index.html"><i class="material-icons-outlined">logout</i></a>
+
+            </div>
+
     </section>
-    
+
     <!-- EDIT PROFILE -->
 
     </section>
@@ -89,19 +89,19 @@
 
         <!-- form header -->
         <div class="edit-profile-header">
-            <img src="/app/assets/svg/x-lg.svg" alt="" id="close-profile-edit" >
+            <img src="../assets/svg/x-lg.svg" alt="" id="close-profile-edit">
             <h4>Edit profile</h4>
             <button class="profile-save-btn">Save</button>
         </div>
 
         <!-- form body -->
         <!-- profile background | show only -->
-        <img src="/app/assets/images/image-add.svg" alt="" class="profile-bg-img" id="new-profile-bg">
+        <img src="../assets/images/image-add.svg" alt="" class="profile-bg-img" id="new-profile-bg">
         <!-- profile background | input -->
         <input type="file" name="profile-img" accept="image/*" id="default-profile-bg-btn" hidden>
 
         <!-- profile image | show only -->
-        <img src="/app/assets/images/image-add.svg" alt="" class="profile-img" id="new-profile-img">
+        <img src="../assets/images/image-add.svg" alt="" class="profile-img" id="new-profile-img">
         <!-- profile image | input -->
         <input type="file" name="profile-img" accept="image/*" id="default-profile-img-btn" hidden>
 
@@ -111,10 +111,16 @@
         <p>Biography:</p>
         <textarea name="bio" id="" cols="30" rows="5" placeholder="your bio.."></textarea>
 
-    <!-- End of profile edit form -->
+        <p>Location:</p>
+        <input type="text" name="new_location" placeholder="Location" class="new-name">
+
+        <p>Website:</p>
+        <input type="url" name="new_url" placeholder="Website" class="new-name">
+
+        <!-- End of profile edit form -->
     </form>
 
-<script src="/app/assets/javascript/script.js"></script>
+    <script src="../assets/javascript/script.js"></script>
     </section>
 
 </body>

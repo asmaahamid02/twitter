@@ -53,19 +53,22 @@ if (isset($_POST['full_name']) && isset($_POST['email']) && isset($_POST['date_o
 
         $hashed_pass = hash('sha256', $password);
         $hashed_pass .= 'te27am';
+        $created_at = date('Y-m-d H:i:s');
+        $updated_at = date('Y-m-d H:i:s');
 
         //close statement
         $stmt_count_usernames->close();
 
         //insert new user
-        $sql_insert = "INSERT INTO users (name, username, email,password, birth_date) VALUES (?,?,?,?,?)";
+        $sql_insert = "INSERT INTO users (`name`, `username`, `email`,`password`, birth_date,`created_at`,`updated_at`) VALUES (?,?,?,?,?,?,?)";
         $stmt_insert =  $connection->prepare($sql_insert);
-        $stmt_insert->bind_param('sssss', $full_name, $username, $email, $hashed_pass, $date_of_birth);
+        $stmt_insert->bind_param('sssssss', $full_name, $username, $email, $hashed_pass, $date_of_birth, $created_at, $updated_at);
         $result_insert = $stmt_insert->execute(); // or die($stmt_insert->error);
 
         if ($result_insert) {
             $message['success'] = 'Registered Successfully!';
             $message['user_data'] = [
+                'id' => $connection->insert_id,
                 'username' => $username,
                 'email' => $email,
                 'password' => $hashed_pass,

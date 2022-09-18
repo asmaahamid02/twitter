@@ -13,6 +13,7 @@ const login = () => {
     .then((data) => {
       if (data.success) {
         const user = {
+          id: data.user_data.id,
           username: data.user_data.username,
           email: data.user_data.email,
           password: data.user_data.password,
@@ -53,6 +54,7 @@ const signup = () => {
       // console.log(data)
       if (data.success) {
         const user = {
+          id: data.user_data.id,
           username: data.user_data.username,
           email: data.user_data.email,
           password: data.user_data.password,
@@ -68,6 +70,11 @@ const signup = () => {
     .catch((error) => console.log(error))
 }
 
+const logout = () => {
+  localStorage.removeItem('user')
+  changePage('index.html')
+}
+
 const changePage = (page_name) => {
   setTimeout(() => {
     return (window.location.href = base_url + '/app/views/' + page_name)
@@ -76,6 +83,7 @@ const changePage = (page_name) => {
 
 //if not logged in user ==> return to index
 const authorizeUser = () => {
+  // console.log(window.location.href)
   if (
     !localStorage.getItem('user') &&
     window.location.href != base_url + '/app/views/index.html'
@@ -84,6 +92,15 @@ const authorizeUser = () => {
   }
 }
 
-const get_user_ID = () => {}
+const get_user_ID = (username) => {
+  console.log(username)
+  const user_id = fetch_api(api + 'get_user_id.php', { username: username })
+    .then((data) => data)
+    .catch((error) => console.log(error))
+
+  console.log(user_id)
+
+  return user_id
+}
 
 authorizeUser()
