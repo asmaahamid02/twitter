@@ -282,17 +282,25 @@ function createProfileToFollow(name, username, profile_img){
 
 // FETCHING DATA
 
+  function profilesToFollowLoop(num){
+    for (let i = 0; i < num; i++) {
+  fetch(`${api}get_random_users.php?id=${id}`)
+  .then((res) => res.json())
+  .then((data) => 
+      createProfileToFollow(data[i].name,
+                            data[i].username,
+                            data[i].profile_image_path)
+      );
+    }
+  }
+
 // fetching users 
 
-  fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id+1}`)
+
+
+    fetch(`${api}get_random_users.php?id=${id}`)
   .then((res) => res.json())
   .then((data) => 
-    createProfileToFollow(data.name, data.username, data.profile_image_path)
+    profilesToFollowLoop(data.length)
+    // console.log(data)
   );
-
-    fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id+2}`)
-  .then((res) => res.json())
-  .then((data) => 
-    createProfileToFollow(data.name, data.username, data.profile_image_path)
-  );
-
