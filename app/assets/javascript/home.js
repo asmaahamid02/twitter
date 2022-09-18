@@ -145,7 +145,7 @@ window.addEventListener('load', () => {
     blue_icons_hovered.innerHTML ='<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>';
     tweet_body_text.innerHTML = tweet;
 
-    tweet_img.src = tweet_picture;
+    tweet_img.src = `${tweet_picture}`;
     icon_item.innerHTML = '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>';
 
     // APPENDING ELEMENTS INSIDE EACH OTHER
@@ -154,10 +154,11 @@ window.addEventListener('load', () => {
     tweet_details.append(tweet_account_details, tweet_body, tweet_icons);
     tweet_account_details.append(user_details, tweet_date, blue_icons_hovered);
     user_details.append(tweet_username);
-    tweet_body.append(tweet_body_text, tweet_image);
+    tweet_body.append(tweet_body_text);
     // checking wether there is a picture before appending it
-    if (tweet_picture) {
-      tweet_image.append(tweet_img);
+     tweet_image.append(tweet_img);
+    if (tweet_picture != null) {
+      tweet_body.append(tweet_image);
     }
 
     tweet_icons.append(icon_item, likes_span);
