@@ -130,8 +130,8 @@ function createTweet(
   blue_icons_hovered.innerHTML =
     '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>'
   tweet_body_text.innerHTML = tweet
-  // tweet_img.src = tweet_picture;
-  tweet_img.src = tweet_picture
+  
+  tweet_img.src = ${tweet_picture}`;
   icon_item.innerHTML =
     '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>'
   likes_span.innerHTML = '420k'
@@ -142,10 +142,11 @@ function createTweet(
   tweet_details.append(tweet_account_details, tweet_body, tweet_icons)
   tweet_account_details.append(user_details, tweet_date, blue_icons_hovered)
   user_details.append(tweet_username)
-  tweet_body.append(tweet_body_text, tweet_image)
+  tweet_body.append(tweet_body_text)
   // checking wether there is a picture before appending it
-  if (tweet_picture) {
     tweet_image.append(tweet_img)
+  if (tweet_picture != null) {
+    tweet_body.append(tweet_image)
   }
   tweet_icons.append(icon_item)
   icon_item.append(likes_span)
@@ -161,7 +162,7 @@ function displayLoop(num) {
       .then((data) =>
         createTweet(
           data[i].tweet,
-          data[i].tweet_picture,
+          data[i].picture,
           data[i].created_at,
           data[i].name,
           data[i].username,
