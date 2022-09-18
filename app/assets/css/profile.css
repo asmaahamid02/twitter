@@ -34,7 +34,7 @@ body {
 
 .profile-bg-img {
     width: 100%;
-    height: 20vh;
+    height: 35%;
     
 }
 
@@ -49,16 +49,24 @@ background: var(--twitter-blue);
 }
 
 .profile-img {
-    width: 14vh;
-    height: 14vh;
+    width: 15%;
     border-radius: 50%;
-    margin: -10vh 0 0 5%;
+    margin: -10% 0 0 5%;
     border: 3px solid white;
 }
 
+@media only screen and (max-width: 800px) {
+
+    .profile-img {
+        width: 20%;
+        margin-top: -15%;
+    }
+}
 .profile-info {
     display: flex;
     flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: center;
     height: fit-content;
     margin: 2vh 0 0 5vw;
     width: 90%;
@@ -67,18 +75,25 @@ background: var(--twitter-blue);
 .profile-text {
     font-size: 14px;
     opacity: .8;
+    font-size: 12px;
 }
 
 .calendar-icon,
 .location-icon{
     transform: scale(.7);
     position: relative;
-    top: 5px;
+    top: 8px;
+    left:-2px
+    
 }
 
 .profile-text span{
     font-weight: bolder;
     opacity: 1;
+}
+
+#biography{
+    font-size: 14px;
 }
 
 .profile-btns {
@@ -87,6 +102,18 @@ background: var(--twitter-blue);
     height: 115px;
     transform: scale(.8);
     margin-top: -10px;
+}
+
+@media only screen and (max-width: 510px) {
+
+    .profile-img {
+            width: 20%;
+        }
+    .profile-btns {
+        margin-top: 20px;
+            flex-flow: wrap row;
+            height: fit-content;
+        }
 }
 
 @media only screen and (max-width: 310px) {
@@ -399,6 +426,11 @@ background: var(--twitter-blue);
     margin-top: 15px;
 }
 
+.tweet-icons span {
+    color: #5e6e7b;
+    font-size: 15px;
+}
+
 .icon-item {
     color: #5e6e7b;
     display: flex;
@@ -414,7 +446,7 @@ background: var(--twitter-blue);
 
 .icon-item .pink-icons-hovered {
     margin-right: 0.75rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .icon-item:hover {

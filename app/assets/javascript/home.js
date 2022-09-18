@@ -42,10 +42,10 @@ options.forEach((option) => {
         box.classList.toggle('none')
         showAudienceToggleButton.innerHTML =
           'Followers <i class="material-icons-outlined">expand_more</i>'
-      }
-    }
-  })
-})
+      };
+    };
+  });
+});
 
 window.addEventListener('load', () => {
   //Fill a tags links
@@ -128,6 +128,7 @@ function createTweet(
 
   let likes_span = document.createElement('span')
 
+
   // INSERT DATA
   if (profile_image_path) {
     profile_circle_img.src = `../${profile_image_path}`
@@ -166,6 +167,7 @@ function createTweet(
   // checking wether there is a picture before appending it
   if (tweet_picture) {
     tweet_image.append(tweet_img)
+
   }
   tweet_icons.append(icon_item)
   icon_item.append(likes_span)
@@ -189,6 +191,7 @@ function createTweet(
   })
 }
 
+
 // FETCH TWEETS DATA
 
 function displayLoop(num) {
@@ -210,6 +213,7 @@ function displayLoop(num) {
       )
   }
 }
+
 
 // fetching tweets count seperately
 fetch(`${api}get_all_tweets.php?id=${id}`)
@@ -249,6 +253,7 @@ function createProfileToFollow(user_id, name, username, profile_img) {
 
   let follow_profile = document.createElement('div')
   follow_profile.classList.add('follow-profile')
+
 
   let follow_cont = document.createElement('div')
   follow_cont.classList.add('follow-cont')
@@ -312,6 +317,7 @@ function createProfileToFollow(user_id, name, username, profile_img) {
   follow_details.append(name_link, username_span)
   btn_cont.append(follow_btn)
   people_follow.classList.remove('none')
+
 }
 
 // FETCHING DATA
@@ -359,3 +365,4 @@ window.addEventListener('load', () => {
       username.innerText = `@${data.username}`
     })
 })
+

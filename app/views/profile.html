@@ -39,8 +39,7 @@
                 <div class="profile-text">
 
                     <h4 id="name">Name</h4>
-                    <p id="username">@username</p>
-
+                    <p id="username">@username</p>        
                     <p>
 
                         <span id="location"></span>
@@ -51,11 +50,15 @@
                     </p>
 
                     <p id="foll" style="display:none">
+
+                    <p id="biography">Hello world! I'm on Twitter!!
+                    <p>
                         <span id="follwing">0</span>
                         Following |
                         <span id="follwers">0</span>
                         Followers
                     </p>
+
                 </div>
 
                 <div class="profile-btns">
@@ -63,9 +66,6 @@
                     <Button class="blue-btn" id="blk-btn">Block</Button>
                     <Button class="blue-btn" id="edit-profile">Edit Profile</Button>
                 </div>
-
-                <p id="biography">Hello world! I'm on Twitter!!
-                </p>
 
             </div>
             <hr>
@@ -134,10 +134,12 @@
 
             <p>Website:</p>
             <input type="url" id="new-url" name="new_url" placeholder="Website" class="new-name">
-
             <!-- End of profile edit form -->
         </form>
     </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script src="../assets/javascript/api_services/api.js"></script>
     <script src="../assets/javascript/api_services/auth.js"></script>
     <script src="../assets/javascript/api_services/profile.js"></script>

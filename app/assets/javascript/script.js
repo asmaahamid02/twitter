@@ -327,11 +327,30 @@ fol_btn.addEventListener('click', () => {
     .then((data) => {
       if (data.success) {
         fol_btn.textContent = data.success
-
         console.log(data.success)
       } else {
         console.log(data.error ? data.error : data.empty)
       }
     })
     .catch((error) => console.log(error))
+})
+}
+
+
+// BLOCK FUNCTIONALITY
+const block_btn = document.getElementById('block-btn');
+
+block_btn.addEventListener('click', ()=>{
+
+  block_btn.innerText = 'Unblock';
+
+  $.ajax({
+        url: `${api}block_user.php`,
+        type: 'POST',
+        data: ({ 
+              user_id : id,
+              other_id : other_id
+        })
+    });
+
 })
