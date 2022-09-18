@@ -65,6 +65,7 @@ window.addEventListener('load', () => {
     }
   })
 
+
   // CREATING NEW TWEET
   // window.addEventListener('load', createTweet());
 
@@ -126,14 +127,13 @@ window.addEventListener('load', () => {
 
     let likes_span = document.createElement('span')
 
-    // INSERT DATA
-    if (profile_image_path == '' || profile_image_path == null) {
-      profile_image_path = '../assets/images/profiles/user-blank.png'
-    } else {
-      profile_image_path = `$../../${profile_image_path}`
-    }
-    profile_circle_img.src = profile_image_path
-    user_details.innerHTML = name
+  // INSERT DATA
+  if(profile_image_path){
+    profile_circle_img.src = profile_image_path;
+  }else{
+    profile_circle_img.src = '../assets/svg/ui-user-profile.svg';
+  }
+  user_details.innerHTML = name
     user_details.href = `${base_url}/app/views/profile.html?id=${user_id}`
     tweet_username.innerHTML = `@${username}`
     if (tweet_created_at) {
@@ -146,10 +146,10 @@ window.addEventListener('load', () => {
       '<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>'
     tweet_body_text.innerHTML = tweet
     // tweet_img.src = tweet_picture;
-    if (tweet_picture) {
-      tweet_img.src = `../../${tweet_picture}`
-    }
-
+    //if (tweet_picture) {
+    //  tweet_img.src = `../../${tweet_picture}`
+    //}
+      tweet_img.src = tweet_picture
     icon_item.innerHTML =
       '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>'
     likes_span.innerHTML = likes ? likes : 0
@@ -164,9 +164,9 @@ window.addEventListener('load', () => {
     // checking wether there is a picture before appending it
     if (tweet_picture) {
       tweet_image.append(tweet_img)
-    }
-    tweet_icons.append(icon_item)
+      tweet_icons.append(icon_item)
     icon_item.append(likes_span)
+    }
   }
 
   // FETCH TWEETS DATA
@@ -187,15 +187,16 @@ window.addEventListener('load', () => {
             data.tweets_info[i].user_id,
             data.tweets_info[i].likes
           )
+
         )
     }
   }
 
-  // fetching tweets count seperately
-  fetch(`${api}get_all_tweets.php?id=${id}`)
-    .then((res) => res.json())
-    .then((data) => displayLoop(data.num))
-})
+// fetching tweets count seperately
+fetch(`${api}get_all_tweets.php?id=${id}`)
+  .then((res) => res.json())
+  .then((data) => displayLoop(data.num));
+
 
 // filtering whether to render year/month/day or not
 function filterDate(tweet_created_at) {
@@ -223,3 +224,79 @@ function filterDate(tweet_created_at) {
     return `${date} ${time}`
   }
 }
+// 
+
+
+function createProfileToFollow(name, username, profile_img){
+  let people_follow = document.querySelector('.people-follow');
+
+  let follow_profile = document.createElement('div');
+  follow_profile.classList.add('follow-profile');
+
+  let follow_cont = document.createElement('div');
+  follow_cont.classList.add('follow-cont');
+
+  let follow_cont_img = document.createElement('div');
+  follow_cont_img.classList.add('follow-cont-img');
+
+  let profile_circle_img = document.createElement('img');
+  profile_circle_img.classList.add('profile-circle-img');
+
+  let follow_details = document.createElement('div');
+  follow_details.classList.add('follow-details');
+
+  let name_link = document.createElement('a');
+  name_link.classList.add('dotted-overflow');
+
+  let username_span = document.createElement('span');
+  username_span.classList.add('dotted-overflow');
+
+  let btn_cont = document.createElement('div');
+  btn_cont.classList.add('btn-cont');
+
+  let follow_btn = document.createElement('button');
+  follow_btn.classList.add('follow-btn');
+  follow_btn.classList.add('btn');
+
+  // INSERTING VALUES
+  name_link.innerHTML = name;
+  username_span.innerHTML = username;
+  if(profile_img){
+    profile_circle_img.src= profile_img;
+  }else{
+    profile_circle_img.src= '../assets/svg/ui-user-profile.svg';
+  }
+  
+  follow_btn.innerHTML = 'Follow';
+
+
+  // APPENDING ELEMENTS 
+  people_follow.append(follow_profile);
+  follow_profile.append(follow_cont, btn_cont);
+  follow_cont.append(follow_cont_img,follow_details);
+  follow_cont_img.append(profile_circle_img);
+  follow_details.append(name_link, username_span);
+  btn_cont.append(follow_btn);
+
+}
+
+// window.addEventListener('load', createProfileToFollow());
+
+
+// FETCHING DATA
+
+
+// fetching users count seperately
+
+  fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id+1}`)
+  .then((res) => res.json())
+  .then((data) => 
+    createProfileToFollow(data.name, data.username, data.profile_image_path)
+  );
+
+    fetch(`http://localhost/twitter/backend/apis/get_user_data.php?id=${id+2}`)
+  .then((res) => res.json())
+  .then((data) => 
+    createProfileToFollow(data.name, data.username, data.profile_image_path)
+  );
+
