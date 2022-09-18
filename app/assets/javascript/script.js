@@ -252,3 +252,4 @@ function renderUserData(cover_image_path, profile_image_path, fetched_name, fetc
   biography.innerText = fetched_biography;
 
 }
+

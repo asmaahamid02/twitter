@@ -141,12 +141,11 @@ window.addEventListener('load', () => {
     } else {
       tweet_date.innerHTML = tweet_created_at;
     }
-
+    likes_span.innerHTML = likes ? likes : 0;
     blue_icons_hovered.innerHTML ='<i class="material-icons-outlined blue-icons-hovered">more_horiz</i>';
     tweet_body_text.innerHTML = tweet;
 
     tweet_img.src = tweet_picture;
-        likes_span.innerHTML = likes ? likes : 0
     icon_item.innerHTML = '<i class="material-icons-outlined pink-icons-hovered">favorite_border</i>';
 
     // APPENDING ELEMENTS INSIDE EACH OTHER
@@ -327,3 +326,9 @@ const new_tweet = document.querySelector('.new-tweet');
 nav_tweet_button.addEventListener('click', ()=>{
   new_tweet.style.display = 'flex';
 })
+
+
+// LIKING FUNCTIONALITY
+    // function enableLiking(icon_item, likes_span){
+    //   icon_item.add
+    // }
